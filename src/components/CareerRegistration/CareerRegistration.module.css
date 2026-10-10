@@ -1,0 +1,386 @@
+.regSection {
+  padding: 3.5rem 0;
+  background: var(--color-bg);
+  border-top: 1px solid #fed7aa;
+  border-bottom: 1px solid #fed7aa;
+}
+
+.regMainCard {
+  background: #ffffff;
+  border: 2px solid #fdba74;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .regMainCard {
+    padding: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .regMainCard {
+    flex-direction: row;
+    gap: 2.75rem;
+  }
+}
+
+/* Left Context Column */
+.contextCol {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .contextCol {
+    width: 42%;
+  }
+}
+
+.regTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #ffedd5;
+  color: #7c2d12;
+  border: 1px solid #fed7aa;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 800;
+  width: fit-content;
+}
+
+.regHeading {
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1.25;
+}
+
+@media (min-width: 640px) {
+  .regHeading {
+    font-size: 1.95rem;
+  }
+}
+
+.regDesc {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.benefitsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  padding: 0.85rem;
+  border-radius: var(--radius-lg);
+}
+
+.benefitIcon {
+  color: #16a34a;
+  font-size: 1.35rem;
+  margin-top: 0.15rem;
+}
+
+.benefitTitle {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #0f172a;
+  display: block;
+}
+
+.benefitDesc {
+  font-size: 0.75rem;
+  color: #475569;
+  line-height: 1.4;
+  margin-top: 0.2rem;
+}
+
+/* Right Interactive Form Box */
+.formCol {
+  width: 100%;
+  background: #fcfbf8;
+  border: 1px solid #fed7aa;
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .formCol {
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .formCol {
+    width: 58%;
+  }
+}
+
+/* Step Badges */
+.stepTracker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #fed7aa;
+  padding-bottom: 1rem;
+}
+
+.stepBadgeItem {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.stepCircle {
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: var(--radius-full);
+  background: #ffedd5;
+  color: #9a3412;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.75rem;
+}
+
+.stepCircleActive {
+  background: #ea580c;
+  color: #ffffff;
+}
+
+.stepCircleDone {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.stepText {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.stepDivider {
+  flex: 1;
+  height: 2px;
+  background: #fed7aa;
+  margin: 0 0.5rem;
+}
+
+/* Stream Options Grid */
+.streamGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+}
+
+@media (min-width: 640px) {
+  .streamGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.streamOption {
+  background: #ffffff;
+  border: 1px solid #fed7aa;
+  border-radius: var(--radius-lg);
+  padding: 0.85rem 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.streamOption:hover {
+  border-color: #ea580c;
+  transform: translateY(-1px);
+}
+
+.streamOptionActive {
+  background: #fff7ed;
+  border-color: #ea580c;
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.2);
+}
+
+.streamIcon {
+  font-size: 1.5rem;
+  color: #ea580c;
+}
+
+.streamName {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.streamSub {
+  font-size: 0.65rem;
+  color: #64748b;
+}
+
+/* Form Fields */
+.fieldsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .fieldsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.formLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.formInput, .formSelect {
+  background: #ffffff;
+  border: 1px solid #fed7aa;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  color: #0f172a;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.formInput:focus, .formSelect:focus {
+  border-color: #ea580c;
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.15);
+}
+
+.formButtonsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.backBtn {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.backBtn:hover {
+  color: #0f172a;
+}
+
+.nextBtn {
+  background: linear-gradient(135deg, #ea580c, #c2410c);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 4px 10px rgba(234, 88, 12, 0.25);
+  transition: all 0.2s;
+}
+
+.nextBtn:hover {
+  background: linear-gradient(135deg, #c2410c, #9a3412);
+}
+
+/* Success View */
+.successBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem 1rem;
+}
+
+.successCheckIcon {
+  width: 4rem;
+  height: 4rem;
+  background: #dcfce7;
+  color: #16a34a;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
+}
+
+.successHeading {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.successDesc {
+  font-size: 0.85rem;
+  color: #475569;
+  max-width: 24rem;
+}
+
+.tokenBox {
+  background: #ffedd5;
+  border: 1px solid #fdba74;
+  color: #7c2d12;
+  font-weight: 900;
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-lg);
+  font-family: monospace;
+}
+
+.successNotice {
+  font-size: 0.78rem;
+  color: #15803d;
+  font-weight: 700;
+  max-width: 22rem;
+}
+
+.resetBtn {
+  background: #ea580c;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-md);
+  margin-top: 0.5rem;
+}

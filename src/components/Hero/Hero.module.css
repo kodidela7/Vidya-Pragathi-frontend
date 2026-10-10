@@ -1,0 +1,535 @@
+.heroWrapper {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 247, 237, 0.85) 0%, #ffffff 50%, rgba(254, 243, 199, 0.35) 100%);
+  border-bottom: 1px solid var(--color-primary-border);
+  overflow: hidden;
+  padding: 1.75rem 0 2.25rem;
+}
+
+@media (min-width: 1024px) {
+  .heroWrapper {
+    padding: 2.25rem 0 2.75rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .heroWrapper {
+    padding: 2.5rem 0 3rem;
+  }
+}
+
+.glowBlob1 {
+  position: absolute;
+  top: -5rem;
+  right: 15%;
+  width: 26rem;
+  height: 26rem;
+  background: rgba(254, 215, 170, 0.45);
+  border-radius: var(--radius-full);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.glowBlob2 {
+  position: absolute;
+  bottom: -4rem;
+  left: 5%;
+  width: 22rem;
+  height: 22rem;
+  background: rgba(253, 230, 138, 0.35);
+  border-radius: var(--radius-full);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+/* 2-Column Hero Grid - Stretch to align both sides gracefully */
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1.25fr 1fr;
+    gap: 2.5rem;
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 1280px) {
+  .heroGrid {
+    grid-template-columns: 1.35fr 1fr;
+    gap: 3rem;
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 1536px) {
+  .heroGrid {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3.5rem;
+    align-items: stretch;
+  }
+}
+
+/* Left Column: Headlines, Mission, Actions & Coverage */
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.75rem;
+  height: 100%;
+}
+
+.heroMainText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.heroHeading {
+  font-size: 2.25rem;
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+}
+
+@media (min-width: 640px) {
+  .heroHeading {
+    font-size: 2.95rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroHeading {
+    font-size: 3.15rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .heroHeading {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .heroHeading {
+    font-size: 3.85rem;
+  }
+}
+
+.headingGradient {
+  background: linear-gradient(90deg, #ea580c 0%, #d97706 60%, #c2410c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+.quoteCard {
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 4px solid #ea580c;
+  padding: 1.1rem 1.35rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  border-top: 1px solid #ffedd5;
+  border-right: 1px solid #ffedd5;
+  border-bottom: 1px solid #ffedd5;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.kannadaQuote {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.45;
+}
+
+.heroDesc {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+
+
+/* 4 Empowerment Pillars Grid (Fills & balances large screens) */
+.heroPillarsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .heroPillarsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+}
+
+.pillarCard {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #fed7aa;
+  border-radius: var(--radius-md);
+  padding: 0.7rem 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  box-shadow: 0 1px 3px rgba(234, 88, 12, 0.04);
+  transition: all 0.2s ease;
+}
+
+.pillarCard:hover {
+  transform: translateY(-2px);
+  border-color: #ea580c;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.1);
+  background: #ffffff;
+}
+
+.pillarIconBoxOrange {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: var(--radius-sm);
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #ea580c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pillarIconBoxBlue {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: var(--radius-sm);
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pillarIconBoxGreen {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: var(--radius-sm);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pillarIconBoxAmber {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: var(--radius-sm);
+  background: #fefce8;
+  border: 1px solid #fef08a;
+  color: #ca8a04;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pillarContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.pillarTitle {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.pillarDesc {
+  font-size: 0.7rem;
+  color: #64748b;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* Right Column: High-Impact Voter Attraction Showcase Card */
+.candidateHeroCard {
+  background: #ffffff;
+  border: 2px solid #fed7aa;
+  border-radius: var(--radius-xl);
+  padding: 1.15rem 1.25rem;
+  box-shadow: 0 12px 32px rgba(234, 88, 12, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  justify-content: space-between;
+}
+
+@media (min-width: 1280px) {
+  .candidateHeroCard {
+    padding: 1.25rem 1.35rem;
+    gap: 0.95rem;
+  }
+}
+
+/* 1. Full-Width Leadership & Official BJP Lotus Campaign Header */
+.cardTopLeadershipBanner {
+  width: 100%;
+  aspect-ratio: 3.8 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid #fed7aa;
+  background: #ffffff;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(234, 88, 12, 0.08);
+}
+
+.leadershipBannerImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 2. Candidate Showcase & Details Frame (Balanced layout without empty space) */
+.candidateShowcaseFrame {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 480px) {
+  .candidateShowcaseFrame {
+    grid-template-columns: 4.8fr 7.2fr;
+    gap: 0.85rem;
+    align-items: stretch;
+  }
+}
+
+.candidatePortraitWrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  border: 2px solid #ea580c;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  aspect-ratio: 1 / 1.15;
+  background: #fff7ed;
+  max-width: 240px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .candidatePortraitWrap {
+    max-width: none;
+    margin: 0;
+  }
+}
+
+.candidatePortraitImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.candidatePhotoBadge {
+  position: absolute;
+  bottom: 0.45rem;
+  left: 0.45rem;
+  right: 0.45rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.officialNdaPill {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fde68a;
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-full);
+}
+
+.electionYearPill {
+  background: #ea580c;
+  color: #ffffff;
+  font-size: 0.62rem;
+  font-weight: 900;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.04em;
+}
+
+/* Candidate Details Column (Fills vertical space without blank gap) */
+.candidateDetailsCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.appealCalloutBar {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border: 1.5px solid #fed7aa;
+  border-radius: var(--radius-md);
+  padding: 0.45rem 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: 0 1px 4px rgba(234, 88, 12, 0.08);
+}
+
+.appealCalloutText {
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: #c2410c;
+  line-height: 1.25;
+}
+
+.candidateBioBox {
+  background: #ffffff;
+  border: 1px solid #ffedd5;
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.constituencyTitleTag {
+  font-size: 0.64rem;
+  font-weight: 800;
+  color: #ea580c;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.candidateNameHeading {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.candidateRolePill {
+  font-size: 0.68rem;
+  color: #475569;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.sloganQuoteStrip {
+  background: #f8fafc;
+  border-left: 3px solid #16a34a;
+  border-top: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 0.45rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.sloganKannada {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+.sloganEnglish {
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: #64748b;
+  line-height: 1.25;
+}
+
+/* 3. Impact Highlights (District-Free) */
+.highlightsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.highlightCellGreen {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.highlightCellOrange {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cellTitle {
+  font-size: 0.78rem;
+  font-weight: 900;
+  display: block;
+  line-height: 1.2;
+}
+
+.cellSub {
+  font-size: 0.66rem;
+  color: #64748b;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* 4. High-Converting Vote Pledge CTA Button */
+.cardVotePledgeBtn {
+  width: 100%;
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 50%, #166534 100%);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.35);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardVotePledgeBtn:hover {
+  background: linear-gradient(135deg, #15803d 0%, #166534 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.45);
+}

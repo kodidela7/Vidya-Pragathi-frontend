@@ -1,0 +1,1092 @@
+/* JobsPortal.module.css — Naukri-Style Split View Job Portal */
+
+.jobsPortalLayout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fafc;
+  font-family: inherit;
+  color: #0f172a;
+}
+
+/* 1. Portal Sticky Navigation Bar */
+.portalNavbar {
+  height: 56px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.navInner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.backHomeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.backHomeBtn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.portalBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brandLogoBox {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 15px;
+  box-shadow: 0 2px 4px rgba(234, 88, 12, 0.2);
+}
+
+.brandTitles {
+  display: flex;
+  flex-direction: column;
+}
+
+.brandTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.brandSub {
+  font-size: 10px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.langToggle {
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 2px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.langBtn {
+  background: none;
+  border: none;
+  padding: 0.2rem 0.55rem;
+  font-size: 10px;
+  font-weight: 500;
+  color: #64748b;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.langBtnActive {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.adminBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.adminBtn:hover {
+  background: #1e293b;
+}
+
+/* 2. Compact Karnataka Career Consultancy Banner */
+.portalHero {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1.25rem 0 1rem;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.heroTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.heroSubtitle {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* 3. Comprehensive Multi-Section Filter Panel */
+.filterPanelSection {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.filterPanelCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Primary Search Row */
+.searchPrimaryRow {
+  margin-bottom: 0.75rem;
+}
+
+.mainSearchBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.85rem;
+  font-size: 18px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.mainSearchInput {
+  width: 100%;
+  padding: 0.6rem 2.4rem 0.6rem 2.5rem;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #0f172a;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.mainSearchInput:focus {
+  background: #ffffff;
+  border-color: #0f172a;
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.08);
+}
+
+.clearSearchBtn {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+  border-radius: 4px;
+}
+
+.clearSearchBtn:hover {
+  color: #0f172a;
+}
+
+/* Multi-Section Dropdown Filters Grid */
+.filterSectionsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.filterLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.filterSelect {
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 11px;
+  font-family: inherit;
+  color: #1e293b;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filterSelect:focus {
+  background: #ffffff;
+  border-color: #0f172a;
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.06);
+}
+
+/* Quick Filter Tags / Pills Row */
+.quickFiltersRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px dashed #e2e8f0;
+  flex-wrap: wrap;
+}
+
+.quickPillsLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.quickPillLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: #64748b;
+  margin-right: 0.2rem;
+}
+
+.quickPillBtn {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0.2rem 0.55rem;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.quickPillBtn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.quickPillActive {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+}
+
+.quickPillActive:hover {
+  background: #1e293b;
+  color: #ffffff;
+}
+
+.resetFiltersBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0.22rem 0.55rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.resetFiltersBtn:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* 4. Results Toolbar & Meta */
+.resultsMetaToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 0 0.65rem;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.resultsCountText {
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.totalBadge {
+  background: #e2e8f0;
+  color: #0f172a;
+  padding: 0.12rem 0.45rem;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.sortGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.sortLabel {
+  font-size: 10px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.sortSelect {
+  padding: 0.3rem 0.55rem;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  outline: none;
+}
+
+/* 5. Naukri-Style Split View Layout */
+.naukriSplitLayout {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 1200px) {
+  .naukriSplitLayout {
+    grid-template-columns: 490px 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Left Column: Job Cards List */
+.jobsListColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+/* Job Card: Static, Solid, NO HOVER TRANSFORM/JUMP */
+.jobCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  cursor: pointer;
+  /* NO transform / hover jumping */
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+  position: relative;
+}
+
+/* Gentle subtle highlight without jumping or floating */
+.jobCard:hover {
+  border-color: #94a3b8;
+  background-color: #fbfcfd;
+}
+
+/* Active Selected Job Card (Naukri style) */
+.selectedJobCard {
+  border-color: #0f172a !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 1.5px #0f172a, 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.jobCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.companyAvatarAndTitle {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.companyAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.jobTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.companyRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.companyName {
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.verifiedEmployerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  background: #f0fdf4;
+  border: 1px solid #dcfce7;
+  color: #16a34a;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 0.08rem 0.35rem;
+  border-radius: 4px;
+}
+
+.cardTopBadges {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.locationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0.2rem 0.45rem;
+  border-radius: 5px;
+}
+
+.categoryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  color: #1d4ed8;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0.2rem 0.45rem;
+  border-radius: 5px;
+}
+
+/* Key Metrics Ribbon */
+.metricsRibbon {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: #f8fafc;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #f1f5f9;
+  flex-wrap: wrap;
+  font-size: 11px;
+}
+
+.metricItem {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #334155;
+}
+
+.metricIcon {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.metricSalary {
+  font-weight: 600;
+  color: #15803d;
+}
+
+.metricDeadline {
+  font-weight: 600;
+  color: #c2410c;
+}
+
+/* Short description preview */
+.jobDescPreview {
+  font-size: 11px;
+  color: #475569;
+  line-height: 1.45;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card Bottom Footer */
+.jobCardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.65rem;
+  border-top: 1px solid #f1f5f9;
+  gap: 0.75rem;
+}
+
+.sourceVerification {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 10px;
+  color: #64748b;
+}
+
+.sourceIcon {
+  font-size: 13px;
+  color: #16a34a;
+}
+
+.actionButtonsGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.viewDetailsBtn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.viewDetailsBtn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.applyJobBtn {
+  background: #0f172a;
+  border: none;
+  color: #ffffff;
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  text-decoration: none;
+}
+
+.applyJobBtn:hover {
+  background: #ea580c;
+}
+
+/* 6. Right Column: Sticky Job Details Pane (Naukri Style) */
+.jobDetailsColumn {
+  position: sticky;
+  top: 72px;
+  max-height: calc(100vh - 90px);
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch;
+}
+
+.jobDetailsColumn::-webkit-scrollbar {
+  width: 5px;
+}
+.jobDetailsColumn::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.jobDetailsColumn::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Sticky Header inside Details Pane - Always Fixed at Top */
+.detailsHeader {
+  padding: 1.15rem 1.4rem;
+  border-bottom: 1px solid #eef2f6;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.detailsHeaderLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.detailsRoleTitle {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.detailsCompanyMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  flex-wrap: wrap;
+}
+
+.detailsHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.detailsApplyBtn {
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  padding: 0.55rem 1.25rem;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.detailsApplyBtn:hover {
+  background: #ea580c;
+}
+
+/* Details Body Content */
+.detailsBody {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Key Highlights 3-Col Grid */
+.detailsHighlightsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  background: #f8fafc;
+  padding: 0.85rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.highlightItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.highlightLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.highlightVal {
+  font-size: 11px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Details Sections */
+.detailsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.detailsSectionTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.detailsSectionContent {
+  font-size: 12px;
+  color: #334155;
+  line-height: 1.6;
+  white-space: pre-line;
+  margin: 0;
+}
+
+.skillsChipsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.detailSkillChip {
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Details Footer */
+.detailsFooter {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #eef2f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+}
+
+.detailsVerifiedNote {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* Left Column Pagination */
+.leftPaginationSection {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.leftPaginationSummary {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.paginationButtonsGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pageNavBtn {
+  background: none;
+  border: 1px solid #e2e8f0;
+  padding: 0.25rem 0.6rem;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.pageNavBtn:hover:not(:disabled) {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.pageNavBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pageNumberBtn {
+  min-width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+  border: 1px solid transparent;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.pageNumberBtn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.pageNumberActive {
+  background: #0f172a !important;
+  color: #ffffff !important;
+}
+
+/* Empty & Loading States */
+.emptyStateCard {
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.emptyIcon {
+  font-size: 36px;
+  color: #94a3b8;
+}
+
+.emptyTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.emptyText {
+  font-size: 12px;
+  color: #64748b;
+  max-width: 380px;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.resetAllBtn {
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.4rem;
+}
+
+.loadingContainer {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Mobile Back Navigation Bar */
+.mobileBackBar {
+  display: none;
+  padding: 0.85rem 1.25rem 0.35rem;
+  background: #ffffff;
+}
+
+.mobileBackBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.mobileBackBtn:hover {
+  background: #e2e8f0;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .filterSectionsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .naukriSplitLayout {
+    grid-template-columns: 380px 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  .naukriSplitLayout {
+    grid-template-columns: 1fr;
+  }
+
+  /* On mobile: Toggle between list and full details */
+  .hideOnMobile {
+    display: none !important;
+  }
+
+  .mobileBackBar {
+    display: flex;
+    align-items: center;
+  }
+
+  .jobDetailsColumn {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  /* Fix Apply Now header at top below the sticky navbar on mobile */
+  .detailsHeader {
+    position: sticky;
+    top: 56px;
+    z-index: 30;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    padding: 0.85rem 1rem;
+  }
+
+  .filterSectionsGrid {
+    grid-template-columns: 1fr;
+  }
+}

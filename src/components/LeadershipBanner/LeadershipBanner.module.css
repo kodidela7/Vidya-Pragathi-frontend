@@ -1,0 +1,145 @@
+.bannerWrapper {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-primary-border);
+  padding: 1.75rem 0;
+}
+
+.bannerCard {
+  background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+  border: 2px solid #fdba74;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .bannerCard {
+    grid-template-columns: 7fr 5fr;
+    align-items: center;
+  }
+}
+
+.bannerContent {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .bannerContent {
+    padding: 2.25rem;
+  }
+}
+
+.bannerTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #ffedd5;
+  color: #7c2d12;
+  border: 1px solid #fdba74;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+  width: fit-content;
+}
+
+.bannerTitle {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1.25;
+}
+
+@media (min-width: 640px) {
+  .bannerTitle {
+    font-size: 1.85rem;
+  }
+}
+
+.titleHighlight {
+  color: #ea580c;
+}
+
+.bannerDesc {
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.bannerActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.pledgeActionBtn {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 10px rgba(234, 88, 12, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s;
+}
+
+.pledgeActionBtn:hover {
+  background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%);
+  transform: translateY(-1px);
+}
+
+.registerActionBtn {
+  background: #ffffff;
+  border: 1px solid #fed7aa;
+  color: #7c2d12;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.registerActionBtn:hover {
+  background: #fff7ed;
+  border-color: #ea580c;
+}
+
+.bannerMedia {
+  position: relative;
+  height: 16rem;
+  overflow: hidden;
+  background: #ffffff;
+  border-top: 1px solid #fdba74;
+}
+
+@media (min-width: 1024px) {
+  .bannerMedia {
+    height: 100%;
+    min-height: 19rem;
+    border-top: none;
+    border-left: 1px solid #fdba74;
+  }
+}
+
+.bannerImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}

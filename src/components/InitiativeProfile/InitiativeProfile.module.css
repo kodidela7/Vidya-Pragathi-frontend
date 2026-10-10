@@ -1,0 +1,305 @@
+.profileSection {
+  padding: 3.5rem 0;
+  background: rgba(255, 247, 237, 0.6);
+  border-top: 1px solid #fed7aa;
+  border-bottom: 1px solid #fed7aa;
+}
+
+.manifestoCard {
+  background: #ffffff;
+  border: 2px solid #fdba74;
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 640px) {
+  .manifestoCard {
+    padding: 2.5rem;
+  }
+}
+
+.profileLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .profileLayout {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+/* Left Candidate Bio Column */
+.candidateCol {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 1024px) {
+  .candidateCol {
+    width: 35%;
+  }
+}
+
+.portraitWrapper {
+  position: relative;
+  width: 12rem;
+  height: 12rem;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 4px solid #ea580c;
+  box-shadow: var(--shadow-warm);
+  background: #fff7ed;
+}
+
+@media (min-width: 640px) {
+  .portraitWrapper {
+    width: 14rem;
+    height: 14rem;
+  }
+}
+
+.candidateImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.badgeRibbon {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  background: rgba(234, 88, 12, 0.95);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 0.35rem;
+}
+
+.candidateTitle {
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.candidateSub {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #c2410c;
+}
+
+.candidateDistrictsList {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.leadershipMiniBanner {
+  width: 100%;
+  max-width: 16rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid #fed7aa;
+  margin-top: 0.25rem;
+}
+
+.miniBannerImg {
+  width: 100%;
+  height: 3.25rem;
+  object-fit: cover;
+  object-position: top;
+}
+
+.pledgeActionBtn {
+  background: linear-gradient(135deg, #ea580c, #c2410c);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 4px 10px rgba(234, 88, 12, 0.25);
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.pledgeActionBtn:hover {
+  background: linear-gradient(135deg, #c2410c, #9a3412);
+  transform: translateY(-1px);
+}
+
+/* Right Content / 4 Pillars Column */
+.manifestoContentCol {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .manifestoContentCol {
+    width: 65%;
+  }
+}
+
+.manifestoTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #ffedd5;
+  color: #7c2d12;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 800;
+  border: 1px solid #fdba74;
+  width: fit-content;
+}
+
+.manifestoHeading {
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+@media (min-width: 640px) {
+  .manifestoHeading {
+    font-size: 2rem;
+  }
+}
+
+.manifestoQuoteBox {
+  background: #f8fafc;
+  border-left: 3px solid #16a34a;
+  padding: 0.85rem 1.15rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+/* 4 Pillars Grid */
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  padding-top: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .pillarsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.pillarCard {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pillarCardGreen {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.pillarCardAmber {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.pillarHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pillarIcon {
+  font-size: 1.35rem;
+  color: #ea580c;
+}
+
+.pillarIconGreen {
+  color: #16a34a;
+}
+
+.pillarIconAmber {
+  color: #d97706;
+}
+
+.pillarTitle {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.pillarDesc {
+  font-size: 0.78rem;
+  color: #475569;
+  line-height: 1.45;
+}
+
+.pillarActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+}
+
+.volunteerBtn {
+  background: #16a34a;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 4px 10px rgba(22, 163, 74, 0.25);
+  transition: all 0.2s;
+}
+
+.volunteerBtn:hover {
+  background: #15803d;
+  transform: translateY(-1px);
+}
+
+.pledgeActionBtn {
+  background: #ffffff;
+  border: 1px solid #fed7aa;
+  color: #7c2d12;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.pledgeActionBtn:hover {
+  background: #fff7ed;
+  border-color: #ea580c;
+  transform: translateY(-1px);
+}

@@ -1,0 +1,168 @@
+export const en = {
+  // Top Bulletin
+  bulletinTag: "BJP Vidya Pragathi",
+  bulletinDistricts: "South-East Graduates' Constituency (MLC 2026)",
+
+  // Header Nav
+  brandTitle: "VIDYA PRAGATHI",
+  brandSubtitle: "BJP South-East Graduates' Constituency Cell • MLC 2026",
+  navOpportunities: "Opportunities",
+  navSkills: "Skills & AI",
+  navEvents: "Job Melas",
+  navCandidate: "Candidate",
+  navRegister: "Register",
+  navHelpdesk: "Helpdesk",
+  ctaRegister: "Register",
+  ctaPledge: "Pledge Vote",
+
+  // Hero Section
+  heroTitlePrefix: "Empowering",
+  heroTitleHighlight: "Karnataka Graduates",
+  heroTitleSuffix: "Dedicated Public Service",
+  heroQuote: "\"Nava Karnataka - Yuva Shakthi! Dedicated to the bright future, employment, and dignity of our graduates.\"",
+  heroDescription: "A proactive Karnataka initiative delivering transparent private & public recruitment drives, free AI skills certification, taluk-level KPSC study hubs, and steadfast legislative representation.",
+  ctaExploreJobs: "Explore Opportunities",
+  ctaPledgeHero: "Pledge Vote for BJP",
+  ctaCareerIntakeHero: "Graduate Registration",
+
+  // Hero Delivery Pillars (Balanced across large screens)
+  pillar1Title: "10,000+ Placements",
+  pillar1Desc: "Verified Private & PSU Recruitment Drives",
+  pillar2Title: "Free AI Certification",
+  pillar2Desc: "KDEM Certified Future-Tech Programs",
+  pillar3Title: "Taluk Study Hubs",
+  pillar3Desc: "Free KPSC & Civil Exam Mentorship",
+  pillar4Title: "Constituency Helpdesk",
+  pillar4Desc: "Dedicated Support & Redressal Desk",
+
+  // Candidate Hero Box
+  candidateBadge: "Vidhana Parishat NDA Candidate",
+  candidateOfficial: "Official Candidate (BJP / NDA)",
+  candidateName: "K. M. Suresh",
+  candidateNameKn: "ಕೆ.ಎಂ. ಸುರೇಶ್",
+  candidateRole: "Educationist & MLC Candidate",
+  candidateConstituency: "South-East Graduates' Constituency",
+  candidateSlogan: "Voice of Graduates — Vision for the Future",
+  candidateExp: "Decades of educational excellence, youth mentoring, and dedicated public service.",
+  candidateDistrictHubs: "Karnataka Graduate Network",
+  candidateCoaching: "Free Taluk KPSC Guidance",
+  candidateHelpline: "Constituency Desk: 1800-425-9988",
+
+  // Leadership Banner
+  leadershipTag: "Viksit Bharat & Viksit Karnataka Vision",
+  leadershipTitle: "Empowering Youth Leadership under PM Narendra Modi",
+  leadershipDesc: "\"Education development, employment for youth — enlightened graduates, capable Karnataka.\" Driving all-round progress for Kolar, Tumakuru, Chitradurga, Chikkaballapur & Davanagere.",
+  leadershipCtaPledge: "Pledge Support for K. M. Suresh",
+  leadershipCtaRegister: "Register Now",
+
+  // District Filter Ribbon
+  districtFilterTitle: "Filter Opportunities by Constituency District:",
+  districtFilterSubtitle: "(5 Districts • 31 Taluks • 185 Hoblis)",
+  districtAll: "All 5 Districts",
+  districtKolar: "Kolar",
+  districtChikkaballapur: "Chikkaballapur",
+  districtTumakuru: "Tumakuru",
+  districtChitradurga: "Chitradurga",
+  districtDavanagere: "Davanagere",
+
+  // Metric Ribbon
+  metricJobsTitle: "Career Pipelines",
+  metricJobsSub: "Private & Govt. Drives",
+  metricSkillsTitle: "Emerging Tech Skilling",
+  metricSkillsSub: "KDEM & AI Certifications",
+  metricGrantsTitle: "Study Grants & Schemes",
+  metricGrantsSub: "DBT Direct Bank Support",
+  metricHelpdeskTitle: "Grievance Response",
+  metricHelpdeskSub: "Constituency Support Desk",
+
+  // Opportunities Matrix
+  matrixTag: "District Opportunity Matrix",
+  matrixSubTag: "Career & Skilling Cell",
+  matrixTitle: "Curated Career Drives & Educational Grants",
+  matrixDesc: "Verified employment and skilling pipelines supported by regional industries, public sector units, and technology consortiums.",
+  matrixFilterAll: "All Categories",
+  matrixFilterJobs: "Jobs & Drives",
+  matrixFilterExams: "KPSC & Exams",
+  matrixFilterAI: "AI Skilling",
+  matrixFilterGrants: "Scholarships",
+  btnApply: "Apply",
+  btnViewDetails: "View Details",
+
+  // Candidate Profile / Manifesto Section
+  manifestoTag: "CONSTITUENCY MANIFESTO & 4-PILLAR CHARTER",
+  manifestoTitle: "Dedicated Representation for Graduates",
+  manifestoQuote: "\"Educational experience, social commitment, and the aspirations of graduates are my primary guide. I will honestly fight for every right and job opportunity of our youth in the Karnataka Legislative Council.\"",
+  pillar1Title: "1. Regional Job Corridors",
+  pillar1Desc: "Placement drives connecting Tumakuru, Kolar, and Davanagere industrial hubs with local degree holders.",
+  pillar2Title: "2. Free KPSC Study Centers",
+  pillar2Desc: "Mentorship, library resources, and test series for civil service aspirants across all 31 taluks.",
+  pillar3Title: "3. Digital Skills & AI Training",
+  pillar3Desc: "Industry-aligned certifications in cloud, programming, and AI tools with verified placement guidance.",
+  pillar4Title: "4. Responsive Graduate Helpdesk",
+  pillar4Desc: "Direct redressal for degree attestation delays, scholarship bottlenecks, and employment grievances.",
+  btnPledgeVote: "Pledge Vote for K. M. Suresh",
+  btnJoinVolunteers: "Join Taluk Volunteer Taskforce",
+
+  // Events & Job Melas Section
+  eventsTag: "Constituency Calendar",
+  eventsSubTag: "Job Melas & Workshops",
+  eventsTitle: "Upcoming Mega Job Melas & Skill Bootcamps",
+  eventsDesc: "Mass recruitment drives and career masterclasses across South-East Karnataka district headquarters.",
+  eventBannerTag: "Mega Spot Hiring Drive",
+  eventBannerTitle: "South-East Karnataka Mega Campus Job Mela 2026",
+  eventBannerDesc: "Over 120+ IT, core engineering, manufacturing, and financial enterprises conducting spot interviews and recruitment for graduates.",
+  eventBannerVenue: "Venue: Tumakuru University Grounds",
+  btnRegisterPass: "Reserve Free Entry Pass",
+
+  // Career Desk Registration Form
+  regTag: "GRADUATE OPPORTUNITY ONBOARDING",
+  regTitle: "South-East Graduate Career Desk Registration",
+  regDesc: "Degree holders in Kolar, Chikkaballapur, Tumakuru, Chitradurga, or Davanagere can register to receive verified job alerts, free skill training access, and constituency support.",
+  regStep1: "1. Stream",
+  regStep2: "2. Domicile",
+  regStep3: "3. Contact",
+  regLabelStream: "Select Academic / Professional Degree Stream:",
+  regLabelDistrict: "District (ಜಿಲ್ಲೆ):",
+  regLabelTaluk: "Taluk (ತಾಲ್ಲೂಕು):",
+  regLabelName: "Full Name (as on degree certificate):",
+  regLabelMobile: "Mobile Number (WhatsApp updates):",
+  regLabelEmail: "Email Address:",
+  regLabelStatus: "Current Employment Status:",
+  regBtnNext: "Next Step",
+  regBtnBack: "Back",
+  regBtnSubmit: "Complete Registration & Get Desk ID",
+  regSuccessTitle: "Registration Confirmed!",
+  regSuccessDesc: "Your profile has been recorded in the South-East Graduate Career Registry. Your official Desk Reference ID is:",
+  regSuccessNotice: "Confirmation details dispatched. You will receive direct updates on district job melas and coaching schedules.",
+  regBtnAnother: "Register Another Graduate",
+
+  // Volunteer Taskforce & Campaign Pledge Section
+  volunteerTag: "BJP Youth Campaign Taskforce",
+  volunteerTitle: "Support K. M. Suresh & Lead the Constituency Volunteer Mission",
+  volunteerDesc: "Join thousands of young professionals, engineers, advocates, and teachers supporting the Vidhana Parishat 2026 election campaign under the leadership of Prime Minister Narendra Modi and BJP Karnataka.",
+  btnVolunteerPledge: "Pledge My Vote for BJP",
+  btnVolunteerJoin: "Sign Up as Constituency Volunteer",
+
+  // Helpdesk Section
+  helpdeskTag: "CONSTITUENCY GRIEVANCE REDRESSAL (ಜನಸ್ಪಂದನ)",
+  helpdeskTitle: "Graduate Helpdesk & Redressal Cell",
+  helpdeskDesc: "Directly escalate delays in higher education scholarship disbursement, degree certificate attestation, job fair queries, or skill program admissions.",
+  helpdeskLabelCategory: "Issue Category:",
+  helpdeskLabelDistrict: "Concerned District:",
+  helpdeskLabelName: "Full Name:",
+  helpdeskLabelMobile: "Mobile Number:",
+  helpdeskLabelDesc: "Detailed Description of Concern:",
+  helpdeskBtnSubmit: "Generate Grievance Ticket",
+  helpdeskSuccessTitle: "Request Received Successfully",
+  helpdeskSuccessNotice: "We have received your request. Our team will review it and get back to you shortly.",
+
+  // Footer
+  footerDesc: "Bharatiya Janata Party (BJP) Civic & Career Portal for Karnataka South-East Graduates' Constituency. Dedicated to education, skill development, and youth empowerment.",
+  footerSecretariats: "Constituency Offices",
+  footerServices: "Public Career Services",
+  footerContact: "Constituency Helpline",
+  footerPhone: "1800-425-9988",
+  footerHours: "Toll-free 9:00 AM - 6:00 PM for South-East Karnataka Graduates",
+  footerEmail: "desk@southeastgraduates.in",
+  footerCopyright: "© 2026 BJP Karnataka South-East Graduates' Constituency Initiative. All Rights Reserved."
+};

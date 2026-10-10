@@ -1,0 +1,239 @@
+/* Clean, authentic light administrative login page */
+
+.loginWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  background-color: #f3f4f6;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(234, 88, 12, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(22, 163, 74, 0.04) 0%, transparent 40%);
+  font-family: inherit;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 460px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.06),
+    0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+  padding: 2.5rem 2rem 2rem;
+}
+
+/* Indian Tricolor Stripe at Top Edge */
+.tricolorTopBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ea580c 0%, #ea580c 40%, #ffffff 40%, #ffffff 60%, #16a34a 60%, #16a34a 100%);
+}
+
+/* Header Area */
+.headerArea {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-bottom: 0.35rem;
+}
+
+.kannadaName {
+  color: #9a3412;
+  font-weight: 700;
+}
+
+.cardSubtitle {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* Error Banner */
+.errorAlert {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Form Groups */
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.fieldLabelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.fieldLabel {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.4rem;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 0.85rem;
+  color: #64748b;
+  font-size: 1.15rem;
+  pointer-events: none;
+}
+
+.textInput {
+  width: 100%;
+  padding: 0.75rem 0.85rem 0.75rem 2.65rem;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  color: #0f172a;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.textInput:focus {
+  border-color: #9a3412;
+  box-shadow: 0 0 0 2px rgba(154, 52, 18, 0.15);
+}
+
+.textInput::placeholder {
+  color: #9ca3af;
+  font-size: 0.85rem;
+}
+
+.toggleEyeBtn {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+}
+
+.toggleEyeBtn:hover {
+  color: #1e293b;
+}
+
+/* Checkbox Row */
+.trustWorkstationRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.trustCheckbox {
+  accent-color: #9a3412;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.trustLabel {
+  font-size: 0.8rem;
+  color: #475569;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Sign In CTA Button */
+.submitBtn {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  background: #9a3412;
+  border: 1px solid #7c2d12;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.94rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: #7c2d12;
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.backPublicBtn {
+  background: none;
+  border: none;
+  color: #9a3412;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: inherit;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.backPublicBtn:hover {
+  background: #fff7ed;
+  text-decoration: underline;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,225 @@
+.filterSection {
+  padding: 2rem 0;
+  background: var(--color-bg);
+  border-bottom: 1px solid #ffedd5;
+}
+
+.districtBox {
+  background: #ffffff;
+  border: 1px solid #fed7aa;
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+}
+
+.districtHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid #ffedd5;
+}
+
+@media (min-width: 768px) {
+  .districtHeader {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.districtTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.titleIcon {
+  color: #ea580c;
+  font-size: 1.25rem;
+}
+
+.districtTitle {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.districtSubtext {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.constituencyScopeBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #9a3412;
+  background: #fff7ed;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid #fed7aa;
+  width: fit-content;
+}
+
+.districtGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+}
+
+@media (min-width: 640px) {
+  .districtGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .districtGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.districtBtn {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.districtBtn:hover {
+  background: #ffedd5;
+  border-color: #fb923c;
+  transform: translateY(-1px);
+}
+
+.districtBtnActive {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+  color: #ffffff !important;
+  border-color: #ea580c !important;
+  box-shadow: 0 4px 10px rgba(234, 88, 12, 0.25);
+}
+
+.districtNameEn {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: inherit;
+}
+
+.districtNameKn {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: inherit;
+  opacity: 0.85;
+}
+
+.districtSubTag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-full);
+  margin-top: 0.25rem;
+  background: rgba(255, 255, 255, 0.3);
+  color: inherit;
+}
+
+.districtBtn:not(.districtBtnActive) .districtSubTag {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+/* Metric Ribbon */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+@media (min-width: 768px) {
+  .metricsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.metricCard {
+  background: #ffffff;
+  border: 1px solid #fed7aa;
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.metricCardGreen {
+  border-color: #bbf7d0;
+}
+
+.metricCardAmber {
+  border-color: #fde68a;
+}
+
+.metricIcon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-md);
+  background: #fff7ed;
+  color: #ea580c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.metricIconGreen {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.metricIconAmber {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+.metricInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.metricTitle {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.metricSub {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ea580c;
+  letter-spacing: 0.02em;
+}
+
+.metricSubGreen {
+  color: #16a34a;
+}
+
+.metricSubAmber {
+  color: #d97706;
+}
+
+.metricDesc {
+  font-size: 0.65rem;
+  color: #64748b;
+  font-weight: 500;
+}

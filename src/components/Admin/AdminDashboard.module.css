@@ -1,0 +1,1310 @@
+/* Clean, Compact Enterprise Administrative Dashboard */
+
+.dashboardLayout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fafc;
+  font-family: inherit;
+  color: #0f172a;
+  font-size: 11px;
+}
+
+/* 1. Header Bar */
+.topHeader {
+  height: 52px;
+  background: #ffffff;
+  border-bottom: 1px solid #eef2f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mobileMenuBtn {
+  display: none;
+  background: none;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+}
+
+.brandBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.brandLogoBox {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(234, 88, 12, 0.2);
+}
+
+.brandInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.brandName {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.brandSub {
+  font-size: 10px;
+  font-weight: 500;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Header Right - Candidate Photo and Name */
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.mlcProfile {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.mlcAvatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #fdba74;
+}
+
+.mlcDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.mlcName {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.mlcSub {
+  font-size: 10px;
+  color: #ea580c;
+  font-weight: 500;
+}
+
+/* 2. Body Container (Sidebar + Content) */
+.bodyContainer {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+/* Sidebar - Fixed & Sticky with Pinned Logout */
+.sidebar {
+  width: 200px;
+  background: #ffffff;
+  border-right: 1px solid #eef2f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0.75rem;
+  flex-shrink: 0;
+  height: calc(100vh - 52px);
+  position: sticky;
+  top: 52px;
+  z-index: 40;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #475569;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.navItem:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.navItemActive {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.navItemActive:hover {
+  background: #1e293b !important;
+}
+
+.navBadge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0.12rem 0.45rem;
+  border-radius: 9999px;
+  background: #ea580c;
+  color: #ffffff;
+}
+
+.navIcon {
+  font-size: 15px;
+  color: #ea580c;
+}
+
+/* Pinned Bottom Logout */
+.sidebarBottom {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+  position: sticky;
+  bottom: 0;
+  background: #ffffff;
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fee2e2;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.logoutBtn:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* 3. Main Dashboard Area */
+.mainContent {
+  flex: 1;
+  padding: 1.25rem 1.5rem;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Top Toolbar */
+.referenceToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.toolbarTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.portalTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Clean Pill Tabs [ALL] [ACTIVE] [CLOSED] */
+.statusPillTabs {
+  display: inline-flex;
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 6px;
+  padding: 2px;
+  border: 1px solid #e2e8f0;
+}
+
+.pillTabBtn {
+  background: none;
+  border: none;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+  color: #64748b;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.pillTabActive {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.toolbarRightControls {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.compactSearchBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 220px;
+}
+
+.compactSearchIcon {
+  position: absolute;
+  left: 0.55rem;
+  font-size: 14px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.compactSearchInput {
+  width: 100%;
+  padding: 0.38rem 0.55rem 0.38rem 1.85rem;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 400;
+  font-family: inherit;
+  outline: none;
+  color: #0f172a;
+  transition: all 0.15s ease;
+}
+
+.compactSearchInput:focus {
+  border-color: #0f172a;
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.06);
+}
+
+.districtFilterBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.38rem 0.65rem;
+  font-size: 11px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.districtSelect {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  color: #334155;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Black / Dark Rounded CTA Button */
+.createJobBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.42rem 0.8rem;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+}
+
+.createJobBtn:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+}
+
+/* 4. Compact Data Table */
+.tableContainerCard {
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableScrollWrapper {
+  overflow-x: auto;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+.compactTable {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.compactTable th {
+  background: #ffffff;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+  white-space: nowrap;
+}
+
+.compactTable td {
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid #f8fafc;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+.compactTable tbody tr:hover td {
+  background: #fcfcfd;
+}
+
+/* Table Cells */
+.idCell {
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.jobTitleCell {
+  font-size: 12px;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.companyCell {
+  color: #475569;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.districtCell {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* Status Badges */
+.badgeVerified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: #e6f9ed;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0.18rem 0.45rem;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.badgeUnverified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0.18rem 0.45rem;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.badgeDraft {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0.18rem 0.45rem;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.statusDotGreen {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #16a34a;
+}
+
+.statusDotRed {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #dc2626;
+}
+
+.statusDotGray {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #94a3b8;
+}
+
+/* Action Icons */
+.actionIconsGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.actionIconBtn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease;
+}
+
+.actionIconBtn:hover {
+  color: #0f172a;
+}
+
+.actionIconBtnDanger:hover {
+  color: #dc2626;
+}
+
+/* 5. Table Footer with Results & Pagination */
+.tableFooterRow {
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #f1f5f9;
+  background: #ffffff;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.showingResultsText {
+  font-size: 10px;
+  font-weight: 500;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.pageNavTextBtn {
+  background: none;
+  border: none;
+  font-size: 10px;
+  font-weight: 500;
+  color: #475569;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: color 0.15s ease;
+}
+
+.pageNavTextBtn:hover:not(:disabled) {
+  color: #0f172a;
+}
+
+.pageNavTextBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pageChip {
+  min-width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #475569;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.pageChip:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.pageChipActive {
+  background: #0f172a !important;
+  color: #ffffff !important;
+}
+
+/* 6. Mobile Cards View (< 768px) */
+.mobileCardsContainer {
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mobileJobCard {
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  border-radius: 10px;
+  padding: 0.85rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobileCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.mobileCardTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.25;
+}
+
+.mobileCardCompany {
+  font-size: 11px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.mobileCardMetaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 0.65rem;
+  background: #f8fafc;
+  padding: 0.55rem;
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.mobileMetaItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileMetaLabel {
+  font-size: 10px;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.mobileMetaValue {
+  font-size: 11px;
+  font-weight: 500;
+  color: #1e293b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobileCardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.45rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* 7. Scrollable Modal */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modalBox {
+  background: #ffffff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+.modalHeader {
+  padding: 0.95rem 1.25rem;
+  border-bottom: 1px solid #eef2f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.modalTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.closeModalBtn {
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeModalBtn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.modalBody {
+  padding: 1.1rem 1.25rem;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modalBody::-webkit-scrollbar {
+  width: 5px;
+}
+.modalBody::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.modalBody::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 0.85rem;
+}
+
+.formColFull {
+  grid-column: 1 / -1;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.formLabel {
+  font-size: 11px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.formInput, .formSelectInput, .formTextarea {
+  padding: 0.42rem 0.6rem;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 400;
+  font-family: inherit;
+  color: #0f172a;
+  outline: none;
+}
+
+.formInput:focus, .formSelectInput:focus, .formTextarea:focus {
+  border-color: #0f172a;
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.06);
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 75px;
+}
+
+.modalFooter {
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid #eef2f6;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  background: #f8fafc;
+  flex-shrink: 0;
+}
+
+.cancelBtn {
+  padding: 0.42rem 0.8rem;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #475569;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.cancelBtn:hover {
+  background: #f1f5f9;
+}
+
+.submitJobBtn {
+  padding: 0.42rem 1rem;
+  background: #0f172a;
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.submitJobBtn:hover:not(:disabled) {
+  background: #1e293b;
+}
+
+.submitJobBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mobileDrawerOverlay {
+  display: none;
+}
+
+/* Graduate Table Specific Styling */
+.candidateNameCell {
+  font-size: 11px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.candidateAvatarInitials {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffedd5;
+  color: #c2410c;
+  font-size: 10px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.45rem;
+  vertical-align: middle;
+}
+
+.contactPhoneWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.whatsappActionLink {
+  color: #16a34a;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.whatsappActionLink:hover {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.callActionLink {
+  color: #0284c7;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.callActionLink:hover {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.courseBadge {
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  color: #1e40af;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0.18rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.districtPillBadge {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0.18rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.interestSnippetCell {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10px;
+  color: #475569;
+}
+
+/* Helpdesk Ticket Status Badges */
+.statusBadgeOpen {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #b45309;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.statusBadgeInReview {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.statusBadgeResolved {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.statusBadgeClosed {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.statusSelectInline {
+  padding: 0.2rem 0.45rem;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.statusSelectInline:focus {
+  border-color: #0f172a;
+}
+
+.exportCsvBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.38rem 0.65rem;
+  font-size: 11px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.exportCsvBtn:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.gradDetailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.gradDetailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.gradDetailLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.gradDetailValue {
+  font-size: 12px;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+/* Mobile Cards Default Styling (Hidden on Desktop) */
+.mobileCardsContainer {
+  display: none;
+}
+
+.mobileCard,
+.mobileJobCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mobileCard:hover,
+.mobileJobCard:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.mobileCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.mobileJobTitle,
+.mobileCardTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.25;
+}
+
+.mobileCompany,
+.mobileCardCompany {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 0.15rem;
+}
+
+.mobileMetaGrid,
+.mobileCardMetaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 0.75rem;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 6px;
+  padding: 0.55rem 0.75rem;
+}
+
+.mobileMetaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.mobileMetaLabel {
+  font-size: 9px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mobileMetaValue {
+  font-size: 11px;
+  font-weight: 500;
+  color: #1e293b;
+  word-break: break-word;
+}
+
+.mobileCardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.45rem;
+  border-top: 1px solid #f1f5f9;
+  gap: 0.5rem;
+}
+
+/* Responsive Breakpoints (Tablets & Mobile) */
+@media (max-width: 992px) {
+  .mobileMenuBtn {
+    display: flex;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 52px;
+    left: -220px;
+    bottom: 0;
+    height: calc(100vh - 52px);
+    z-index: 60;
+    transition: left 0.25s ease-in-out;
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebarOpen {
+    left: 0;
+  }
+
+  .mobileDrawerOverlay {
+    display: block;
+    position: fixed;
+    top: 52px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 55;
+  }
+
+  .topHeader {
+    padding: 0 0.85rem;
+  }
+
+  .mlcSub {
+    display: none;
+  }
+
+  .mainContent {
+    padding: 0.75rem 0.85rem;
+  }
+
+  .compactSearchBox {
+    width: 100%;
+  }
+
+  .toolbarTitleGroup {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .toolbarRightControls {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .districtFilterBtn {
+    flex: 1 1 calc(50% - 0.25rem);
+    min-width: 130px;
+  }
+
+  .exportCsvBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tableScrollWrapper {
+    display: none;
+  }
+
+  .mobileCardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.25rem 0;
+  }
+
+  .tableContainerCard {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .tableFooterRow {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.65rem 0.85rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    margin-top: 0.25rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .gradDetailGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .modalBox {
+    max-height: 94vh;
+    max-width: calc(100vw - 20px);
+    width: 100%;
+    margin: 0 auto;
+  }
+}

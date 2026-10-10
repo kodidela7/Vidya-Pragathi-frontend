@@ -1,0 +1,158 @@
+.footer {
+  background: #ffffff;
+  border-top: 2px solid #fed7aa;
+  padding: 3rem 0 2rem;
+  color: #0f172a;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #ffedd5;
+}
+
+@media (min-width: 640px) {
+  .footerGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footerGrid {
+    grid-template-columns: 4fr 3fr 2.5fr 2.5fr;
+    gap: 2.5rem;
+  }
+}
+
+.colIdentity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.brandIcon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-sm);
+  background: #fff7ed;
+  border: 1px solid #fb923c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ea580c;
+}
+
+.brandTitle {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.footerBio {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.verifiedElectorDesk {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #16a34a;
+}
+
+.colHeading {
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ea580c;
+  margin-bottom: 0.75rem;
+}
+
+.linksList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: #475569;
+}
+
+.linksList li a:hover {
+  color: #ea580c;
+}
+
+.contactBox {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.phoneRow {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.phoneIcon {
+  color: #ea580c;
+  font-size: 1.25rem;
+}
+
+.phoneNumber {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.contactText {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.contactEmail {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ea580c;
+}
+
+.bottomRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+@media (min-width: 768px) {
+  .bottomRow {
+    flex-direction: row;
+  }
+}
+
+.legalLinks {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.legalLinks a:hover {
+  color: #ea580c;
+}

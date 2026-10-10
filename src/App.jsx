@@ -1,0 +1,205 @@
+import React, { useState, useEffect } from 'react';
+import { LanguageProvider } from './context/LanguageContext';
+import Header from './components/Header/Header';
+import Hero from './components/Hero/Hero';
+import LeadershipBanner from './components/LeadershipBanner/LeadershipBanner';
+import OpportunityMatrix from './components/OpportunityMatrix/OpportunityMatrix';
+import InitiativeProfile from './components/InitiativeProfile/InitiativeProfile';
+import EventsSection from './components/EventsSection/EventsSection';
+import VolunteerSection from './components/VolunteerSection/VolunteerSection';
+import HelpdeskSection from './components/HelpdeskSection/HelpdeskSection';
+import Footer from './components/Footer/Footer';
+import { EventRsvpModal, PledgeModal } from './components/Modals/Modals';
+import AdminPortal from './components/Admin/AdminPortal';
+import JobsPortal from './components/JobsPortal/JobsPortal';
+import GraduateRegistrationPage from './components/GraduateRegistrationPage/GraduateRegistrationPage';
+
+export default function App() {
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [isPledgeModalOpen, setIsPledgeModalOpen] = useState(false);
+
+  // Check if initial route is /admin or #admin
+  const [isAdminView, setIsAdminView] = useState(() => {
+    return window.location.pathname.startsWith('/admin') || window.location.hash === '#admin';
+  });
+
+  // Check if initial route is /jobs or #jobs
+  const [isJobsView, setIsJobsView] = useState(() => {
+    return window.location.pathname.startsWith('/jobs') || window.location.hash === '#jobs';
+  });
+
+  // Check if initial route is /register or #register
+  const [isRegisterView, setIsRegisterView] = useState(() => {
+    return window.location.pathname.startsWith('/register') || window.location.hash === '#register' || window.location.hash === '#registration';
+  });
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const isNowAdmin = window.location.pathname.startsWith('/admin') || window.location.hash === '#admin';
+      const isNowJobs = window.location.pathname.startsWith('/jobs') || window.location.hash === '#jobs';
+      const isNowRegister = window.location.pathname.startsWith('/register') || window.location.hash === '#register' || window.location.hash === '#registration';
+      setIsAdminView(isNowAdmin);
+      setIsJobsView(isNowJobs);
+      setIsRegisterView(isNowRegister);
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
+  }, []);
+
+  const openAdminView = () => {
+    window.location.hash = 'admin';
+    setIsAdminView(true);
+    window.scrollTo(0, 0);
+  };
+
+  const closeAdminView = () => {
+    window.location.hash = '';
+    setIsAdminView(false);
+    window.scrollTo(0, 0);
+  };
+
+  const openJobsView = () => {
+    window.location.hash = 'jobs';
+    setIsJobsView(true);
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
+  const closeJobsView = () => {
+    window.location.hash = '';
+    setIsJobsView(false);
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
+  const openRegisterView = () => {
+    window.location.hash = 'register';
+    setIsRegisterView(true);
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
+  const closeRegisterView = () => {
+    window.location.hash = '';
+    setIsRegisterView(false);
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
+  if (isAdminView) {
+    return <AdminPortal onBackToPublic={closeAdminView} />;
+  }
+
+  if (isJobsView) {
+    return (
+      <LanguageProvider>
+        <JobsPortal
+          onBackToHome={closeJobsView}
+          onOpenAdmin={openAdminView}
+        />
+      </LanguageProvider>
+    );
+  }
+
+  if (isRegisterView) {
+    return (
+      <LanguageProvider>
+        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+          <Header
+            onOpenAdmin={openAdminView}
+            onOpenJobs={openJobsView}
+            onOpenRegister={openRegisterView}
+            onBackToHome={closeRegisterView}
+          />
+          <main style={{ flex: 1 }}>
+            <GraduateRegistrationPage
+              onBackToHome={closeRegisterView}
+              onOpenJobs={openJobsView}
+            />
+          </main>
+          <Footer
+            onOpenAdmin={openAdminView}
+            onOpenJobs={openJobsView}
+            onOpenRegister={openRegisterView}
+          />
+        </div>
+      </LanguageProvider>
+    );
+  }
+
+  return (
+    <LanguageProvider>
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        {/* Header with Bilingual Switch & Navigation */}
+        <Header
+          onOpenAdmin={openAdminView}
+          onOpenJobs={openJobsView}
+          onOpenRegister={openRegisterView}
+        />
+
+        <main style={{ flex: 1 }}>
+          {/* Hero Section with Candidate Spotlight & Call to Action */}
+          <Hero onOpenPledgeModal={() => setIsPledgeModalOpen(true)} />
+
+          {/* PM Modi & BJP Leadership Vision Banner */}
+          <LeadershipBanner
+            onOpenPledgeModal={() => setIsPledgeModalOpen(true)}
+            onOpenRegister={openRegisterView}
+          />
+
+          {/* Curated Career Drives, AI Skilling, Exams & Grants Matrix (Default 4, with Show More) */}
+          <OpportunityMatrix
+            onOpenJobs={openJobsView}
+          />
+
+          {/* Candidate Profile, Educational Track Record & 4-Pillar Manifesto */}
+          <InitiativeProfile
+            onOpenPledgeModal={() => setIsPledgeModalOpen(true)}
+            onOpenRegister={openRegisterView}
+          />
+
+          {/* Upcoming Job Melas & District Sessions */}
+          <EventsSection
+            onSelectEvent={(ev) => setSelectedEvent(ev)}
+          />
+
+          {/* Dedicated Volunteer Taskforce & Vote Appeal Section */}
+          <VolunteerSection onOpenPledgeModal={() => setIsPledgeModalOpen(true)} />
+
+          {/* Constituency Helpdesk & Grievance Cell (Janaspanada) */}
+          <HelpdeskSection />
+        </main>
+
+        {/* Site Footer */}
+        <Footer
+          onOpenAdmin={openAdminView}
+          onOpenJobs={openJobsView}
+          onOpenRegister={openRegisterView}
+        />
+
+        {/* Interactive Modals */}
+        <EventRsvpModal
+          eventData={selectedEvent}
+          onClose={() => setSelectedEvent(null)}
+        />
+
+        <PledgeModal
+          isOpen={isPledgeModalOpen}
+          onClose={() => setIsPledgeModalOpen(false)}
+        />
+      </div>
+    </LanguageProvider>
+  );
+}
