@@ -14,7 +14,7 @@ export default function InitiativeProfile({ onOpenPledgeModal, onOpenRegister })
             <div className={styles.candidateCol}>
               <div className={styles.portraitWrapper}>
                 <img
-                  src="/images/candidate-namaste.jpeg"
+                  src="/images/new_Images/Candidate Profile Namaste1.png"
                   alt="K. M. Suresh MLC Candidate"
                   className={styles.candidateImg}
                   loading="lazy"
@@ -39,7 +39,7 @@ export default function InitiativeProfile({ onOpenPledgeModal, onOpenRegister })
               {/* Leadership Ribbon Banner */}
               <div className={styles.leadershipMiniBanner}>
                 <img
-                  src="/images/WhatsApp Image 2026-10-09 at 20.51.26.jpeg"
+                  src="/images/new_Images/Leadership Mini Ribbon1.png"
                   alt="BJP Karnataka & National Leadership"
                   className={styles.miniBannerImg}
                 />
@@ -108,14 +108,6 @@ export default function InitiativeProfile({ onOpenPledgeModal, onOpenRegister })
 
               {/* Action Buttons */}
               <div className={styles.pillarActions}>
-                <button
-                  className={styles.volunteerBtn}
-                  onClick={onOpenPledgeModal}
-                  type="button"
-                >
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>group_add</span>
-                  <span>{t('btnJoinVolunteers')}</span>
-                </button>
                 <button
                   type="button"
                   onClick={(e) => {

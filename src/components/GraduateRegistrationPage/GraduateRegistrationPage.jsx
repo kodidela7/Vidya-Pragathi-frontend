@@ -365,19 +365,10 @@ export default function GraduateRegistrationPage({ onBackToHome, onOpenJobs }) {
                     ) : (
                       <>
                         <span className="material-symbols-outlined">check_circle</span>
-                        <span>{lang === 'kn' ? 'ನೋಂದಣಿ ಪೂರ್ಣಗೊಳಿಸಿ ಮತ್ತು ಐಡಿ ಪಡೆಯಿರಿ' : 'Submit Registration & Get Desk Token'}</span>
+                        <span>{lang === 'kn' ? 'ನೋಂದಣಿ ಸಲ್ಲಿಸಿ' : 'Submit Registration'}</span>
                       </>
                     )}
                   </button>
-
-                  <p className={styles.privacyNote}>
-                    <span className="material-symbols-outlined" style={{ fontSize: '14px', color: '#16a34a' }}>shield</span>
-                    <span>
-                      {lang === 'kn'
-                        ? '100% ಉಚಿತ ಜನಪರ ಸೇವೆ. ನಿಮ್ಮ ಮಾಹಿತಿಯನ್ನು ಕೇವಲ ಉದ್ಯೋಗ ಮತ್ತು ಮಾರ್ಗದರ್ಶನ ಮಾಹಿತಿ ನೀಡಲು ಮಾತ್ರ ಬಳಸಲಾಗುತ್ತದೆ.'
-                        : '100% Free Public Initiative • No registration fees • Data strictly protected for placement services.'}
-                    </span>
-                  </p>
                 </div>
               </form>
             </div>
@@ -434,7 +425,7 @@ export default function GraduateRegistrationPage({ onBackToHome, onOpenJobs }) {
                 <div className={styles.appealPortraitCol}>
                   <div className={styles.portraitFrame}>
                     <img
-                      src="/images/candidate-portrait.jpeg"
+                      src="/images/new_Images/Candidate Profile Namaste1.png"
                       alt="K. M. Suresh BJP MLC Candidate"
                       className={styles.portraitImg}
                     />
@@ -504,12 +495,6 @@ export default function GraduateRegistrationPage({ onBackToHome, onOpenJobs }) {
                         <span>{lang === 'kn' ? 'ಉಚಿತ ತಂತ್ರಜ್ಞಾನ ಶಿಕ್ಷಣ' : 'KDEM-aligned digital certifications'}</span>
                       </div>
                     </div>
-                  </div>
-
-                  <div className={styles.sloganFooterStrip}>
-                    <span>"ಪ್ರಬುದ್ಧ ಪದವೀಧರ — ಬಲಿಷ್ಠ ಕರ್ನಾಟಕ!"</span>
-                    <span>•</span>
-                    <span>ಕರ್ನಾಟಕ ಪದವೀಧರರ ವೃತ್ತಿ ವೇದಿಕೆ • Vidya Pragati</span>
                   </div>
                 </div>
               </div>

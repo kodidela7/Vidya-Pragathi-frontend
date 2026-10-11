@@ -41,6 +41,57 @@ export default function AdminDashboard({ token, onLogout }) {
     'Yadgir', 'Other Karnataka District'
   ];
 
+  // Job Melas & Skill Bootcamps State (Paginated: 10 per page)
+  const [adminEvents, setAdminEvents] = useState([]);
+  const [totalAdminEvents, setTotalAdminEvents] = useState(0);
+  const [eventsLoading, setEventsLoading] = useState(false);
+  const [eventSearchQuery, setEventSearchQuery] = useState('');
+  const [eventDistrictFilter, setEventDistrictFilter] = useState('all');
+  const [eventTypeFilter, setEventTypeFilter] = useState('all');
+  const [eventStatusFilter, setEventStatusFilter] = useState('all');
+  const [eventCurrentPage, setEventCurrentPage] = useState(1);
+  const [eventTotalPages, setEventTotalPages] = useState(1);
+
+  // Event Create / Edit Modal State
+  const [isEventModalOpen, setIsEventModalOpen] = useState(false);
+  const [editingEventId, setEditingEventId] = useState(null);
+  const [isEventSubmitting, setIsEventSubmitting] = useState(false);
+  const [eventFormError, setEventFormError] = useState('');
+
+  const initialEventForm = {
+    title: '',
+    title_kn: '',
+    event_type: 'Mega Job Mela',
+    district: 'Tumakuru',
+    venue: '',
+    venue_kn: '',
+    event_date: '',
+    start_time: '9:30 AM',
+    end_time: '5:00 PM',
+    companies_count: 45,
+    expected_openings: 1200,
+    eligibility: 'All Degree Graduates',
+    eligibility_kn: 'ಎಲ್ಲಾ ಪದವೀಧರರು',
+    batches_eligible: '2020 - 2026',
+    description: '',
+    description_kn: '',
+    entry_badge: 'Free E-Pass',
+    banner_image: '',
+    is_featured: false,
+    status: 'Upcoming'
+  };
+  const [eventFormData, setEventFormData] = useState(initialEventForm);
+
+  // Event Attendee Roster State
+  const [rosterEvent, setRosterEvent] = useState(null);
+  const [rosterAttendees, setRosterAttendees] = useState([]);
+  const [rosterTotal, setRosterTotal] = useState(0);
+  const [rosterLoading, setRosterLoading] = useState(false);
+  const [rosterSearch, setRosterSearch] = useState('');
+  const [rosterStatus, setRosterStatus] = useState('all');
+  const [rosterPage, setRosterPage] = useState(1);
+  const [rosterTotalPages, setRosterTotalPages] = useState(1);
+
   // Filters for Jobs
   const [searchQuery, setSearchQuery] = useState('');
   const [districtFilter, setDistrictFilter] = useState('all');
@@ -317,6 +368,199 @@ export default function AdminDashboard({ token, onLogout }) {
     document.body.removeChild(link);
   };
 
+  // Load Events list (10 per page with filters & search)
+  const loadAdminEvents = async (page = eventCurrentPage) => {
+    try {
+      setEventsLoading(true);
+      let url = `/api/admin/events?page=${page}&limit=10&`;
+      if (eventSearchQuery.trim()) url += `search=${encodeURIComponent(eventSearchQuery.trim())}&`;
+      if (eventDistrictFilter !== 'all') url += `district=${encodeURIComponent(eventDistrictFilter)}&`;
+      if (eventTypeFilter !== 'all') url += `type=${encodeURIComponent(eventTypeFilter)}&`;
+      if (eventStatusFilter !== 'all') url += `status=${encodeURIComponent(eventStatusFilter)}&`;
+
+      const res = await authFetch(url);
+      setAdminEvents(res.data || []);
+      setTotalAdminEvents(res.total || 0);
+      setEventTotalPages(res.totalPages || 1);
+    } catch (err) {
+      console.error('Load Admin Events Error:', err);
+    } finally {
+      setEventsLoading(false);
+    }
+  };
+
+  // Initial load of events count
+  useEffect(() => {
+    loadAdminEvents(1);
+  }, []);
+
+  // Reload events when activeSection is 'events' or filters change
+  useEffect(() => {
+    if (activeSection === 'events') {
+      loadAdminEvents(eventCurrentPage);
+    }
+  }, [activeSection, eventCurrentPage, eventDistrictFilter, eventTypeFilter, eventStatusFilter]);
+
+  const handleEventSearchSubmit = (e) => {
+    e.preventDefault();
+    setEventCurrentPage(1);
+    loadAdminEvents(1);
+  };
+
+  const handleOpenCreateEventModal = () => {
+    setEditingEventId(null);
+    setEventFormData(initialEventForm);
+    setEventFormError('');
+    setIsEventModalOpen(true);
+  };
+
+  const handleOpenEditEventModal = (ev) => {
+    setEditingEventId(ev.id);
+    const dateFormatted = ev.event_date ? ev.event_date.split('T')[0] : '';
+    setEventFormData({
+      title: ev.title || '',
+      title_kn: ev.title_kn || '',
+      event_type: ev.event_type || 'Mega Job Mela',
+      district: ev.district || 'Tumakuru',
+      venue: ev.venue || '',
+      venue_kn: ev.venue_kn || '',
+      event_date: dateFormatted,
+      start_time: ev.start_time || '9:30 AM',
+      end_time: ev.end_time || '5:00 PM',
+      companies_count: ev.companies_count || 45,
+      expected_openings: ev.expected_openings || ev.vacancies_count || 1200,
+      eligibility: ev.eligibility || 'All Degree Graduates',
+      eligibility_kn: ev.eligibility_kn || 'ಎಲ್ಲಾ ಪದವೀಧರರು',
+      batches_eligible: ev.batches_eligible || '2020 - 2026',
+      description: ev.description || '',
+      description_kn: ev.description_kn || '',
+      entry_badge: ev.entry_badge || 'Free E-Pass',
+      banner_image: ev.banner_image || '',
+      is_featured: ev.is_featured === 1 || ev.is_featured === true,
+      status: ev.status || 'Upcoming'
+    });
+    setEventFormError('');
+    setIsEventModalOpen(true);
+  };
+
+  const handleSubmitEventForm = async (e) => {
+    e.preventDefault();
+    setEventFormError('');
+
+    if (!eventFormData.title.trim() || !eventFormData.district || !eventFormData.venue.trim() || !eventFormData.event_date) {
+      setEventFormError('Please fill in Event Title, District, Venue, and Event Date.');
+      return;
+    }
+
+    try {
+      setIsEventSubmitting(true);
+      if (editingEventId) {
+        await authFetch(`/api/admin/events/${editingEventId}`, {
+          method: 'PUT',
+          body: JSON.stringify(eventFormData)
+        });
+      } else {
+        await authFetch('/api/admin/events', {
+          method: 'POST',
+          body: JSON.stringify(eventFormData)
+        });
+      }
+
+      setIsEventModalOpen(false);
+      loadAdminEvents(eventCurrentPage);
+    } catch (err) {
+      console.error('Save Event Error:', err);
+      setEventFormError(err.message || 'Failed to save event.');
+    } finally {
+      setIsEventSubmitting(false);
+    }
+  };
+
+  const handleDeleteEvent = async (id, title) => {
+    if (!window.confirm(`Are you sure you want to delete event "${title}"?\nAll associated entry pass registrations will also be removed.`)) {
+      return;
+    }
+
+    try {
+      await authFetch(`/api/admin/events/${id}`, { method: 'DELETE' });
+      loadAdminEvents(eventCurrentPage);
+    } catch (err) {
+      alert(err.message || 'Failed to delete event.');
+    }
+  };
+
+  // Attendee Roster Functions
+  const handleOpenAttendeeRoster = (ev) => {
+    setRosterEvent(ev);
+    setRosterSearch('');
+    setRosterStatus('all');
+    setRosterPage(1);
+    loadRosterAttendees(ev.id, 1, '', 'all');
+  };
+
+  const loadRosterAttendees = async (eventId, page = 1, search = rosterSearch, status = rosterStatus) => {
+    try {
+      setRosterLoading(true);
+      let url = `/api/admin/events/${eventId}/attendees?page=${page}&limit=10&`;
+      if (search.trim()) url += `search=${encodeURIComponent(search.trim())}&`;
+      if (status !== 'all') url += `status=${encodeURIComponent(status)}&`;
+
+      const res = await authFetch(url);
+      setRosterAttendees(res.data || []);
+      setRosterTotal(res.total || 0);
+      setRosterTotalPages(res.totalPages || 1);
+    } catch (err) {
+      console.error('Load Roster Error:', err);
+    } finally {
+      setRosterLoading(false);
+    }
+  };
+
+  const handleUpdateAttendeeStatus = async (regId, newStatus) => {
+    try {
+      await authFetch(`/api/admin/event-registrations/${regId}/status`, {
+        method: 'PUT',
+        body: JSON.stringify({ status: newStatus })
+      });
+      setRosterAttendees((prev) =>
+        prev.map((a) => (a.id === regId ? { ...a, attendance_status: newStatus } : a))
+      );
+    } catch (err) {
+      alert(err.message || 'Failed to update attendance status.');
+    }
+  };
+
+  const handleExportRosterCsv = (eventId, eventTitle) => {
+    if (!rosterAttendees || rosterAttendees.length === 0) {
+      alert('No attendees registered for this event yet.');
+      return;
+    }
+
+    const headers = ['Pass Token', 'Full Name', 'Mobile', 'Email', 'Education', 'Stream', 'Passout Year', 'District', 'Employment Status', 'Attendance Status', 'Registration Date'];
+    const rows = rosterAttendees.map((a) => [
+      `"${a.pass_token || ''}"`,
+      `"${(a.full_name || '').replace(/"/g, '""')}"`,
+      `"${a.mobile || ''}"`,
+      `"${a.email || ''}"`,
+      `"${a.education || ''}"`,
+      `"${a.stream || ''}"`,
+      `"${a.passout_year || ''}"`,
+      `"${a.district || ''}"`,
+      `"${a.employment_status || ''}"`,
+      `"${a.attendance_status || 'Registered'}"`,
+      `"${a.created_at ? new Date(a.created_at).toLocaleString('en-IN') : ''}"`
+    ]);
+
+    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', `${(eventTitle || 'Event').replace(/[^a-zA-Z0-9]/g, '_')}_Attendees_Page${rosterPage}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const handleOpenCreateModal = () => {
     setEditingJobId(null);
     setFormData(initialForm);
@@ -446,11 +690,11 @@ export default function AdminDashboard({ token, onLogout }) {
         <div className={styles.headerRight}>
           <div className={styles.mlcProfile} title="K.M. Suresh — BJP Candidate">
             <img
-              src="/images/candidate-portrait.jpeg"
+              src="/images/new_Images/Candidate Avatar.png"
               alt="K.M. Suresh MLC Candidate"
               className={styles.mlcAvatar}
               onError={(e) => {
-                e.currentTarget.src = '/images/candidate-namaste.jpeg';
+                e.currentTarget.src = '/images/new_Images/Candidate Profile Namaste1.png';
               }}
             />
             <div className={styles.mlcDetails}>
@@ -496,9 +740,6 @@ export default function AdminDashboard({ token, onLogout }) {
             >
               <span className={`material-symbols-outlined ${styles.navIcon}`}>school</span>
               <span>Graduate Registrations</span>
-              {totalGraduates > 0 && (
-                <span className={styles.navBadge}>{totalGraduates}</span>
-              )}
             </button>
 
             <button
@@ -511,9 +752,18 @@ export default function AdminDashboard({ token, onLogout }) {
             >
               <span className={`material-symbols-outlined ${styles.navIcon}`}>support_agent</span>
               <span>Helpdesk & Tickets</span>
-              {openTicketsCount > 0 && (
-                <span className={styles.navBadge} style={{ background: '#ea580c' }}>{openTicketsCount}</span>
-              )}
+            </button>
+
+            <button
+              type="button"
+              className={`${styles.navItem} ${activeSection === 'events' ? styles.navItemActive : ''}`}
+              onClick={() => {
+                setActiveSection('events');
+                setIsSidebarOpen(false);
+              }}
+            >
+              <span className={`material-symbols-outlined ${styles.navIcon}`}>event_available</span>
+              <span>Job Melas & Bootcamps</span>
             </button>
           </nav>
 
@@ -1217,7 +1467,7 @@ export default function AdminDashboard({ token, onLogout }) {
                 </div>
               </div>
             </>
-          ) : (
+          ) : activeSection === 'helpdesk' ? (
             <>
               {/* Helpdesk & Grievances Toolbar */}
               <div className={styles.referenceToolbar}>
@@ -1616,7 +1866,406 @@ export default function AdminDashboard({ token, onLogout }) {
                 </div>
               </div>
             </>
-          )}
+          ) : activeSection === 'events' ? (
+            <>
+              {/* Job Melas & Skill Bootcamps Toolbar */}
+              <div className={styles.referenceToolbar}>
+                <div className={styles.toolbarTitleGroup}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                    <h1 className={styles.portalTitle}>Job Melas & Bootcamps</h1>
+                    <span className={styles.navBadge} style={{ fontSize: '11px', padding: '0.2rem 0.6rem', background: '#ea580c' }}>
+                      {totalAdminEvents} Scheduled Drives
+                    </span>
+                  </div>
+
+                  {/* Status Pill Tabs [ALL] [UPCOMING] [ONGOING] [COMPLETED] */}
+                  <div className={styles.statusPillTabs}>
+                    <button
+                      type="button"
+                      className={`${styles.pillTabBtn} ${eventStatusFilter === 'all' ? styles.pillTabActive : ''}`}
+                      onClick={() => { setEventStatusFilter('all'); setEventCurrentPage(1); }}
+                    >
+                      All
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.pillTabBtn} ${eventStatusFilter === 'Upcoming' ? styles.pillTabActive : ''}`}
+                      onClick={() => { setEventStatusFilter('Upcoming'); setEventCurrentPage(1); }}
+                    >
+                      Upcoming
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.pillTabBtn} ${eventStatusFilter === 'Ongoing' ? styles.pillTabActive : ''}`}
+                      onClick={() => { setEventStatusFilter('Ongoing'); setEventCurrentPage(1); }}
+                    >
+                      Ongoing
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.pillTabBtn} ${eventStatusFilter === 'Completed' ? styles.pillTabActive : ''}`}
+                      onClick={() => { setEventStatusFilter('Completed'); setEventCurrentPage(1); }}
+                    >
+                      Completed
+                    </button>
+                  </div>
+                </div>
+
+                <div className={styles.toolbarRightControls}>
+                  {/* Search: query params passed to API */}
+                  <form onSubmit={handleEventSearchSubmit} className={styles.compactSearchBox}>
+                    <span className={`material-symbols-outlined ${styles.compactSearchIcon}`}>search</span>
+                    <input
+                      type="text"
+                      className={styles.compactSearchInput}
+                      placeholder="Search title, venue, district..."
+                      value={eventSearchQuery}
+                      onChange={(e) => setEventSearchQuery(e.target.value)}
+                    />
+                  </form>
+
+                  {/* District Filter (Constituency & Karnataka) */}
+                  <div className={styles.districtFilterBtn}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '15px', color: '#64748b' }}>location_on</span>
+                    <select
+                      className={styles.districtSelect}
+                      value={eventDistrictFilter}
+                      onChange={(e) => {
+                        setEventDistrictFilter(e.target.value);
+                        setEventCurrentPage(1);
+                      }}
+                    >
+                      <option value="all">All Districts</option>
+                      {karnatakaDistrictsList.map((d) => (
+                        <option key={d} value={d}>{d}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Type Filter */}
+                  <div className={styles.districtFilterBtn}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '15px', color: '#64748b' }}>category</span>
+                    <select
+                      className={styles.districtSelect}
+                      value={eventTypeFilter}
+                      onChange={(e) => {
+                        setEventTypeFilter(e.target.value);
+                        setEventCurrentPage(1);
+                      }}
+                    >
+                      <option value="all">All Types</option>
+                      <option value="Mega Job Mela">Mega Job Mela</option>
+                      <option value="Skill Bootcamp">Skill Bootcamp</option>
+                      <option value="Career Masterclass">Career Masterclass</option>
+                    </select>
+                  </div>
+
+                  {/* + New Event Button */}
+                  <button
+                    type="button"
+                    className={styles.createJobBtn}
+                    onClick={handleOpenCreateEventModal}
+                  >
+                    <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>add</span>
+                    <span>Create Event</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Events Container Card */}
+              <div className={styles.tableContainerCard}>
+                <div className={styles.tableScrollWrapper}>
+                  <table className={styles.compactTable}>
+                    <thead>
+                      <tr>
+                        <th>Code / ID</th>
+                        <th>Event Title & Theme</th>
+                        <th>Category</th>
+                        <th>District & Venue</th>
+                        <th>Event Date</th>
+                        <th>Recruiters & Openings</th>
+                        <th>Registrations</th>
+                        <th>Status</th>
+                        <th style={{ textAlign: 'right' }}>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {eventsLoading ? (
+                        <tr>
+                          <td colSpan="9" style={{ textAlign: 'center', padding: '2.5rem', color: '#64748b' }}>
+                            Loading scheduled events & drives...
+                          </td>
+                        </tr>
+                      ) : adminEvents.length === 0 ? (
+                        <tr>
+                          <td colSpan="9" style={{ textAlign: 'center', padding: '2.5rem', color: '#64748b' }}>
+                            No events or bootcamps found matching your filter criteria.
+                          </td>
+                        </tr>
+                      ) : (
+                        adminEvents.map((ev) => (
+                          <tr key={ev.id}>
+                            <td>
+                              <span className={styles.idCell} style={{ color: '#0369a1', fontWeight: 600 }}>
+                                {ev.event_code || `#EV-${ev.id}`}
+                              </span>
+                            </td>
+                            <td>
+                              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                                  <span style={{ fontWeight: 600, color: '#0f172a' }}>{ev.title}</span>
+                                  {(ev.is_featured === 1 || ev.is_featured === true) && (
+                                    <span style={{
+                                      background: '#fef3c7',
+                                      color: '#92400e',
+                                      border: '1px solid #fde68a',
+                                      fontSize: '9px',
+                                      fontWeight: 800,
+                                      padding: '0.1rem 0.35rem',
+                                      borderRadius: '4px'
+                                    }}>
+                                      ★ Featured
+                                    </span>
+                                  )}
+                                </div>
+                                {ev.title_kn && (
+                                  <span style={{ fontSize: '10px', color: '#64748b' }}>{ev.title_kn}</span>
+                                )}
+                              </div>
+                            </td>
+                            <td>
+                              <span className={styles.courseBadge} style={{
+                                background: ev.event_type === 'Skill Bootcamp' ? '#f0fdf4' : '#fff7ed',
+                                color: ev.event_type === 'Skill Bootcamp' ? '#166534' : '#9a3412',
+                                borderColor: ev.event_type === 'Skill Bootcamp' ? '#bbf7d0' : '#fed7aa'
+                              }}>
+                                {ev.event_type || 'Job Mela'}
+                              </span>
+                            </td>
+                            <td>
+                              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                <span className={styles.districtPillBadge} style={{ width: 'fit-content' }}>
+                                  {ev.district}
+                                </span>
+                                <span style={{ fontSize: '10px', color: '#64748b', marginTop: '0.2rem', maxWidth: '170px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={ev.venue}>
+                                  {ev.venue}
+                                </span>
+                              </div>
+                            </td>
+                            <td style={{ whiteSpace: 'nowrap' }}>
+                              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                <span style={{ fontWeight: 600, color: '#0f172a' }}>
+                                  {ev.event_date ? new Date(ev.event_date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : 'TBD'}
+                                </span>
+                                <span style={{ fontSize: '10px', color: '#64748b' }}>
+                                  {ev.start_time || '9:30 AM'}
+                                </span>
+                              </div>
+                            </td>
+                            <td>
+                              <div style={{ display: 'flex', flexDirection: 'column', fontSize: '10px', color: '#334155' }}>
+                                <span><strong>{ev.companies_count || 0}</strong> Companies</span>
+                                <span style={{ color: '#059669' }}><strong>{ev.expected_openings || ev.vacancies_count || 0}</strong> Openings</span>
+                              </div>
+                            </td>
+                            <td>
+                              <button
+                                type="button"
+                                onClick={() => handleOpenAttendeeRoster(ev)}
+                                style={{
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  gap: '0.3rem',
+                                  background: '#f0f9ff',
+                                  border: '1px solid #bae6fd',
+                                  color: '#0284c7',
+                                  padding: '0.3rem 0.6rem',
+                                  borderRadius: '6px',
+                                  fontSize: '11px',
+                                  fontWeight: 700,
+                                  cursor: 'pointer'
+                                }}
+                                title="Click to view candidate attendee roster"
+                              >
+                                <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>groups</span>
+                                <span>{ev.registrations_count || 0} Passes</span>
+                              </button>
+                            </td>
+                            <td>
+                              {ev.status === 'Ongoing' ? (
+                                <span className={styles.badgeVerified}>
+                                  <span className={styles.statusDotGreen}></span> Ongoing
+                                </span>
+                              ) : ev.status === 'Completed' ? (
+                                <span className={styles.badgeUnverified}>
+                                  <span className={styles.statusDotGray}></span> Completed
+                                </span>
+                              ) : (
+                                <span className={styles.badgeVerified} style={{ background: '#eff6ff', color: '#1d4ed8', borderColor: '#bfdbfe' }}>
+                                  <span className={styles.statusDotGreen} style={{ background: '#3b82f6' }}></span> Upcoming
+                                </span>
+                              )}
+                            </td>
+                            <td>
+                              <div className={styles.actionIconsGroup} style={{ justifyContent: 'flex-end' }}>
+                                <button
+                                  type="button"
+                                  className={styles.actionIconBtn}
+                                  onClick={() => handleOpenAttendeeRoster(ev)}
+                                  title="View Registered Candidates Roster"
+                                >
+                                  <span className="material-symbols-outlined" style={{ fontSize: '17px' }}>group</span>
+                                </button>
+                                <button
+                                  type="button"
+                                  className={styles.actionIconBtn}
+                                  onClick={() => handleOpenEditEventModal(ev)}
+                                  title="Edit Event Details"
+                                >
+                                  <span className="material-symbols-outlined" style={{ fontSize: '17px' }}>edit</span>
+                                </button>
+                                <button
+                                  type="button"
+                                  className={`${styles.actionIconBtn} ${styles.actionIconBtnDanger}`}
+                                  onClick={() => handleDeleteEvent(ev.id, ev.title)}
+                                  title="Delete Event"
+                                >
+                                  <span className="material-symbols-outlined" style={{ fontSize: '17px' }}>delete</span>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Mobile Cards for Phones */}
+                <div className={styles.mobileCardsContainer}>
+                  {adminEvents.map((ev) => (
+                    <div key={ev.id} className={styles.mobileGradCard}>
+                      <div className={styles.mobileCardTop}>
+                        <div>
+                          <div className={styles.candidateNameCell}>
+                            <span style={{ fontWeight: 700, color: '#0f172a', fontSize: '13px' }}>{ev.title}</span>
+                          </div>
+                          <span style={{ fontSize: '10px', color: '#0369a1', fontFamily: 'monospace' }}>
+                            {ev.event_code || `#EV-${ev.id}`}
+                          </span>
+                        </div>
+                        <span className={styles.districtPillBadge}>{ev.district}</span>
+                      </div>
+
+                      <div className={styles.mobileCardMetaGrid}>
+                        <div className={styles.mobileMetaItem}>
+                          <span className={styles.mobileMetaLabel}>Category</span>
+                          <span className={styles.mobileMetaValue}>{ev.event_type || 'Job Mela'}</span>
+                        </div>
+                        <div className={styles.mobileMetaItem}>
+                          <span className={styles.mobileMetaLabel}>Event Date</span>
+                          <span className={styles.mobileMetaValue}>
+                            {ev.event_date ? new Date(ev.event_date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' }) : 'TBD'}
+                          </span>
+                        </div>
+                        <div className={styles.mobileMetaItem}>
+                          <span className={styles.mobileMetaLabel}>Recruiters</span>
+                          <span className={styles.mobileMetaValue}>{ev.companies_count || 0} Companies</span>
+                        </div>
+                        <div className={styles.mobileMetaItem}>
+                          <span className={styles.mobileMetaLabel}>Passes Issued</span>
+                          <span className={styles.mobileMetaValue} style={{ color: '#0284c7', fontWeight: 700 }}>
+                            {ev.registrations_count || 0} Candidates
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className={styles.mobileCardBottom}>
+                        <button
+                          type="button"
+                          onClick={() => handleOpenAttendeeRoster(ev)}
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.3rem',
+                            background: '#f0f9ff',
+                            border: '1px solid #bae6fd',
+                            color: '#0284c7',
+                            padding: '0.3rem 0.6rem',
+                            borderRadius: '6px',
+                            fontSize: '11px',
+                            fontWeight: 700
+                          }}
+                        >
+                          <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>groups</span>
+                          <span>Attendees ({ev.registrations_count || 0})</span>
+                        </button>
+
+                        <div className={styles.actionIconsGroup}>
+                          <button
+                            type="button"
+                            className={styles.actionIconBtn}
+                            onClick={() => handleOpenEditEventModal(ev)}
+                            title="Edit"
+                          >
+                            <span className="material-symbols-outlined" style={{ fontSize: '17px' }}>edit</span>
+                          </button>
+                          <button
+                            type="button"
+                            className={`${styles.actionIconBtn} ${styles.actionIconBtnDanger}`}
+                            onClick={() => handleDeleteEvent(ev.id, ev.title)}
+                            title="Delete"
+                          >
+                            <span className="material-symbols-outlined" style={{ fontSize: '17px' }}>delete</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Table Footer: Results & Pagination */}
+                <div className={styles.paginationBar}>
+                  <div className={styles.showingResultsText}>
+                    Showing {totalAdminEvents > 0 ? (eventCurrentPage - 1) * 10 + 1 : 0}-{Math.min(eventCurrentPage * 10, totalAdminEvents)} of {totalAdminEvents} events
+                  </div>
+
+                  {eventTotalPages > 1 && (
+                    <div className={styles.paginationControls}>
+                      <button
+                        type="button"
+                        className={styles.pageNavTextBtn}
+                        onClick={() => setEventCurrentPage((p) => Math.max(1, p - 1))}
+                        disabled={eventCurrentPage <= 1}
+                      >
+                        Previous
+                      </button>
+
+                      {Array.from({ length: Math.min(eventTotalPages, 7) }, (_, i) => i + 1).map((pageNum) => (
+                        <button
+                          key={pageNum}
+                          type="button"
+                          className={`${styles.pageChip} ${eventCurrentPage === pageNum ? styles.pageChipActive : ''}`}
+                          onClick={() => setEventCurrentPage(pageNum)}
+                        >
+                          {pageNum}
+                        </button>
+                      ))}
+
+                      <button
+                        type="button"
+                        className={styles.pageNavTextBtn}
+                        onClick={() => setEventCurrentPage((p) => Math.min(eventTotalPages, p + 1))}
+                        disabled={eventCurrentPage >= eventTotalPages}
+                      >
+                        Next
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </>
+          ) : null}
         </main>
       </div>
 
@@ -2210,6 +2859,560 @@ export default function AdminDashboard({ token, onLogout }) {
                 type="button"
                 className={styles.cancelBtn}
                 onClick={() => setSelectedTicket(null)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 7. Create / Edit Job Mela & Bootcamp Modal */}
+      {isEventModalOpen && (
+        <div className={styles.modalBackdrop} onClick={() => setIsEventModalOpen(false)}>
+          <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.modalHeader}>
+              <div className={styles.modalTitle}>
+                <span className="material-symbols-outlined" style={{ color: '#0284c7' }}>
+                  {editingEventId ? 'edit_calendar' : 'event_available'}
+                </span>
+                <span>{editingEventId ? 'Edit Event / Job Mela' : 'Create Job Mela / Skill Bootcamp'}</span>
+              </div>
+              <button
+                type="button"
+                className={styles.closeModalBtn}
+                onClick={() => setIsEventModalOpen(false)}
+                aria-label="Close modal"
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
+              </button>
+            </div>
+
+            <form className={styles.modalForm} onSubmit={handleSubmitEventForm}>
+              <div className={styles.modalBody}>
+                {eventFormError && (
+                  <div style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c', padding: '0.6rem 0.85rem', borderRadius: '8px', fontSize: '11px', fontWeight: 500, marginBottom: '1rem' }}>
+                    {eventFormError}
+                  </div>
+                )}
+
+                <div className={styles.formGrid}>
+                  {/* Event Title (English) */}
+                  <div className={`${styles.formField} ${styles.formColFull}`}>
+                    <label className={styles.formLabel}>Event Title (English) *</label>
+                    <input
+                      type="text"
+                      className={styles.formInput}
+                      placeholder="e.g. Kolar Aerospace & Precision Engineering Hiring Fair"
+                      value={eventFormData.title}
+                      onChange={(e) => setEventFormData({ ...eventFormData, title: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  {/* Event Title (Kannada) */}
+                  <div className={`${styles.formField} ${styles.formColFull}`}>
+                    <label className={styles.formLabel}>Event Title (Kannada / ಕನ್ನಡ)</label>
+                    <input
+                      type="text"
+                      className={styles.formInput}
+                      placeholder="ಉದಾ: ಕೋಲಾರ ಏರೋಸ್ಪೇಸ್ & ಪ್ರಿಸಿಷನ್ ಇಂಜಿನಿಯರಿಂಗ್ ನೇಮಕಾತಿ ಮೇಳ"
+                      value={eventFormData.title_kn}
+                      onChange={(e) => setEventFormData({ ...eventFormData, title_kn: e.target.value })}
+                    />
+                  </div>
+
+                  {/* Event Category */}
+                  <div className={styles.formField}>
+                    <label className={styles.formLabel}>Event Type / Category *</label>
+                    <select
+                      className={styles.formSelectInput}
+                      value={eventFormData.event_type}
+                      onChange={(e) => setEventFormData({ ...eventFormData, event_type: e.target.value })}
+                    >
+                      <option value="Mega Job Mela">Mega Job Mela</option>
+                      <option value="Skill Bootcamp">Skill Bootcamp</option>
+                      <option value="Career Masterclass">Career Masterclass</option>
+                    </select>
+                  </div>
+
+                  {/* District */}
+                  <div className={styles.formField}>
+                    <label className={styles.formLabel}>Constituency District *</label>
+                    <select
+                      className={styles.formSelectInput}
+                      value={eventFormData.district}
+                      onChange={(e) => setEventFormData({ ...eventFormData, district: e.target.value })}
+                    >
+                      {karnatakaDistrictsList.map((d) => (
+                        <option key={d} value={d}>{d}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Venue (English) */}
+                  <div className={styles.formField}>
+                    <label className={styles.formLabel}>Campus Venue (English) *</label>
+                    <input
+                      type="text"
+                      className={styles.formInput}
+                      placeholder="e.g. Government Boys College Grounds, MB Road, Kolar"
+                      value={eventFormData.venue}
+                      onChange={(e) => setEventFormData({ ...eventFormData, venue: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  {/* Venue (Kannada) */}
+                  <div className={styles.formField}>
+                    <label className={styles.formLabel}>Campus Venue (Kannada / ಕನ್ನಡ)</label>
+                    <input
+                      type="text"
+                      className={styles.formInput}
+                      placeholder="ಉದಾ: ಸರ್ಕಾರಿ ಬಾಲಕರ ಕಾಲೇಜು ಆವರಣ, ಕೋಲಾರ"
+                      value={eventFormData.venue_kn}
+                      onChange={(e) => setEventFormData({ ...eventFormData, venue_kn: e.target.value })}
+                    />
+                  </div>
+
+                  {/* Event Date */}
+                  <div className={styles.formField}>
+                    <label className={styles.formLabel}>Event Date *</label>
+                    <input
+                      type="date"
+                      className={styles.formInput}
+                      value={eventFormData.event_date}
+                      onChange={(e) => setEventFormData({ ...eventFormData, event_date: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  {/* Timing */}
+                  <div className={styles.formField}>
+                    <label className={styles.formLabel}>Timing (Start & End Time)</label>
+                    <div style={{ display: 'flex', gap: '0.4rem' }}>
+                      <input
+                        type="text"
+                        className={styles.formInput}
+                        placeholder="9:30 AM"
+                        value={eventFormData.start_time}
+                        onChange={(e) => setEventFormData({ ...eventFormData, start_time: e.target.value })}
+                      />
+                      <input
+                        type="text"
+                        className={styles.formInput}
+                        placeholder="5:00 PM"
+                        value={eventFormData.end_time}
+                        onChange={(e) => setEventFormData({ ...eventFormData, end_time: e.target.value })}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Companies Count */}
+                  <div className={styles.formField}>
+                    <label className={styles.formLabel}>Participating Recruiters Count</label>
+                    <input
+                      type="number"
+                      className={styles.formInput}
+                      placeholder="e.g. 45"
+                      value={eventFormData.companies_count}
+                      onChange={(e) => setEventFormData({ ...eventFormData, companies_count: parseInt(e.target.value, 10) || 0 })}
+                    />
+                  </div>
+
+                  {/* Expected Openings */}
+                  <div className={styles.formField}>
+                    <label className={styles.formLabel}>Expected Openings Count</label>
+                    <input
+                      type="number"
+                      className={styles.formInput}
+                      placeholder="e.g. 1200"
+                      value={eventFormData.expected_openings}
+                      onChange={(e) => setEventFormData({ ...eventFormData, expected_openings: parseInt(e.target.value, 10) || 0 })}
+                    />
+                  </div>
+
+                  {/* Eligibility Degrees */}
+                  <div className={styles.formField}>
+                    <label className={styles.formLabel}>Eligible Degrees</label>
+                    <input
+                      type="text"
+                      className={styles.formInput}
+                      placeholder="e.g. BE, Diploma, ITI, B.Sc"
+                      value={eventFormData.eligibility}
+                      onChange={(e) => setEventFormData({ ...eventFormData, eligibility: e.target.value })}
+                    />
+                  </div>
+
+                  {/* Batches Eligible */}
+                  <div className={styles.formField}>
+                    <label className={styles.formLabel}>Passing Batches</label>
+                    <input
+                      type="text"
+                      className={styles.formInput}
+                      placeholder="e.g. 2020 - 2026 Passouts"
+                      value={eventFormData.batches_eligible}
+                      onChange={(e) => setEventFormData({ ...eventFormData, batches_eligible: e.target.value })}
+                    />
+                  </div>
+
+                  {/* Publishing Status */}
+                  <div className={styles.formField}>
+                    <label className={styles.formLabel}>Status</label>
+                    <select
+                      className={styles.formSelectInput}
+                      value={eventFormData.status}
+                      onChange={(e) => setEventFormData({ ...eventFormData, status: e.target.value })}
+                    >
+                      <option value="Upcoming">Upcoming</option>
+                      <option value="Ongoing">Ongoing</option>
+                      <option value="Completed">Completed</option>
+                      <option value="Cancelled">Cancelled</option>
+                    </select>
+                  </div>
+
+                  {/* Featured on Banner */}
+                  <div className={styles.formField} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', paddingTop: '1.25rem' }}>
+                    <input
+                      type="checkbox"
+                      id="is_featured_chk"
+                      checked={eventFormData.is_featured}
+                      onChange={(e) => setEventFormData({ ...eventFormData, is_featured: e.target.checked })}
+                      style={{ width: '16px', height: '16px', cursor: 'pointer' }}
+                    />
+                    <label htmlFor="is_featured_chk" style={{ fontSize: '11px', fontWeight: 600, color: '#0f172a', cursor: 'pointer' }}>
+                      Highlight as Main Featured Fair on Homepage Banner
+                    </label>
+                  </div>
+
+                  {/* Description (English) */}
+                  <div className={`${styles.formField} ${styles.formColFull}`}>
+                    <label className={styles.formLabel}>Event Description & Highlights (English)</label>
+                    <textarea
+                      className={styles.formTextarea}
+                      placeholder="Details on visiting companies, spot interview rounds, requirements..."
+                      value={eventFormData.description}
+                      onChange={(e) => setEventFormData({ ...eventFormData, description: e.target.value })}
+                    />
+                  </div>
+
+                  {/* Description (Kannada) */}
+                  <div className={`${styles.formField} ${styles.formColFull}`}>
+                    <label className={styles.formLabel}>Event Description (Kannada / ಕನ್ನಡ)</label>
+                    <textarea
+                      className={styles.formTextarea}
+                      placeholder="ಕಾರ್ಯಕ್ರಮದ ವಿವರಗಳು ಮತ್ತು ಸೂಚನೆಗಳು..."
+                      value={eventFormData.description_kn}
+                      onChange={(e) => setEventFormData({ ...eventFormData, description_kn: e.target.value })}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.modalFooter}>
+                <button
+                  type="button"
+                  className={styles.cancelBtn}
+                  onClick={() => setIsEventModalOpen(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className={styles.submitJobBtn}
+                  disabled={isEventSubmitting}
+                >
+                  {isEventSubmitting ? 'Saving...' : editingEventId ? 'Save Changes' : 'Create Event'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* 8. Event Attendee Roster Modal */}
+      {rosterEvent && (
+        <div className={styles.modalBackdrop} onClick={() => setRosterEvent(null)}>
+          <div className={styles.modalBox} onClick={(e) => e.stopPropagation()} style={{ maxWidth: '920px' }}>
+            <div className={styles.modalHeader}>
+              <div className={styles.modalTitle}>
+                <span className="material-symbols-outlined" style={{ color: '#0284c7' }}>groups</span>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: '13px' }}>
+                    Attendee Roster — {rosterEvent.title}
+                  </div>
+                  <div style={{ fontSize: '10px', color: '#64748b', fontWeight: 500 }}>
+                    {rosterTotal} candidates registered for digital entry pass • {rosterEvent.event_code}
+                  </div>
+                </div>
+              </div>
+              <button
+                type="button"
+                className={styles.closeModalBtn}
+                onClick={() => setRosterEvent(null)}
+                aria-label="Close modal"
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
+              </button>
+            </div>
+
+            <div className={styles.modalBody} style={{ padding: '1rem' }}>
+              {/* Roster Controls: Search, Status Filter, Export CSV */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '0.6rem', marginBottom: '0.85rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setRosterPage(1);
+                      loadRosterAttendees(rosterEvent.id, 1, rosterSearch, rosterStatus);
+                    }}
+                    className={styles.compactSearchBox}
+                  >
+                    <span className={`material-symbols-outlined ${styles.compactSearchIcon}`}>search</span>
+                    <input
+                      type="text"
+                      className={styles.compactSearchInput}
+                      placeholder="Search name, phone, pass token..."
+                      value={rosterSearch}
+                      onChange={(e) => setRosterSearch(e.target.value)}
+                    />
+                  </form>
+
+                  <div className={styles.districtFilterBtn}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '14px', color: '#64748b' }}>how_to_reg</span>
+                    <select
+                      className={styles.districtSelect}
+                      value={rosterStatus}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setRosterStatus(val);
+                        setRosterPage(1);
+                        loadRosterAttendees(rosterEvent.id, 1, rosterSearch, val);
+                      }}
+                    >
+                      <option value="all">All Attendance</option>
+                      <option value="Registered">Registered</option>
+                      <option value="Attended">Attended</option>
+                      <option value="Shortlisted">Shortlisted</option>
+                      <option value="Absent">Absent</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className={styles.exportCsvBtn}
+                  onClick={() => handleExportRosterCsv(rosterEvent.id, rosterEvent.title)}
+                  title="Export attendee roster to CSV"
+                >
+                  <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>download</span>
+                  <span>Export CSV</span>
+                </button>
+              </div>
+
+              {/* Attendees Compact Table */}
+              {/* Desktop Roster Table (screens >= 768px) */}
+              <div className={styles.rosterDesktopTable} style={{ maxHeight: '380px' }}>
+                <table className={styles.compactTable}>
+                  <thead>
+                    <tr>
+                      <th>Pass Token</th>
+                      <th>Candidate Name</th>
+                      <th>WhatsApp Mobile</th>
+                      <th>Education & Stream</th>
+                      <th>District</th>
+                      <th>Attendance Status</th>
+                      <th>Registered On</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rosterLoading ? (
+                      <tr>
+                        <td colSpan="7" style={{ textAlign: 'center', padding: '2rem', color: '#64748b' }}>
+                          Loading attendee records...
+                        </td>
+                      </tr>
+                    ) : rosterAttendees.length === 0 ? (
+                      <tr>
+                        <td colSpan="7" style={{ textAlign: 'center', padding: '2rem', color: '#64748b' }}>
+                          No registered candidates found for this drive.
+                        </td>
+                      </tr>
+                    ) : (
+                      rosterAttendees.map((att) => (
+                        <tr key={att.id}>
+                          <td>
+                            <span className={styles.idCell} style={{ fontFamily: 'monospace', color: '#0369a1', fontWeight: 700 }}>
+                              {att.pass_token}
+                            </span>
+                          </td>
+                          <td>
+                            <span style={{ fontWeight: 600, color: '#0f172a' }}>{att.full_name}</span>
+                          </td>
+                          <td>
+                            <div className={styles.contactPhoneWrap}>
+                              <span style={{ fontWeight: 500 }}>{att.mobile}</span>
+                              <a
+                                href={`https://wa.me/91${att.mobile.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello ${att.full_name}, regarding your Free Entry Pass #${att.pass_token} for ${rosterEvent.title}...`)}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.whatsappActionLink}
+                                title={`Chat with ${att.full_name} on WhatsApp`}
+                              >
+                                <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>chat</span>
+                              </a>
+                              <a
+                                href={`tel:${att.mobile}`}
+                                className={styles.callActionLink}
+                                title={`Call ${att.full_name}`}
+                              >
+                                <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>call</span>
+                              </a>
+                            </div>
+                          </td>
+                          <td>
+                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                              <span style={{ fontWeight: 500, color: '#0f172a' }}>{att.education}</span>
+                              <span style={{ fontSize: '10px', color: '#64748b' }}>
+                                {att.stream || 'General'} • {att.passout_year}
+                              </span>
+                            </div>
+                          </td>
+                          <td>
+                            <span className={styles.districtPillBadge}>{att.district}</span>
+                          </td>
+                          <td>
+                            <select
+                              className={styles.statusSelectInline}
+                              value={att.attendance_status || 'Registered'}
+                              onChange={(e) => handleUpdateAttendeeStatus(att.id, e.target.value)}
+                              style={{
+                                fontWeight: 600,
+                                color: att.attendance_status === 'Attended' ? '#166534' : att.attendance_status === 'Shortlisted' ? '#92400e' : '#0369a1'
+                              }}
+                            >
+                              <option value="Registered">🟡 Registered</option>
+                              <option value="Attended">🟢 Attended</option>
+                              <option value="Shortlisted">⭐ Shortlisted</option>
+                              <option value="Absent">⚪ Absent</option>
+                            </select>
+                          </td>
+                          <td style={{ color: '#64748b', fontSize: '10px', whiteSpace: 'nowrap' }}>
+                            {att.created_at ? new Date(att.created_at).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' }) : '-'}
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Mobile Attendee Cards (screens < 768px) */}
+              <div className={styles.rosterMobileCards}>
+                {rosterLoading ? (
+                  <div style={{ textAlign: 'center', padding: '1.5rem', color: '#64748b' }}>
+                    Loading attendee records...
+                  </div>
+                ) : rosterAttendees.length === 0 ? (
+                  <div style={{ textAlign: 'center', padding: '1.5rem', color: '#64748b' }}>
+                    No registered candidates found for this drive.
+                  </div>
+                ) : (
+                  rosterAttendees.map((att) => (
+                    <div key={att.id} className={styles.rosterCandidateCard}>
+                      <div className={styles.rosterCardTop}>
+                        <span className={styles.rosterCardName}>{att.full_name}</span>
+                        <span className={styles.rosterCardPassToken}>{att.pass_token}</span>
+                      </div>
+
+                      <div className={styles.rosterCardMeta}>
+                        <span>🎓 {att.education} ({att.stream || 'General'} • {att.passout_year})</span>
+                        <span className={styles.districtPillBadge}>{att.district}</span>
+                      </div>
+
+                      <div className={styles.rosterCardActions}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                          <span style={{ fontWeight: 600, fontSize: '11px', color: '#0f172a' }}>{att.mobile}</span>
+                          <a
+                            href={`https://wa.me/91${att.mobile.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello ${att.full_name}, regarding your Free Entry Pass #${att.pass_token} for ${rosterEvent.title}...`)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.whatsappActionLink}
+                            title="Chat on WhatsApp"
+                          >
+                            <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>chat</span>
+                          </a>
+                          <a
+                            href={`tel:${att.mobile}`}
+                            className={styles.callActionLink}
+                            title="Call"
+                          >
+                            <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>call</span>
+                          </a>
+                        </div>
+
+                        <select
+                          className={styles.statusSelectInline}
+                          value={att.attendance_status || 'Registered'}
+                          onChange={(e) => handleUpdateAttendeeStatus(att.id, e.target.value)}
+                          style={{
+                            fontWeight: 700,
+                            fontSize: '11px',
+                            color: att.attendance_status === 'Attended' ? '#166534' : att.attendance_status === 'Shortlisted' ? '#92400e' : '#0369a1'
+                          }}
+                        >
+                          <option value="Registered">🟡 Registered</option>
+                          <option value="Attended">🟢 Attended</option>
+                          <option value="Shortlisted">⭐ Shortlisted</option>
+                          <option value="Absent">⚪ Absent</option>
+                        </select>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+
+              {/* Roster Pagination */}
+              {rosterTotalPages > 1 && (
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.75rem', paddingTop: '0.5rem', borderTop: '1px solid #f1f5f9' }}>
+                  <span style={{ fontSize: '10px', color: '#64748b' }}>
+                    Page {rosterPage} of {rosterTotalPages} ({rosterTotal} candidates)
+                  </span>
+                  <div style={{ display: 'flex', gap: '0.35rem' }}>
+                    <button
+                      type="button"
+                      className={styles.pageNavTextBtn}
+                      onClick={() => {
+                        const nextP = Math.max(1, rosterPage - 1);
+                        setRosterPage(nextP);
+                        loadRosterAttendees(rosterEvent.id, nextP, rosterSearch, rosterStatus);
+                      }}
+                      disabled={rosterPage <= 1}
+                    >
+                      Previous
+                    </button>
+                    <button
+                      type="button"
+                      className={styles.pageNavTextBtn}
+                      onClick={() => {
+                        const nextP = Math.min(rosterTotalPages, rosterPage + 1);
+                        setRosterPage(nextP);
+                        loadRosterAttendees(rosterEvent.id, nextP, rosterSearch, rosterStatus);
+                      }}
+                      disabled={rosterPage >= rosterTotalPages}
+                    >
+                      Next
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className={styles.modalFooter}>
+              <button
+                type="button"
+                className={styles.cancelBtn}
+                onClick={() => setRosterEvent(null)}
               >
                 Close
               </button>

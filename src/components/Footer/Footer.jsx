@@ -12,10 +12,11 @@ export default function Footer({ onOpenAdmin, onOpenJobs, onOpenRegister }) {
           {/* Col 1: Identity & Vision */}
           <div className={styles.colIdentity}>
             <div className={styles.brandRow}>
-              <div className={styles.brandIcon}>
-                <span className="material-symbols-outlined" style={{ fontSize: '22px' }}>spa</span>
-              </div>
-              <span className={styles.brandTitle}>{t('brandTitle')}</span>
+              <img
+                src="/images/Graduate Career Desk Logo.png"
+                alt="Graduate Career Desk"
+                className={styles.footerBrandLogo}
+              />
             </div>
 
             <p className={styles.footerBio}>
@@ -53,16 +54,21 @@ export default function Footer({ onOpenAdmin, onOpenJobs, onOpenRegister }) {
             </ul>
           </div>
 
-          {/* Col 4: Helpline & Contact */}
+          {/* Col 4: Helpdesk & Contact */}
           <div>
             <h4 className={styles.colHeading}>{t('footerContact')}</h4>
             <div className={styles.contactBox}>
               <div className={styles.phoneRow}>
-                <span className={`material-symbols-outlined ${styles.phoneIcon}`}>call</span>
-                <span className={styles.phoneNumber}>{t('footerPhone')}</span>
+                <span className={`material-symbols-outlined ${styles.phoneIcon}`}>mail</span>
+                <a
+                  href={`mailto:${t('footerEmail')}`}
+                  className={styles.phoneNumber}
+                  title="Contact Helpdesk Email"
+                >
+                  {t('footerEmail')}
+                </a>
               </div>
               <p className={styles.contactText}>{t('footerHours')}</p>
-              <span className={styles.contactEmail}>{t('footerEmail')}</span>
             </div>
           </div>
         </div>

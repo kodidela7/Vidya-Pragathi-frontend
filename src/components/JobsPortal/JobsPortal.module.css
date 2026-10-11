@@ -9,142 +9,42 @@
   color: #0f172a;
 }
 
-/* 1. Portal Sticky Navigation Bar */
-.portalNavbar {
-  height: 56px;
+/* 1. Portal Sub-Header with Back to Home & Breadcrumbs */
+.portalSubHeader {
   background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid #f1f5f9;
+  padding: 0.65rem 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
-.navInner {
-  height: 100%;
+.subHeaderInner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.navLeft {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
+  justify-content: flex-start;
 }
 
 .backHomeBtn {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  color: #334155;
-  padding: 0.35rem 0.75rem;
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 500;
+  gap: 0.45rem;
+  background: #fff7ed;
+  border: 1.5px solid #fed7aa;
+  color: #c2410c;
+  padding: 0.45rem 0.95rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
   font-family: inherit;
 }
 
 .backHomeBtn:hover {
-  background: #e2e8f0;
-  color: #0f172a;
-}
-
-.portalBrand {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  text-decoration: none;
-  color: inherit;
-}
-
-.brandLogoBox {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #ea580c;
   color: #ffffff;
-  font-size: 15px;
-  box-shadow: 0 2px 4px rgba(234, 88, 12, 0.2);
-}
-
-.brandTitles {
-  display: flex;
-  flex-direction: column;
-}
-
-.brandTitle {
-  font-size: 12px;
-  font-weight: 700;
-  color: #0f172a;
-  line-height: 1.2;
-}
-
-.brandSub {
-  font-size: 10px;
-  color: #64748b;
-  font-weight: 500;
-}
-
-.navRight {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-}
-
-.langToggle {
-  display: flex;
-  align-items: center;
-  background: #f1f5f9;
-  padding: 2px;
-  border-radius: 6px;
-  border: 1px solid #e2e8f0;
-}
-
-.langBtn {
-  background: none;
-  border: none;
-  padding: 0.2rem 0.55rem;
-  font-size: 10px;
-  font-weight: 500;
-  color: #64748b;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.langBtnActive {
-  background: #ffffff;
-  color: #0f172a;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-}
-
-.adminBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  background: #0f172a;
-  color: #ffffff;
-  border: none;
-  padding: 0.35rem 0.7rem;
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  font-family: inherit;
-}
-
-.adminBtn:hover {
-  background: #1e293b;
+  border-color: #ea580c;
+  transform: translateX(-2px);
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25);
 }
 
 /* 2. Compact Karnataka Career Consultancy Banner */

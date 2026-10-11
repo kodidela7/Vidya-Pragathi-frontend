@@ -132,11 +132,12 @@
 }
 
 .navbarInner {
-  height: 4.25rem;
+  min-height: 4.85rem;
+  height: 4.85rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.25rem;
   flex-wrap: nowrap;
 }
 
@@ -144,24 +145,56 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
   text-decoration: none;
   flex-shrink: 0;
   min-width: 0;
+  line-height: 1;
 }
 
-.brandIcon {
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: var(--radius-md);
-  background: #fff7ed;
-  border: 2px solid #fb923c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ea580c;
-  box-shadow: 0 1px 3px rgba(234, 88, 12, 0.15);
-  flex-shrink: 0;
+.brandLogoImg {
+  height: 64px;
+  width: auto;
+  max-width: 320px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.brandLogoImg:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 1024px) {
+  .navbarInner {
+    min-height: 4.5rem;
+    height: 4.5rem;
+  }
+  .brandLogoImg {
+    height: 56px;
+    max-width: 270px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbarInner {
+    min-height: 4.15rem;
+    height: 4.15rem;
+  }
+  .brandLogoImg {
+    height: 48px;
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 380px) {
+  .navbarInner {
+    min-height: 3.85rem;
+    height: 3.85rem;
+  }
+  .brandLogoImg {
+    height: 40px;
+    max-width: 180px;
+  }
 }
 
 .brandText {
@@ -286,4 +319,54 @@
 .mobileNavLink:hover {
   background: #fff7ed;
   color: #ea580c;
+}
+
+/* Highlighted Graduate Register CTA in Header */
+.registerHighlightBtn {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #ffffff !important;
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 0.48rem 1.1rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.28);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.registerHighlightBtn:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.38);
+  color: #ffffff !important;
+}
+
+.mobileRegisterHighlight {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #ffffff !important;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.28);
+  margin: 0.35rem 0;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.mobileRegisterHighlight:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  color: #ffffff !important;
 }

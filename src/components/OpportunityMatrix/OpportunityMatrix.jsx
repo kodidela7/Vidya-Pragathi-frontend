@@ -328,10 +328,15 @@ export default function OpportunityMatrix({ activeDistrict = 'all', onOpenJobs }
             type="button"
             className={styles.showMoreBtn}
             onClick={onOpenJobs}
+            aria-label={lang === 'kn' ? 'ಎಲ್ಲಾ ಉದ್ಯೋಗಾವಕಾಶಗಳು ಮತ್ತು ಹುದ್ದೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ' : 'Explore All Opportunities & Jobs'}
           >
-            <span>Explore All Opportunities & Jobs</span>
+            <span>
+              {lang === 'kn' ? 'ಎಲ್ಲಾ ಉದ್ಯೋಗಾವಕಾಶಗಳನ್ನು ವೀಕ್ಷಿಸಿ' : 'Explore All Opportunities & Jobs'}
+            </span>
             <span className={styles.showMoreBadge}>
-              {totalJobs > 4 ? `${totalJobs}+ Verified Openings` : 'Full Portal'}
+              {totalJobs > 4
+                ? `${totalJobs}+ ${lang === 'kn' ? 'ಖಚಿತ ಉದ್ಯೋಗಗಳು' : 'Verified Openings'}`
+                : (lang === 'kn' ? 'ಸಂಪೂರ್ಣ ಪೋರ್ಟಲ್' : 'Full Portal')}
             </span>
             <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
           </button>

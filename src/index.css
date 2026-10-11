@@ -24,7 +24,8 @@
   --color-border: #e2e8f0;
   --color-border-warm: #ffedd5;
 
-  --font-family-base: 'Plus Jakarta Sans', 'Noto Sans Kannada', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-base: 'Plus Jakarta Sans', 'Anek Kannada', 'Noto Sans Kannada', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-kannada: 'Anek Kannada', 'Noto Sans Kannada', sans-serif;
   
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
@@ -59,6 +60,40 @@ body {
   line-height: 1.5;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+/* 1. Critical Icon Font Protection: Material Symbols must NEVER be overridden by language fonts */
+.material-symbols-outlined,
+[class*="material-symbols"] {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 2. Global Kannada Font Enhancement: Anek Kannada */
+html[lang="kn"],
+html[lang="kn"] body,
+html[lang="kn"] button,
+html[lang="kn"] input,
+html[lang="kn"] select,
+html[lang="kn"] textarea,
+.kannada-font {
+  font-family: 'Anek Kannada', 'Noto Sans Kannada', var(--font-family-base);
+}
+
+/* Re-assert Material Symbols font inside Kannada mode to ensure icons never show raw text names */
+html[lang="kn"] .material-symbols-outlined,
+html[lang="kn"] [class*="material-symbols"] {
+  font-family: 'Material Symbols Outlined' !important;
 }
 
 a {

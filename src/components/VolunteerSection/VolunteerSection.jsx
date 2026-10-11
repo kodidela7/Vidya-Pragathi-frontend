@@ -33,22 +33,13 @@ export default function VolunteerSection({ onOpenPledgeModal }) {
                 <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>how_to_vote</span>
                 <span>{t('btnVolunteerPledge')}</span>
               </button>
-
-              <button
-                className={styles.volunteerJoinBtn}
-                onClick={onOpenPledgeModal}
-                type="button"
-              >
-                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>person_add</span>
-                <span>{t('btnVolunteerJoin')}</span>
-              </button>
             </div>
           </div>
 
           {/* Right Campaign Poster */}
           <div className={styles.mediaCol}>
             <img
-              src="/images/WhatsApp Image 2026-10-09 at 20.51.21.jpeg"
+              src="/images/new_Images/Volunteer Campaign Poster1.png"
               alt="BJP Karnataka Election Campaign 2026 - K.M. Suresh"
               className={styles.posterImg}
               loading="lazy"

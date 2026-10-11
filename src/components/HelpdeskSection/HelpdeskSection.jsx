@@ -145,10 +145,16 @@ export default function HelpdeskSection() {
             </div>
 
             <div className={styles.slaBox}>
-              <span className={`material-symbols-outlined ${styles.slaIcon}`} style={{ color: '#ea580c' }}>call</span>
+              <span className={`material-symbols-outlined ${styles.slaIcon}`} style={{ color: '#ea580c' }}>mail</span>
               <div>
-                <span className={styles.slaTitle}>Toll-Free Helpline: 1800-425-9988</span>
-                <p className={styles.slaSub}>9:00 AM – 6:00 PM (Monday to Saturday) for graduates across Karnataka.</p>
+                <span className={styles.slaTitle}>
+                  {lang === 'kn' ? 'ಸಹಾಯವಾಣಿ ಇಮೇಲ್: graduatehelpdesk@gmail.com' : 'Helpdesk Email: graduatehelpdesk@gmail.com'}
+                </span>
+                <p className={styles.slaSub}>
+                  {lang === 'kn'
+                    ? 'ಪದವೀಧರರ ಸಮಸ್ಯೆಗಳು ಮತ್ತು ವಿಚಾರಣೆಗಳಿಗೆ ಅಧಿಕೃತ ಇಮೇಲ್ ಸಹಾಯ.'
+                    : 'Direct email support for graduate concerns and queries across Karnataka.'}
+                </p>
               </div>
             </div>
           </div>
@@ -188,7 +194,7 @@ export default function HelpdeskSection() {
                   <div className={styles.appealCardBody}>
                     <div className={styles.appealPortraitWrap}>
                       <img
-                        src="/images/candidate-portrait.jpeg"
+                        src="/images/new_Images/Candidate Profile Namaste1.png"
                         alt="K. M. Suresh BJP MLC Candidate"
                         className={styles.appealPortraitImg}
                       />

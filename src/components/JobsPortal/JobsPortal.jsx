@@ -171,70 +171,31 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
 
   return (
     <div className={styles.jobsPortalLayout}>
-      {/* 1. Sticky Navigation Bar */}
-      <nav className={styles.portalNavbar}>
-        <div className={`site-container ${styles.navInner}`}>
-          <div className={styles.navLeft}>
-            <button
-              type="button"
-              className={styles.backHomeBtn}
-              onClick={onBackToHome}
-              title="Return to Main Portal"
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>arrow_back</span>
-              <span>Back to Home</span>
-            </button>
-
-            <div className={styles.portalBrand}>
-              <div className={styles.brandLogoBox}>
-                <span className="material-symbols-outlined">school</span>
-              </div>
-              <div className={styles.brandTitles}>
-                <span className={styles.brandTitle}>Vidya Pragati</span>
-                <span className={styles.brandSub}>Karnataka Career Desk</span>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.navRight}>
-            <div className={styles.langToggle}>
-              <button
-                type="button"
-                className={`${styles.langBtn} ${lang === 'en' ? styles.langBtnActive : ''}`}
-                onClick={() => toggleLang('en')}
-              >
-                EN
-              </button>
-              <button
-                type="button"
-                className={`${styles.langBtn} ${lang === 'kn' ? styles.langBtnActive : ''}`}
-                onClick={() => toggleLang('kn')}
-              >
-                ಕನ್ನಡ
-              </button>
-            </div>
-
-            <button
-              type="button"
-              className={styles.adminBtn}
-              onClick={onOpenAdmin}
-              title="Admin Portal Access"
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>lock</span>
-              <span>Admin</span>
-            </button>
-          </div>
+      {/* 1. Sub-Header: Back to Home Navigation Bar */}
+      <div className={styles.portalSubHeader}>
+        <div className={`site-container ${styles.subHeaderInner}`}>
+          <button
+            type="button"
+            className={styles.backHomeBtn}
+            onClick={onBackToHome}
+            title="Return to Main Portal"
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_back</span>
+            <span>{lang === 'kn' ? 'ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ' : 'Back to Home'}</span>
+          </button>
         </div>
-      </nav>
+      </div>
 
-      {/* 2. Header Banner: Karnataka Career Consultancy */}
+      {/* 2. Opportunities Banner */}
       <header className={styles.portalHero}>
         <div className={`site-container ${styles.heroContent}`}>
           <h1 className={styles.heroTitle}>
-            Karnataka Career Consultancy
+            {lang === 'kn' ? 'ಕರ್ನಾಟಕ ಉದ್ಯೋಗ ಮತ್ತು ನೇಮಕಾತಿ ವೇದಿಕೆ' : 'Karnataka Career & Opportunity Pipelines'}
           </h1>
           <p className={styles.heroSubtitle}>
-            Vidya Pragati • Comprehensive Opportunities & Employment Portal
+            {lang === 'kn'
+              ? 'ಗ್ರಾಜುಯೇಟ್ ಕೆರಿಯರ್ ಡೆಸ್ಕ್ • ಸಮಗ್ರ ಉದ್ಯೋಗಾವಕಾಶಗಳು ಮತ್ತು ಅರ್ಜಿ ವೇದಿಕೆ'
+              : 'Graduate Career Desk • Comprehensive Opportunities & Employment Portal'}
           </p>
         </div>
       </header>

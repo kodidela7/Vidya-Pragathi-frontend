@@ -1,0 +1,96 @@
+/* Pledge Confirmation Toast Banner */
+.toastOverlay {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 540px;
+  animation: slideDownFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.toastCard {
+  background: #ffffff;
+  border: 2px solid #16a34a;
+  border-radius: var(--radius-xl, 16px);
+  box-shadow: 0 16px 36px -6px rgba(22, 163, 74, 0.25), 0 6px 16px rgba(0, 0, 0, 0.1);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.iconCircle {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: #f0fdf4;
+  border: 2px solid #86efac;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #16a34a;
+  flex-shrink: 0;
+}
+
+.textCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.toastTitle {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #14532d;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  line-height: 1.3;
+}
+
+.toastMsg {
+  font-size: 0.85rem;
+  color: #334155;
+  margin: 0;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}

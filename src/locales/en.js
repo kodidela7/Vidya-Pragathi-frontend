@@ -1,16 +1,18 @@
 export const en = {
   // Top Bulletin
-  bulletinTag: "BJP Vidya Pragathi",
-  bulletinDistricts: "South-East Graduates' Constituency (MLC 2026)",
+  bulletinTag: "Graduate Career Desk",
+  bulletinDistricts: "South-East Graduates' Constituency — Karnataka",
 
   // Header Nav
-  brandTitle: "VIDYA PRAGATHI",
-  brandSubtitle: "BJP South-East Graduates' Constituency Cell • MLC 2026",
+  brandTitle: "Graduate Career Desk",
+  brandSubtitle: "South-East Graduates' Career & Opportunity Portal",
+  navJobs: "Search Jobs",
   navOpportunities: "Opportunities",
   navSkills: "Skills & AI",
   navEvents: "Job Melas",
   navCandidate: "Candidate",
   navRegister: "Register",
+  navGraduateRegister: "Graduate Register",
   navHelpdesk: "Helpdesk",
   ctaRegister: "Register",
   ctaPledge: "Pledge Vote",
@@ -46,12 +48,12 @@ export const en = {
   candidateExp: "Decades of educational excellence, youth mentoring, and dedicated public service.",
   candidateDistrictHubs: "Karnataka Graduate Network",
   candidateCoaching: "Free Taluk KPSC Guidance",
-  candidateHelpline: "Constituency Desk: 1800-425-9988",
+  candidateHelpline: "Helpdesk: graduatehelpdesk@gmail.com",
 
   // Leadership Banner
   leadershipTag: "Viksit Bharat & Viksit Karnataka Vision",
   leadershipTitle: "Empowering Youth Leadership under PM Narendra Modi",
-  leadershipDesc: "\"Education development, employment for youth — enlightened graduates, capable Karnataka.\" Driving all-round progress for Kolar, Tumakuru, Chitradurga, Chikkaballapur & Davanagere.",
+  leadershipDesc: "Driving all-round progress across all districts of the South-East Graduates' Constituency, advancing higher education and the holistic development of Nava Karnataka.",
   leadershipCtaPledge: "Pledge Support for K. M. Suresh",
   leadershipCtaRegister: "Register Now",
 
@@ -138,8 +140,8 @@ export const en = {
 
   // Volunteer Taskforce & Campaign Pledge Section
   volunteerTag: "BJP Youth Campaign Taskforce",
-  volunteerTitle: "Support K. M. Suresh & Lead the Constituency Volunteer Mission",
-  volunteerDesc: "Join thousands of young professionals, engineers, advocates, and teachers supporting the Vidhana Parishat 2026 election campaign under the leadership of Prime Minister Narendra Modi and BJP Karnataka.",
+  volunteerTitle: "Vote for K. M. Suresh for the Comprehensive Development of South-East Graduates' Constituency — Be Part of This Era of Progress",
+  volunteerDesc: "A resolute administration under capable leadership paves the way for a radiant future and a strong nation. Join hands with us today in this mission.",
   btnVolunteerPledge: "Pledge My Vote for BJP",
   btnVolunteerJoin: "Sign Up as Constituency Volunteer",
 
@@ -160,9 +162,9 @@ export const en = {
   footerDesc: "Bharatiya Janata Party (BJP) Civic & Career Portal for Karnataka South-East Graduates' Constituency. Dedicated to education, skill development, and youth empowerment.",
   footerSecretariats: "Constituency Offices",
   footerServices: "Public Career Services",
-  footerContact: "Constituency Helpline",
-  footerPhone: "1800-425-9988",
-  footerHours: "Toll-free 9:00 AM - 6:00 PM for South-East Karnataka Graduates",
-  footerEmail: "desk@southeastgraduates.in",
+  footerContact: "Constituency Helpdesk",
+  footerPhone: "graduatehelpdesk@gmail.com",
+  footerHours: "Official email support for South-East Karnataka Graduates",
+  footerEmail: "graduatehelpdesk@gmail.com",
   footerCopyright: "© 2026 BJP Karnataka South-East Graduates' Constituency Initiative. All Rights Reserved."
 };

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { LanguageProvider } from './context/LanguageContext';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import LeadershipBanner from './components/LeadershipBanner/LeadershipBanner';
@@ -9,14 +8,30 @@ import EventsSection from './components/EventsSection/EventsSection';
 import VolunteerSection from './components/VolunteerSection/VolunteerSection';
 import HelpdeskSection from './components/HelpdeskSection/HelpdeskSection';
 import Footer from './components/Footer/Footer';
-import { EventRsvpModal, PledgeModal } from './components/Modals/Modals';
+import EventPassModal from './components/Modals/EventPassModal';
+import PledgeToast from './components/PledgeToast/PledgeToast';
 import AdminPortal from './components/Admin/AdminPortal';
 import JobsPortal from './components/JobsPortal/JobsPortal';
 import GraduateRegistrationPage from './components/GraduateRegistrationPage/GraduateRegistrationPage';
 
 export default function App() {
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [isPledgeModalOpen, setIsPledgeModalOpen] = useState(false);
+  const [isPledgeToastOpen, setIsPledgeToastOpen] = useState(false);
+
+  const handlePledgeSupport = () => {
+    setIsPledgeToastOpen(true);
+    try {
+      localStorage.setItem('hasPledgedVote2026', 'true');
+      fetch('/api/pledges', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: 'Constituency Supporter',
+          supportNote: 'Pledged vote for BJP 2026'
+        })
+      }).catch(() => {});
+    } catch (_) {}
+  };
 
   // Check if initial route is /admin or #admin
   const [isAdminView, setIsAdminView] = useState(() => {
@@ -34,6 +49,9 @@ export default function App() {
   });
 
   useEffect(() => {
+    if (!selectedEvent && typeof document !== 'undefined' && document.body) {
+      document.body.style.overflow = '';
+    }
     const handleLocationChange = () => {
       const isNowAdmin = window.location.pathname.startsWith('/admin') || window.location.hash === '#admin';
       const isNowJobs = window.location.pathname.startsWith('/jobs') || window.location.hash === '#jobs';
@@ -104,102 +122,114 @@ export default function App() {
 
   if (isJobsView) {
     return (
-      <LanguageProvider>
-        <JobsPortal
-          onBackToHome={closeJobsView}
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <Header
           onOpenAdmin={openAdminView}
+          onOpenJobs={openJobsView}
+          onOpenRegister={openRegisterView}
+          onBackToHome={closeJobsView}
         />
-      </LanguageProvider>
+        <main style={{ flex: 1 }}>
+          <JobsPortal
+            onBackToHome={closeJobsView}
+            onOpenRegister={openRegisterView}
+          />
+        </main>
+      </div>
     );
   }
 
   if (isRegisterView) {
     return (
-      <LanguageProvider>
-        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-          <Header
-            onOpenAdmin={openAdminView}
-            onOpenJobs={openJobsView}
-            onOpenRegister={openRegisterView}
-            onBackToHome={closeRegisterView}
-          />
-          <main style={{ flex: 1 }}>
-            <GraduateRegistrationPage
-              onBackToHome={closeRegisterView}
-              onOpenJobs={openJobsView}
-            />
-          </main>
-          <Footer
-            onOpenAdmin={openAdminView}
-            onOpenJobs={openJobsView}
-            onOpenRegister={openRegisterView}
-          />
-        </div>
-      </LanguageProvider>
-    );
-  }
-
-  return (
-    <LanguageProvider>
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-        {/* Header with Bilingual Switch & Navigation */}
         <Header
           onOpenAdmin={openAdminView}
           onOpenJobs={openJobsView}
           onOpenRegister={openRegisterView}
+          onBackToHome={closeRegisterView}
         />
-
         <main style={{ flex: 1 }}>
-          {/* Hero Section with Candidate Spotlight & Call to Action */}
-          <Hero onOpenPledgeModal={() => setIsPledgeModalOpen(true)} />
-
-          {/* PM Modi & BJP Leadership Vision Banner */}
-          <LeadershipBanner
-            onOpenPledgeModal={() => setIsPledgeModalOpen(true)}
-            onOpenRegister={openRegisterView}
-          />
-
-          {/* Curated Career Drives, AI Skilling, Exams & Grants Matrix (Default 4, with Show More) */}
-          <OpportunityMatrix
+          <GraduateRegistrationPage
+            onBackToHome={closeRegisterView}
             onOpenJobs={openJobsView}
           />
-
-          {/* Candidate Profile, Educational Track Record & 4-Pillar Manifesto */}
-          <InitiativeProfile
-            onOpenPledgeModal={() => setIsPledgeModalOpen(true)}
-            onOpenRegister={openRegisterView}
-          />
-
-          {/* Upcoming Job Melas & District Sessions */}
-          <EventsSection
-            onSelectEvent={(ev) => setSelectedEvent(ev)}
-          />
-
-          {/* Dedicated Volunteer Taskforce & Vote Appeal Section */}
-          <VolunteerSection onOpenPledgeModal={() => setIsPledgeModalOpen(true)} />
-
-          {/* Constituency Helpdesk & Grievance Cell (Janaspanada) */}
-          <HelpdeskSection />
         </main>
-
-        {/* Site Footer */}
         <Footer
           onOpenAdmin={openAdminView}
           onOpenJobs={openJobsView}
           onOpenRegister={openRegisterView}
         />
-
-        {/* Interactive Modals */}
-        <EventRsvpModal
-          eventData={selectedEvent}
-          onClose={() => setSelectedEvent(null)}
-        />
-
-        <PledgeModal
-          isOpen={isPledgeModalOpen}
-          onClose={() => setIsPledgeModalOpen(false)}
-        />
       </div>
-    </LanguageProvider>
+    );
+  }
+
+  return (
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      {/* Header with Bilingual Switch & Navigation */}
+      <Header
+        onOpenAdmin={openAdminView}
+        onOpenJobs={openJobsView}
+        onOpenRegister={openRegisterView}
+      />
+
+      <main style={{ flex: 1 }}>
+        {/* Hero Section with Candidate Spotlight & Call to Action */}
+        <Hero onOpenPledgeModal={handlePledgeSupport} />
+
+        {/* PM Modi & BJP Leadership Vision Banner */}
+        <LeadershipBanner
+          onOpenPledgeModal={handlePledgeSupport}
+          onOpenRegister={openRegisterView}
+        />
+
+        {/* Curated Career Drives, AI Skilling, Exams & Grants Matrix (Default 4, with Show More) */}
+        <OpportunityMatrix
+          onOpenJobs={openJobsView}
+        />
+
+        {/* Candidate Profile, Educational Track Record & 4-Pillar Manifesto */}
+        <InitiativeProfile
+          onOpenPledgeModal={handlePledgeSupport}
+          onOpenRegister={openRegisterView}
+        />
+
+        {/* Upcoming Job Melas & District Sessions */}
+        <EventsSection
+          onSelectEvent={(ev) => setSelectedEvent(ev)}
+        />
+
+        {/* Dedicated Volunteer Taskforce & Vote Appeal Section */}
+        <VolunteerSection onOpenPledgeModal={handlePledgeSupport} />
+
+        {/* Constituency Helpdesk & Grievance Cell (Janaspanada) */}
+        <HelpdeskSection />
+      </main>
+
+      {/* Site Footer */}
+      <Footer
+        onOpenAdmin={openAdminView}
+        onOpenJobs={openJobsView}
+        onOpenRegister={openRegisterView}
+      />
+
+      {/* Interactive Modals */}
+      {selectedEvent && (
+        <EventPassModal
+          eventData={selectedEvent}
+          onClose={() => {
+            setSelectedEvent(null);
+            if (typeof document !== 'undefined' && document.body) {
+              document.body.style.overflow = '';
+            }
+          }}
+        />
+      )}
+
+      {/* Floating Confirmation Toast for Vote Pledge (No intrusive popup) */}
+      <PledgeToast
+        isOpen={isPledgeToastOpen}
+        onClose={() => setIsPledgeToastOpen(false)}
+      />
+    </div>
   );
 }

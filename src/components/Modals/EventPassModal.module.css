@@ -1,0 +1,553 @@
+/* EventPassModal Styling */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.modalBox {
+  background: #ffffff;
+  border-radius: var(--radius-xl, 14px);
+  width: 100%;
+  max-width: 580px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  border: 1px solid #fed7aa;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: #fed7aa transparent;
+}
+
+.modalBox::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modalBox::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modalBox::-webkit-scrollbar-thumb {
+  background: #fed7aa;
+  border-radius: 9999px;
+}
+
+.modalHeader {
+  padding: 1.15rem 1.4rem;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border-bottom: 1px solid #fed7aa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.headerTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.headerIcon {
+  font-size: 1.6rem;
+  color: #ea580c;
+}
+
+.modalTitle {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.modalSubtitle {
+  font-size: 0.75rem;
+  color: #ea580c;
+  font-weight: 600;
+  margin: 0.15rem 0 0 0;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: var(--radius-sm, 6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  background: #ffedd5;
+  color: #0f172a;
+}
+
+.modalBody {
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Event Context Banner inside Form */
+.eventContextBanner {
+  background: #fffbf5;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.eventContextTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.eventTypePill {
+  background: #ea580c;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  letter-spacing: 0.03em;
+}
+
+.eventDateBadge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0f172a;
+  background: #f1f5f9;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.eventContextTitle {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+.eventContextVenue {
+  font-size: 0.78rem;
+  color: #475569;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.3rem;
+  line-height: 1.35;
+}
+
+/* Form Fields */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 480px) {
+  .formGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.formGroupFull {
+  grid-column: 1 / -1;
+}
+
+.fieldLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.requiredMark {
+  color: #ea580c;
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 0.75rem;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.formInput, .formSelect {
+  width: 100%;
+  padding: 0.55rem 0.75rem 0.55rem 2.2rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: #0f172a;
+  background: #ffffff;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.formInput:focus, .formSelect:focus {
+  border-color: #ea580c;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12);
+}
+
+.errorBanner {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  padding: 0.65rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.submitBtn {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+  transition: all 0.2s;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%);
+  transform: translateY(-1px);
+}
+
+.submitBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   STEP 2: DIGITAL ENTRY PASS TICKET
+   ========================================================= */
+
+.passCard {
+  background: #ffffff;
+  border: 2px dashed #ea580c;
+  border-radius: 12px;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(234, 88, 12, 0.08);
+}
+
+.passCardBorderTop {
+  height: 5px;
+  background: linear-gradient(90deg, #ff9933 0%, #ffffff 50%, #138808 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.passSuccessNotice {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #15803d;
+  font-size: 0.82rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.passTokenBox {
+  background: #fff7ed;
+  border: 1.5px solid #fed7aa;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.passTokenCode {
+  font-family: monospace;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #ea580c;
+  letter-spacing: 0.04em;
+}
+
+.copyTokenBtn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0f172a;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.2s;
+}
+
+.copyTokenBtn:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.passMetaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  font-size: 0.78rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.passMetaItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.passMetaLabel {
+  color: #64748b;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.passMetaValue {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.instructionsBox {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.instructionsHeading {
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Candidate MLC 2026 Vote Appeal Card inside E-Pass */
+.appealCard {
+  background: #ffffff;
+  border: 1.5px solid #fed7aa;
+  border-radius: 10px;
+  padding: 0.85rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.85rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.appealCardBody {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.appealPortraitWrap {
+  flex-shrink: 0;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 2px solid #ea580c;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.2);
+}
+
+.appealPortraitImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.appealContent {
+  flex: 1;
+}
+
+.appealBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: #fff7ed;
+  color: #c2410c;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.1rem 0.45rem;
+  border-radius: 9999px;
+  border: 1px solid #fed7aa;
+  text-transform: uppercase;
+}
+
+.appealCandidateName {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0.15rem 0 0.1rem 0;
+  line-height: 1.2;
+}
+
+.appealVoteText {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #ea580c;
+  line-height: 1.3;
+}
+
+.passActionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.whatsappRemindBtn {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.printPassBtn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Print Styles: Fallback for Ctrl+P to ensure strictly 1-page pass and collapse main site */
+@media print {
+  :global(header),
+  :global(main),
+  :global(footer),
+  :global(#root > div > *:not(.backdrop)) {
+    display: none !important;
+  }
+
+  :global(body) {
+    background: #ffffff !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .backdrop {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .modalBox {
+    position: static !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    max-height: none !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  .modalHeader,
+  .closeBtn,
+  .passActionButtons,
+  .copyTokenBtn {
+    display: none !important;
+  }
+
+  .passCard {
+    width: 100% !important;
+    max-width: 660px !important;
+    margin: 0 auto !important;
+    padding: 1rem !important;
+    border: 2px dashed #ea580c !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+}

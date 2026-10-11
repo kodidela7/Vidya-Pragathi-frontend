@@ -70,7 +70,7 @@ export default function AdminLogin({ onLoginSuccess, onBackToPublic }) {
             K.M. Suresh <span className={styles.kannadaName}>(ಕೆ.ಎಂ. ಸುರೇಶ್)</span>
           </h1>
           <p className={styles.cardSubtitle}>
-            Vidya Pragathi • Campaign Operations & Constituency Control Room
+            Graduate Career Desk • Administrative Control Room
           </p>
         </div>
 

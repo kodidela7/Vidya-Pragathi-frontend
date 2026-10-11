@@ -33,11 +33,8 @@ export default function Header({ onOpenAdmin, onOpenJobs, onOpenRegister, onBack
       <div className={styles.bulletinBar}>
         <div className={`site-container ${styles.bulletinInner}`}>
           <div className={styles.bulletinLeft}>
-            <span className={styles.bulletinBadge}>
-              <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>how_to_vote</span>
-              {t('bulletinTag')}
-            </span>
             <span className={styles.bulletinDistricts}>
+              <span className="material-symbols-outlined" style={{ fontSize: '13px', verticalAlign: 'middle', marginRight: '4px' }}>location_on</span>
               {t('bulletinDistricts')}
             </span>
           </div>
@@ -62,17 +59,6 @@ export default function Header({ onOpenAdmin, onOpenJobs, onOpenRegister, onBack
                 ಕನ್ನಡ
               </button>
             </div>
-
-            {/* Quick Admin Portal Access */}
-            <button
-              type="button"
-              className={styles.adminAccessBtn}
-              onClick={onOpenAdmin}
-              title="Admin Login & Operations"
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>lock</span>
-              <span>Admin</span>
-            </button>
           </div>
         </div>
       </div>
@@ -81,29 +67,52 @@ export default function Header({ onOpenAdmin, onOpenJobs, onOpenRegister, onBack
       <div className={styles.mainNavbar}>
         <div className={`site-container ${styles.navbarInner}`}>
           {/* Logo & Brand Identity */}
-          <a href="#" className={styles.brand} onClick={handleBrandClick}>
-            <div className={styles.brandIcon}>
-              <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>spa</span>
-            </div>
-            <div className={styles.brandText}>
-              <div className={styles.brandTitleRow}>
-                <span className={styles.brandName}>{t('brandTitle')}</span>
-                <span className={styles.brandBadge}>BJP South-East</span>
-              </div>
-              <span className={styles.brandSubtitle}>
-                {t('brandSubtitle')}
-              </span>
-            </div>
+          <a href="#" className={styles.brand} onClick={handleBrandClick} aria-label="Graduate Career Desk">
+            <img
+              src="/images/Graduate Career Desk Logo.png"
+              alt="Graduate Career Desk"
+              className={styles.brandLogoImg}
+            />
           </a>
 
-          {/* Clean Navigation Links on Desktop (Buttons removed per user request) */}
+          {/* Clean Navigation Links on Desktop (Per user request) */}
           <nav className={styles.navLinks} aria-label="Main Navigation">
-            <a href="#jobs" className={styles.navLink} onClick={(e) => { if (onOpenJobs) { e.preventDefault(); onOpenJobs(); } }}>{t('navOpportunities')}</a>
-            <a href="#matrix" className={styles.navLink}>{t('navSkills')}</a>
-            <a href="#events" className={styles.navLink}>{t('navEvents')}</a>
-            <a href="#candidate" className={styles.navLink}>{t('navCandidate')}</a>
-            <a href="#register" className={styles.navLink} onClick={handleRegisterClick}>{t('navRegister')}</a>
-            <a href="#helpdesk" className={styles.navLink}>{t('navHelpdesk')}</a>
+            <a
+              href="#jobs"
+              className={styles.navLink}
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenJobs) onOpenJobs();
+              }}
+            >
+              {t('navJobs')}
+            </a>
+            <a
+              href="#events"
+              className={styles.navLink}
+              onClick={() => {
+                if (onBackToHome) onBackToHome();
+              }}
+            >
+              {t('navEvents')}
+            </a>
+            <a
+              href="#helpdesk"
+              className={styles.navLink}
+              onClick={() => {
+                if (onBackToHome) onBackToHome();
+              }}
+            >
+              {t('navHelpdesk')}
+            </a>
+            <a
+              href="#register"
+              className={styles.registerHighlightBtn}
+              onClick={handleRegisterClick}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>school</span>
+              <span>{t('navGraduateRegister')}</span>
+            </a>
           </nav>
 
           {/* Mobile Hamburger Menu Toggle */}
@@ -122,42 +131,50 @@ export default function Header({ onOpenAdmin, onOpenJobs, onOpenRegister, onBack
         {/* Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
           <div className={styles.mobileDrawer}>
-            <a href="#jobs" className={styles.mobileNavLink} onClick={() => { closeMenu(); if (onOpenJobs) onOpenJobs(); }}>
-              <span>{t('navOpportunities')}</span>
+            <a
+              href="#jobs"
+              className={styles.mobileNavLink}
+              onClick={() => {
+                closeMenu();
+                if (onOpenJobs) onOpenJobs();
+              }}
+            >
+              <span>{t('navJobs')}</span>
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
             </a>
-            <a href="#matrix" className={styles.mobileNavLink} onClick={closeMenu}>
-              <span>{t('navSkills')}</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
-            </a>
-            <a href="#events" className={styles.mobileNavLink} onClick={closeMenu}>
+            <a
+              href="#events"
+              className={styles.mobileNavLink}
+              onClick={() => {
+                closeMenu();
+                if (onBackToHome) onBackToHome();
+              }}
+            >
               <span>{t('navEvents')}</span>
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
             </a>
-            <a href="#candidate" className={styles.mobileNavLink} onClick={closeMenu}>
-              <span>{t('navCandidate')}</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
-            </a>
-            <a href="#register" className={styles.mobileNavLink} onClick={handleRegisterClick}>
-              <span>{t('navRegister')}</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
-            </a>
-            <a href="#helpdesk" className={styles.mobileNavLink} onClick={closeMenu}>
+            <a
+              href="#helpdesk"
+              className={styles.mobileNavLink}
+              onClick={() => {
+                closeMenu();
+                if (onBackToHome) onBackToHome();
+              }}
+            >
               <span>{t('navHelpdesk')}</span>
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
             </a>
-            <button
-              type="button"
-              className={styles.mobileNavLink}
-              style={{ background: '#f8fafc', border: 'none', width: '100%', cursor: 'pointer', textAlign: 'left', color: '#c2410c', fontWeight: 700 }}
-              onClick={() => { closeMenu(); onOpenAdmin && onOpenAdmin(); }}
+            <a
+              href="#register"
+              className={styles.mobileRegisterHighlight}
+              onClick={handleRegisterClick}
             >
               <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>lock</span>
-                <span>Admin Login Portal</span>
+                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>school</span>
+                <span>{t('navGraduateRegister')}</span>
               </span>
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
-            </button>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
+            </a>
           </div>
         )}
       </div>

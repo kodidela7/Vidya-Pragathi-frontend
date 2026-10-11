@@ -36,7 +36,14 @@ export function LanguageProvider({ children }) {
 export function useLanguage() {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    const fallbackLang = typeof localStorage !== 'undefined' ? (localStorage.getItem('karnataka_desk_lang') || 'en') : 'en';
+    const currentDict = translations[fallbackLang] || translations.en;
+    return {
+      lang: fallbackLang,
+      setLang: () => {},
+      toggleLang: () => {},
+      t: (key) => currentDict[key] || translations.en[key] || key
+    };
   }
   return context;
 }

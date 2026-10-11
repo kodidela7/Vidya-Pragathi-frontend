@@ -86,7 +86,7 @@ export default function Hero({ onOpenPledgeModal }) {
             {/* 1. Full-Width Leadership & Official BJP Lotus Campaign Header */}
             <div className={styles.cardTopLeadershipBanner}>
               <img
-                src="/images/candidate-poster-banner.jpeg"
+                src="/images/new_Images/Hero Leadership Banner1.png"
                 alt="BJP Leadership Team & Official Lotus Symbol - MLC 2026"
                 className={styles.leadershipBannerImg}
                 loading="eager"
@@ -97,7 +97,7 @@ export default function Hero({ onOpenPledgeModal }) {
             <div className={styles.candidateShowcaseFrame}>
               <div className={styles.candidatePortraitWrap}>
                 <img
-                  src="/images/candidate-portrait.jpeg"
+                  src="/images/new_Images/Candidate Hero Potrait1.png"
                   alt="K. M. Suresh BJP MLC Candidate"
                   className={styles.candidatePortraitImg}
                   loading="eager"
@@ -131,10 +131,13 @@ export default function Hero({ onOpenPledgeModal }) {
 
                 <div className={styles.sloganQuoteStrip}>
                   <span className={styles.sloganKannada}>
-                    "ಪ್ರಬುದ್ಧ ಪದವೀಧರ — ಬಲಿಷ್ಠ ಕರ್ನಾಟಕ!"
+                    ಪ್ರಬುದ್ಧ ಪದವೀಧರ - ಬಲಿಷ್ಠ ಕರ್ನಾಟಕ
                   </span>
                   <span className={styles.sloganEnglish}>
-                    "ಶಿಕ್ಷಣ ಕ್ಷೇತ್ರದ ಅನುಭವದ ನಡಿಗೆ"
+                    ಶಿಕ್ಷಣ ಕ್ಷೇತ್ರದ ಅನುಭವದ ನಡಿಗೆ
+                  </span>
+                  <span className={styles.sloganEnglish}>
+                    ಪದವೀಧರ ಕ್ಷೇತ್ರದ ಅಭಿವುದ್ಧಿ ಕಡೆಗೆ
                   </span>
                 </div>
               </div>
