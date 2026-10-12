@@ -67,10 +67,15 @@ export default function Header({ onOpenAdmin, onOpenJobs, onOpenRegister, onBack
       <div className={styles.mainNavbar}>
         <div className={`site-container ${styles.navbarInner}`}>
           {/* Logo & Brand Identity */}
-          <a href="#" className={styles.brand} onClick={handleBrandClick} aria-label="Graduate Career Desk">
+          <a
+            href="#"
+            className={styles.brand}
+            onClick={handleBrandClick}
+            aria-label={lang === 'kn' ? 'ಪದವಿ ಪಥ - ಪದವೀಧರರ ಕರಿಯರ್ ಡೆಸ್ಕ್' : 'Padavi Path - Graduate Career Desk'}
+          >
             <img
-              src="/images/Graduate Career Desk Logo.png"
-              alt="Graduate Career Desk"
+              src={lang === 'kn' ? '/images/Graduate Career Desk Logo2.png' : '/images/Graduate Career Desk Logo-new.png'}
+              alt={lang === 'kn' ? 'ಪದವಿ ಪಥ - ಪದವೀಧರರ ಕರಿಯರ್ ಡೆಸ್ಕ್' : 'Padavi Path - Graduate Career Desk'}
               className={styles.brandLogoImg}
             />
           </a>

@@ -132,13 +132,14 @@
 }
 
 .navbarInner {
-  min-height: 4.85rem;
-  height: 4.85rem;
+  min-height: 5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
   flex-wrap: nowrap;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
 }
 
 /* Brand Section */
@@ -152,9 +153,9 @@
 }
 
 .brandLogoImg {
-  height: 64px;
+  height: 66px;
   width: auto;
-  max-width: 320px;
+  max-width: 280px;
   object-fit: contain;
   display: block;
   transition: transform 0.2s ease;
@@ -167,32 +168,31 @@
 @media (max-width: 1024px) {
   .navbarInner {
     min-height: 4.5rem;
-    height: 4.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
   .brandLogoImg {
-    height: 56px;
-    max-width: 270px;
+    height: 58px;
+    max-width: 250px;
   }
 }
 
 @media (max-width: 640px) {
   .navbarInner {
-    min-height: 4.15rem;
-    height: 4.15rem;
+    min-height: 4.25rem;
   }
   .brandLogoImg {
-    height: 48px;
-    max-width: 220px;
+    height: 50px;
+    max-width: 210px;
   }
 }
 
 @media (max-width: 380px) {
   .navbarInner {
     min-height: 3.85rem;
-    height: 3.85rem;
   }
   .brandLogoImg {
-    height: 40px;
+    height: 44px;
     max-width: 180px;
   }
 }

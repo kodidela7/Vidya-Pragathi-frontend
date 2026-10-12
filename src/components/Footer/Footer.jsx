@@ -3,7 +3,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import styles from './Footer.module.css';
 
 export default function Footer({ onOpenAdmin, onOpenJobs, onOpenRegister }) {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
 
   return (
     <footer className={styles.footer} aria-label="Site Footer">
@@ -13,8 +13,8 @@ export default function Footer({ onOpenAdmin, onOpenJobs, onOpenRegister }) {
           <div className={styles.colIdentity}>
             <div className={styles.brandRow}>
               <img
-                src="/images/Graduate Career Desk Logo.png"
-                alt="Graduate Career Desk"
+                src={lang === 'kn' ? '/images/Graduate Career Desk Logo2.png' : '/images/Graduate Career Desk Logo-new.png'}
+                alt={lang === 'kn' ? 'ಪದವಿ ಪಥ - ಪದವೀಧರರ ಕರಿಯರ್ ಡೆಸ್ಕ್' : 'Padavi Path - Graduate Career Desk'}
                 className={styles.footerBrandLogo}
               />
             </div>
