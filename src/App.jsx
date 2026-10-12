@@ -27,7 +27,7 @@ export default function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           fullName: 'Constituency Supporter',
-          supportNote: 'Pledged vote for BJP 2026'
+          supportNote: 'Pledged vote for NDA 2026'
         })
       }).catch(() => {});
     } catch (_) {}
@@ -174,9 +174,9 @@ export default function App() {
 
       <main style={{ flex: 1 }}>
         {/* Hero Section with Candidate Spotlight & Call to Action */}
-        <Hero onOpenPledgeModal={handlePledgeSupport} />
+        <Hero onOpenPledgeModal={handlePledgeSupport} onOpenRegister={openRegisterView} />
 
-        {/* PM Modi & BJP Leadership Vision Banner */}
+        {/* PM Modi & NDA Leadership Vision Banner */}
         <LeadershipBanner
           onOpenPledgeModal={handlePledgeSupport}
           onOpenRegister={openRegisterView}

@@ -95,7 +95,7 @@ export default function AdminLogin({ onLoginSuccess, onBackToPublic }) {
                 id="admin-id"
                 type="text"
                 className={styles.textInput}
-                placeholder="e.g. admin or suresh.warroom@bjpkarnataka.org"
+                placeholder="e.g. admin or suresh.warroom@ndakarnataka.org"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 autoComplete="username"

@@ -40,7 +40,7 @@ export default function VolunteerSection({ onOpenPledgeModal }) {
           <div className={styles.mediaCol}>
             <img
               src="/images/new_Images/Volunteer Campaign Poster1.png"
-              alt="BJP Karnataka Election Campaign 2026 - K.M. Suresh"
+              alt="NDA Karnataka Election Campaign 2026 - K.M. Suresh"
               className={styles.posterImg}
               loading="lazy"
             />

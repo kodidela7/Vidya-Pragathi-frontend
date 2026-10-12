@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import styles from './Hero.module.css';
 
-export default function Hero({ onOpenPledgeModal }) {
+export default function Hero({ onOpenPledgeModal, onOpenRegister }) {
   const { lang, t } = useLanguage();
 
   return (
@@ -33,6 +33,27 @@ export default function Hero({ onOpenPledgeModal }) {
                   {t('heroDescription')}
                 </p>
               </div>
+            </div>
+
+            {/* Graduate Career Registration Callout */}
+            <div className={styles.heroRegisterCard}>
+              <div className={styles.heroRegisterContent}>
+                <div className={styles.heroRegisterIconWrap}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>school</span>
+                </div>
+                <div className={styles.heroRegisterText}>
+                  <h3 className={styles.heroRegisterTitle}>{t('heroRegisterTitle')}</h3>
+                  <p className={styles.heroRegisterDesc}>{t('heroRegisterDesc')}</p>
+                </div>
+              </div>
+              <button
+                className={styles.heroRegisterBtn}
+                onClick={() => { if (onOpenRegister) onOpenRegister(); }}
+                type="button"
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>school</span>
+                <span>{t('heroRegisterBtnText')}</span>
+              </button>
             </div>
 
             {/* 4 Empowerment Pillars (Fills & balances large screens gracefully) */}
@@ -77,17 +98,15 @@ export default function Hero({ onOpenPledgeModal }) {
                 </div>
               </div>
             </div>
-
-            {/* Constituency Coverage & Trust Strip removed per user request */}
           </div>
 
           {/* Right Column: High-Impact Voter Attraction Card */}
           <div className={styles.candidateHeroCard}>
-            {/* 1. Full-Width Leadership & Official BJP Lotus Campaign Header */}
+            {/* 1. Full-Width Leadership & Official NDA Campaign Header */}
             <div className={styles.cardTopLeadershipBanner}>
               <img
                 src="/images/new_Images/Hero Leadership Banner1.png"
-                alt="BJP Leadership Team & Official Lotus Symbol - MLC 2026"
+                alt="NDA Leadership Team & Official Symbol - MLC 2026"
                 className={styles.leadershipBannerImg}
                 loading="eager"
               />
@@ -98,12 +117,12 @@ export default function Hero({ onOpenPledgeModal }) {
               <div className={styles.candidatePortraitWrap}>
                 <img
                   src="/images/new_Images/Candidate Hero Potrait1.png"
-                  alt="K. M. Suresh BJP MLC Candidate"
+                  alt="K. M. Suresh NDA MLC Candidate"
                   className={styles.candidatePortraitImg}
                   loading="eager"
                 />
                 <div className={styles.candidatePhotoBadge}>
-                  <span className={styles.officialNdaPill}>BJP / NDA</span>
+                  <span className={styles.officialNdaPill}>NDA</span>
                   <span className={styles.electionYearPill}>MLC 2026</span>
                 </div>
               </div>
@@ -113,7 +132,7 @@ export default function Hero({ onOpenPledgeModal }) {
                 <div className={styles.appealCalloutBar}>
                   <span className="material-symbols-outlined" style={{ fontSize: '18px', color: '#ea580c' }}>how_to_vote</span>
                   <span className={styles.appealCalloutText}>
-                    {lang === 'kn' ? 'ಬಿಜೆಪಿಗೆ ನಿಮ್ಮ ಮತ ಬೆಂಬಲ ನೀಡಿ!' : 'Pledge Your Vote for BJP!'}
+                    {lang === 'kn' ? 'ಎನ್‌ಡಿಎಗೆ ನಿಮ್ಮ ಮತ ಬೆಂಬಲ ನೀಡಿ!' : 'Pledge Your Vote for NDA!'}
                   </span>
                 </div>
 
@@ -125,7 +144,7 @@ export default function Hero({ onOpenPledgeModal }) {
                     {lang === 'kn' ? t('candidateNameKn') : t('candidateName')}
                   </h2>
                   <p className={styles.candidateRolePill}>
-                    {lang === 'kn' ? 'ಶಿಕ್ಷಣ ತಜ್ಞರು & ಅಧಿಕೃತ ಎನ್‌ಡಿಎ ಅಭ್ಯರ್ಥಿ' : 'Educationist & Official BJP/NDA Candidate'}
+                    {lang === 'kn' ? 'ಶಿಕ್ಷಣ ತಜ್ಞರು & ಅಧಿಕೃತ ಎನ್‌ಡಿಎ ಅಭ್ಯರ್ಥಿ' : 'Educationist & Official NDA Candidate'}
                   </p>
                 </div>
 

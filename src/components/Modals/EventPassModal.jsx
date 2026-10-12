@@ -377,7 +377,7 @@ export default function EventPassModal({ eventData, onClose }) {
       <div class="appeal-card">
         <img src="/images/new_Images/Candidate Profile Namaste1.png" alt="K. M. Suresh" class="appeal-img" />
         <div>
-          <div class="appeal-pill">BJP / NDA • MLC 2026</div>
+          <div class="appeal-pill">NDA • MLC 2026</div>
           <div class="appeal-name">${lang === 'kn' ? 'ಕೆ. ಎಂ. ಸುರೇಶ್ (K. M. Suresh)' : 'K. M. Suresh'}</div>
           <div class="appeal-msg">${lang === 'kn' ? 'ಕರ್ನಾಟಕ ಆಗ್ನೇಯ ಪದವೀಧರ ಕ್ಷೇತ್ರಕ್ಕೆ ನಿಮ್ಮ 1ನೇ ಪ್ರಾಶಸ್ತ್ಯದ ಮತ ನೀಡಿ ಆಶೀರ್ವದಿಸಿ!' : "Cast your 1st Preference Vote for K. M. Suresh — South-East Graduates' MLC!"}</div>
           <div class="appeal-sub">Dedicated to youth employability, corporate job melas & free competitive exam guidance across Karnataka.</div>
@@ -699,14 +699,14 @@ export default function EventPassModal({ eventData, onClose }) {
                     <div className={styles.appealPortraitWrap}>
                       <img
                         src="/images/new_Images/Candidate Profile Namaste1.png"
-                        alt="K. M. Suresh BJP MLC Candidate"
+                        alt="K. M. Suresh NDA MLC Candidate"
                         className={styles.appealPortraitImg}
                       />
                     </div>
                     <div className={styles.appealContent}>
                       <div className={styles.appealBadge}>
                         <span className="material-symbols-outlined" style={{ fontSize: '12px' }}>how_to_vote</span>
-                        <span>BJP / NDA • MLC 2026</span>
+                        <span>NDA • MLC 2026</span>
                       </div>
                       <div className={styles.appealCandidateName}>
                         {lang === 'kn' ? 'ಕೆ. ಎಂ. ಸುರೇಶ್' : 'K. M. Suresh'}

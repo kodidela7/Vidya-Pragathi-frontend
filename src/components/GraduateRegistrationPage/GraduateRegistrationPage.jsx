@@ -421,16 +421,16 @@ export default function GraduateRegistrationPage({ onBackToHome, onOpenJobs }) {
               <div className={styles.tricolorBorderTop}></div>
 
               <div className={styles.appealGrid}>
-                {/* Left: Candidate Portrait with BJP Flag & Badges */}
+                {/* Left: Candidate Portrait with NDA Flag & Badges */}
                 <div className={styles.appealPortraitCol}>
                   <div className={styles.portraitFrame}>
                     <img
                       src="/images/new_Images/Candidate Profile Namaste1.png"
-                      alt="K. M. Suresh BJP MLC Candidate"
+                      alt="K. M. Suresh NDA MLC Candidate"
                       className={styles.portraitImg}
                     />
                     <div className={styles.officialNdaBadge}>
-                      <span>BJP / NDA</span>
+                      <span>NDA</span>
                       <span className={styles.mlcYearBadge}>MLC 2026</span>
                     </div>
                   </div>
@@ -454,8 +454,8 @@ export default function GraduateRegistrationPage({ onBackToHome, onOpenJobs }) {
 
                   <p className={styles.candidateRoleSubtitle}>
                     {lang === 'kn'
-                      ? 'ಶಿಕ್ಷಣ ತಜ್ಞರು & ಅಧಿಕೃತ ಬಿಜೆಪಿ / ಎನ್‌ಡಿಎ ಅಭ್ಯರ್ಥಿ'
-                      : 'Eminent Educationist & Official BJP / NDA Candidate'}
+                      ? 'ಶಿಕ್ಷಣ ತಜ್ಞರು & ಅಧಿಕೃತ ಎನ್‌ಡಿಎ ಅಭ್ಯರ್ಥಿ'
+                      : 'Eminent Educationist & Official NDA Candidate'}
                   </p>
 
                   <div className={styles.voteAppealBanner}>

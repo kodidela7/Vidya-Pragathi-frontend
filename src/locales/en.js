@@ -24,8 +24,11 @@ export const en = {
   heroQuote: "\"Nava Karnataka - Yuva Shakthi! Dedicated to the bright future, employment, and dignity of our graduates.\"",
   heroDescription: "A proactive Karnataka initiative delivering transparent private & public recruitment drives, free AI skills certification, taluk-level KPSC study hubs, and steadfast legislative representation.",
   ctaExploreJobs: "Explore Opportunities",
-  ctaPledgeHero: "Pledge Vote for BJP",
+  ctaPledgeHero: "Pledge Vote for NDA",
   ctaCareerIntakeHero: "Graduate Registration",
+  heroRegisterTitle: "Graduate Career Registration",
+  heroRegisterDesc: "Register your profile for job opportunities, career support, and future updates.",
+  heroRegisterBtnText: "Register Here",
 
   // Hero Delivery Pillars (Balanced across large screens)
   pillar1Title: "10,000+ Placements",
@@ -39,7 +42,7 @@ export const en = {
 
   // Candidate Hero Box
   candidateBadge: "Vidhana Parishat NDA Candidate",
-  candidateOfficial: "Official Candidate (BJP / NDA)",
+  candidateOfficial: "Official Candidate (NDA)",
   candidateName: "K. M. Suresh",
   candidateNameKn: "ಕೆ.ಎಂ. ಸುರೇಶ್",
   candidateRole: "Educationist & MLC Candidate",
@@ -139,10 +142,10 @@ export const en = {
   regBtnAnother: "Register Another Graduate",
 
   // Volunteer Taskforce & Campaign Pledge Section
-  volunteerTag: "BJP Youth Campaign Taskforce",
+  volunteerTag: "NDA Youth Campaign Taskforce",
   volunteerTitle: "Vote for K. M. Suresh for the Comprehensive Development of South-East Graduates' Constituency — Be Part of This Era of Progress",
   volunteerDesc: "A resolute administration under capable leadership paves the way for a radiant future and a strong nation. Join hands with us today in this mission.",
-  btnVolunteerPledge: "Pledge My Vote for BJP",
+  btnVolunteerPledge: "Pledge My Vote for NDA",
   btnVolunteerJoin: "Sign Up as Constituency Volunteer",
 
   // Helpdesk Section
@@ -159,12 +162,12 @@ export const en = {
   helpdeskSuccessNotice: "We have received your request. Our team will review it and get back to you shortly.",
 
   // Footer
-  footerDesc: "Bharatiya Janata Party (BJP) Civic & Career Portal for Karnataka South-East Graduates' Constituency. Dedicated to education, skill development, and youth empowerment.",
+  footerDesc: "National Democratic Alliance (NDA) Civic & Career Portal for Karnataka South-East Graduates' Constituency. Dedicated to education, skill development, and youth empowerment.",
   footerSecretariats: "Constituency Offices",
   footerServices: "Public Career Services",
   footerContact: "Constituency Helpdesk",
   footerPhone: "graduatehelpdesk@gmail.com",
   footerHours: "Official email support for South-East Karnataka Graduates",
   footerEmail: "graduatehelpdesk@gmail.com",
-  footerCopyright: "© 2026 BJP Karnataka South-East Graduates' Constituency Initiative. All Rights Reserved."
+  footerCopyright: "© 2026 NDA Karnataka South-East Graduates' Constituency Initiative. All Rights Reserved."
 };

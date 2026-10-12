@@ -40,7 +40,7 @@ export default function InitiativeProfile({ onOpenPledgeModal, onOpenRegister })
               <div className={styles.leadershipMiniBanner}>
                 <img
                   src="/images/new_Images/Leadership Mini Ribbon1.png"
-                  alt="BJP Karnataka & National Leadership"
+                  alt="NDA Karnataka & National Leadership"
                   className={styles.miniBannerImg}
                 />
               </div>

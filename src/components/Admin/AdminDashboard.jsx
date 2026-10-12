@@ -688,7 +688,7 @@ export default function AdminDashboard({ token, onLogout }) {
         </div>
 
         <div className={styles.headerRight}>
-          <div className={styles.mlcProfile} title="K.M. Suresh — BJP Candidate">
+          <div className={styles.mlcProfile} title="K.M. Suresh — NDA Candidate">
             <img
               src="/images/new_Images/Candidate Avatar.png"
               alt="K.M. Suresh MLC Candidate"
@@ -699,7 +699,7 @@ export default function AdminDashboard({ token, onLogout }) {
             />
             <div className={styles.mlcDetails}>
               <span className={styles.mlcName}>(ಕೆ.ಎಂ. ಸುರೇಶ್)</span>
-              <span className={styles.mlcSub}>BJP Candidate • South-East Graduates</span>
+              <span className={styles.mlcSub}>NDA Candidate • South-East Graduates</span>
             </div>
           </div>
         </div>

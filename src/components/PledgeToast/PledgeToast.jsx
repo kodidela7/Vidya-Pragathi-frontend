@@ -34,8 +34,8 @@ export default function PledgeToast({ isOpen, onClose }) {
           </h4>
           <p className={styles.toastMsg}>
             {lang === 'kn'
-              ? '2026ರ ವಿಧಾನ ಪರಿಷತ್ ಚುನಾವಣೆಯಲ್ಲಿ ಕೆ.ಎಂ. ಸುರೇಶ್ ಹಾಗೂ ಬಿಜೆಪಿಗೆ ನಿಮ್ಮ ಮತ ಬೆಂಬಲ ಯಶಸ್ವಿಯಾಗಿ ದಾಖಲಾಗಿದೆ.'
-              : 'Your pledge of support for K. M. Suresh & BJP in the 2026 South-East Graduates\' Constituency has been recorded.'}
+              ? '2026ರ ವಿಧಾನ ಪರಿಷತ್ ಚುನಾವಣೆಯಲ್ಲಿ ಕೆ.ಎಂ. ಸುರೇಶ್ ಹಾಗೂ ಎನ್‌ಡಿಎಗೆ ನಿಮ್ಮ ಮತ ಬೆಂಬಲ ಯಶಸ್ವಿಯಾಗಿ ದಾಖಲಾಗಿದೆ.'
+              : 'Your pledge of support for K. M. Suresh & NDA in the 2026 South-East Graduates\' Constituency has been recorded.'}
           </p>
         </div>
 

@@ -91,7 +91,7 @@ export default function HelpdeskSection() {
     } catch (err) {
       console.warn('API helpdesk fallback:', err);
       // Fallback ticket generator
-      const ticketId = `GR-2026-BJP-${Math.floor(1000 + Math.random() * 9000)}`;
+      const ticketId = `GR-2026-NDA-${Math.floor(1000 + Math.random() * 9000)}`;
       setGeneratedTicket(ticketId);
     } finally {
       setIsSubmitting(false);
@@ -195,14 +195,14 @@ export default function HelpdeskSection() {
                     <div className={styles.appealPortraitWrap}>
                       <img
                         src="/images/new_Images/Candidate Profile Namaste1.png"
-                        alt="K. M. Suresh BJP MLC Candidate"
+                        alt="K. M. Suresh NDA MLC Candidate"
                         className={styles.appealPortraitImg}
                       />
                     </div>
                     <div className={styles.appealContent}>
                       <div className={styles.appealCandidateBadge}>
                         <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>how_to_vote</span>
-                        <span>BJP / NDA • MLC 2026</span>
+                        <span>NDA • MLC 2026</span>
                       </div>
                       <div className={styles.appealCandidateName}>
                         {lang === 'kn' ? 'ಕೆ. ಎಂ. ಸುರೇಶ್' : 'K. M. Suresh'}

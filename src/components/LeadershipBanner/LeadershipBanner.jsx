@@ -52,7 +52,7 @@ export default function LeadershipBanner({ onOpenPledgeModal, onOpenRegister }) 
           <div className={styles.bannerMedia}>
             <img
               src="/images/new_Images/Leadership Campaign Poster1.png"
-              alt="Prime Minister Narendra Modi and BJP Karnataka Leadership endorsing K.M. Suresh for 2026 MLC"
+              alt="Prime Minister Narendra Modi and NDA Karnataka Leadership endorsing K.M. Suresh for 2026 MLC"
               className={styles.bannerImg}
               loading="lazy"
             />

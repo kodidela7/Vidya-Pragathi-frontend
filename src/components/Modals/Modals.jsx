@@ -86,7 +86,7 @@ export function EventRsvpModal({ eventData, onClose }) {
 }
 
 /**
- * PledgeModal - To pledge vote for BJP / K.M. Suresh & join volunteer taskforce
+ * PledgeModal - To pledge vote for NDA / K.M. Suresh & join volunteer taskforce
  */
 export function PledgeModal({ isOpen, onClose }) {
   const [pledgeDone, setPledgeDone] = useState(false);
@@ -115,7 +115,7 @@ export function PledgeModal({ isOpen, onClose }) {
           district,
           taluk: taluk.trim(),
           volunteerOptIn: joinVolunteer,
-          supportNote: joinVolunteer ? 'Pledged support + Youth Taskforce' : 'Pledged vote for BJP 2026'
+          supportNote: joinVolunteer ? 'Pledged support + Youth Taskforce' : 'Pledged vote for NDA 2026'
         })
       });
     } catch (err) {
@@ -148,7 +148,7 @@ export function PledgeModal({ isOpen, onClose }) {
         {pledgeDone ? (
           <div className={styles.pledgeSuccessAlert}>
             <span className="material-symbols-outlined" style={{ fontSize: '36px', color: '#16a34a', display: 'block', margin: '0 auto 0.5rem' }}>check_circle</span>
-            <p>ಧನ್ಯವಾದಗಳು! Thank you for pledging your support for <strong>K. M. Suresh (ಕೆ.ಎಂ. ಸುರೇಶ್)</strong> and BJP Karnataka in the 2026 MLC Graduate Constituency Election.</p>
+            <p>ಧನ್ಯವಾದಗಳು! Thank you for pledging your support for <strong>K. M. Suresh (ಕೆ.ಎಂ. ಸುರೇಶ್)</strong> and NDA Karnataka in the 2026 MLC Graduate Constituency Election.</p>
             <p style={{ marginTop: '0.4rem', fontSize: '0.75rem' }}>Your support has been recorded in the constituency youth registry. Our Taluk team will connect with you via WhatsApp.</p>
             <button className={styles.confirmBtn} style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }} onClick={handleClose}>Complete</button>
           </div>
