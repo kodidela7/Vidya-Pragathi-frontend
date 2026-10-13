@@ -169,5 +169,28 @@ export const en = {
   footerPhone: "graduatehelpdesk@gmail.com",
   footerHours: "Official email support for South-East Karnataka Graduates",
   footerEmail: "graduatehelpdesk@gmail.com",
-  footerCopyright: "© 2026 NDA Karnataka South-East Graduates' Constituency Initiative. All Rights Reserved."
+  footerCopyright: "© 2026 NDA Karnataka South-East Graduates' Constituency Initiative. All Rights Reserved.",
+
+  // AI & Digital Skills Portal
+  skillsPortalTag: "Constituency Digital Upskilling Initiative",
+  skillsPortalTitle: "AI & Emerging Digital Skills Pathways",
+  skillsPortalSubtitle: "Future-ready practical skill tracks planned for graduates across Tumakuru, Kolar, Chikkaballapur, Chitradurga, and Davanagere.",
+  skillsDisclaimerTitle: "Official Status: Upcoming Cohorts (To Be Announced Soon)",
+  skillsDisclaimerDesc: "These skill tracks and workshops are currently in the planning and framework finalization stage and are not yet actively underway. Cohort dates, mentor rosters, and district centers will be officially announced soon. Register your profile to secure early notification and batch updates.",
+  skillsFilterAll: "All Tracks",
+  skillsCardBadgeAnnouncing: "Announcing Soon",
+  skillsCardBtnRegisterInterest: "Register for Cohort Updates",
+  skillsRoadmapHeading: "How Our Upcoming Cohorts Will Work",
+  skillsRoadmapSub: "A transparent 3-step pathway from graduate profile submission to district sessions.",
+  skillsFaqHeading: "Frequently Asked Questions",
+  skillsBackToHome: "Back to Home",
+  skillsBreadcrumb: "AI & Digital Skills",
+  skillsTargetAudience: "Eligibility / Audience",
+  skillsDistrictsCoverage: "Constituency Districts",
+  skillsPlannedDuration: "Schedule Status",
+  skillsProgramFee: "Fee Structure",
+  skillsCurriculumHighlights: "Curriculum Highlights (Planned)",
+  skillsCtaBannerTitle: "Be the First to Know When Batches Are Announced",
+  skillsCtaBannerDesc: "Register your graduation degree and district now. When the syllabus and schedule are published, you will receive direct WhatsApp/SMS updates."
 };
+

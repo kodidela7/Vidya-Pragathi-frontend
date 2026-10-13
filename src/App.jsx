@@ -13,6 +13,7 @@ import PledgeToast from './components/PledgeToast/PledgeToast';
 import AdminPortal from './components/Admin/AdminPortal';
 import JobsPortal from './components/JobsPortal/JobsPortal';
 import GraduateRegistrationPage from './components/GraduateRegistrationPage/GraduateRegistrationPage';
+import SkillsPortal from './components/SkillsPortal/SkillsPortal';
 
 export default function App() {
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -43,6 +44,11 @@ export default function App() {
     return window.location.pathname.startsWith('/jobs') || window.location.hash === '#jobs';
   });
 
+  // Check if initial route is /skills or #skills
+  const [isSkillsView, setIsSkillsView] = useState(() => {
+    return window.location.pathname.startsWith('/skills') || window.location.hash === '#skills';
+  });
+
   // Check if initial route is /register or #register
   const [isRegisterView, setIsRegisterView] = useState(() => {
     return window.location.pathname.startsWith('/register') || window.location.hash === '#register' || window.location.hash === '#registration';
@@ -55,9 +61,11 @@ export default function App() {
     const handleLocationChange = () => {
       const isNowAdmin = window.location.pathname.startsWith('/admin') || window.location.hash === '#admin';
       const isNowJobs = window.location.pathname.startsWith('/jobs') || window.location.hash === '#jobs';
+      const isNowSkills = window.location.pathname.startsWith('/skills') || window.location.hash === '#skills';
       const isNowRegister = window.location.pathname.startsWith('/register') || window.location.hash === '#register' || window.location.hash === '#registration';
       setIsAdminView(isNowAdmin);
       setIsJobsView(isNowJobs);
+      setIsSkillsView(isNowSkills);
       setIsRegisterView(isNowRegister);
       window.scrollTo(0, 0);
       document.documentElement.scrollTop = 0;
@@ -100,6 +108,22 @@ export default function App() {
     document.body.scrollTop = 0;
   };
 
+  const openSkillsView = () => {
+    window.location.hash = 'skills';
+    setIsSkillsView(true);
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
+  const closeSkillsView = () => {
+    window.location.hash = '';
+    setIsSkillsView(false);
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
   const openRegisterView = () => {
     window.location.hash = 'register';
     setIsRegisterView(true);
@@ -126,6 +150,7 @@ export default function App() {
         <Header
           onOpenAdmin={openAdminView}
           onOpenJobs={openJobsView}
+          onOpenSkills={openSkillsView}
           onOpenRegister={openRegisterView}
           onBackToHome={closeJobsView}
         />
@@ -139,12 +164,40 @@ export default function App() {
     );
   }
 
+  if (isSkillsView) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <Header
+          onOpenAdmin={openAdminView}
+          onOpenJobs={openJobsView}
+          onOpenSkills={openSkillsView}
+          onOpenRegister={openRegisterView}
+          onBackToHome={closeSkillsView}
+        />
+        <main style={{ flex: 1 }}>
+          <SkillsPortal
+            onBackToHome={closeSkillsView}
+            onOpenRegister={openRegisterView}
+            onOpenJobs={openJobsView}
+          />
+        </main>
+        <Footer
+          onOpenAdmin={openAdminView}
+          onOpenJobs={openJobsView}
+          onOpenSkills={openSkillsView}
+          onOpenRegister={openRegisterView}
+        />
+      </div>
+    );
+  }
+
   if (isRegisterView) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Header
           onOpenAdmin={openAdminView}
           onOpenJobs={openJobsView}
+          onOpenSkills={openSkillsView}
           onOpenRegister={openRegisterView}
           onBackToHome={closeRegisterView}
         />
@@ -157,6 +210,7 @@ export default function App() {
         <Footer
           onOpenAdmin={openAdminView}
           onOpenJobs={openJobsView}
+          onOpenSkills={openSkillsView}
           onOpenRegister={openRegisterView}
         />
       </div>
@@ -169,6 +223,7 @@ export default function App() {
       <Header
         onOpenAdmin={openAdminView}
         onOpenJobs={openJobsView}
+        onOpenSkills={openSkillsView}
         onOpenRegister={openRegisterView}
       />
 
@@ -185,6 +240,7 @@ export default function App() {
         {/* Curated Career Drives, AI Skilling, Exams & Grants Matrix (Default 4, with Show More) */}
         <OpportunityMatrix
           onOpenJobs={openJobsView}
+          onOpenSkills={openSkillsView}
         />
 
         {/* Candidate Profile, Educational Track Record & 4-Pillar Manifesto */}
@@ -209,6 +265,7 @@ export default function App() {
       <Footer
         onOpenAdmin={openAdminView}
         onOpenJobs={openJobsView}
+        onOpenSkills={openSkillsView}
         onOpenRegister={openRegisterView}
       />
 

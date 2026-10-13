@@ -171,22 +171,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
 
   return (
     <div className={styles.jobsPortalLayout}>
-      {/* 1. Sub-Header: Back to Home Navigation Bar */}
-      <div className={styles.portalSubHeader}>
-        <div className={`site-container ${styles.subHeaderInner}`}>
-          <button
-            type="button"
-            className={styles.backHomeBtn}
-            onClick={onBackToHome}
-            title="Return to Main Portal"
-          >
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_back</span>
-            <span>{lang === 'kn' ? 'ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ' : 'Back to Home'}</span>
-          </button>
-        </div>
-      </div>
-
-      {/* 2. Opportunities Banner */}
+      {/* Opportunities Banner */}
       <header className={styles.portalHero}>
         <div className={`site-container ${styles.heroContent}`}>
           <h1 className={styles.heroTitle}>

@@ -169,5 +169,28 @@ export const kn = {
   footerPhone: "graduatehelpdesk@gmail.com",
   footerHours: "ಆಗ್ನೇಯ ಪದವೀಧರರಿಗೆ ಅಧಿಕೃತ ಇಮೇಲ್ ಸಹಾಯವಾಣಿ",
   footerEmail: "graduatehelpdesk@gmail.com",
-  footerCopyright: "© 2026 ಎನ್‌ಡಿಎ ಕರ್ನಾಟಕ ಆಗ್ನೇಯ ಪದವೀಧರರ ಕ್ಷೇತ್ರ ಅಭಿಯಾನ. ಸರ್ವ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ."
+  footerCopyright: "© 2026 ಎನ್‌ಡಿಎ ಕರ್ನಾಟಕ ಆಗ್ನೇಯ ಪದವೀಧರರ ಕ್ಷೇತ್ರ ಅಭಿಯಾನ. ಸರ್ವ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.",
+
+  // AI & Digital Skills Portal
+  skillsPortalTag: "ಕ್ಷೇತ್ರದ ಡಿಜಿಟಲ್ ಕೌಶಲ್ಯ ಸಬಲೀಕರಣ ಉಪಕ್ರಮ",
+  skillsPortalTitle: "ಎಐ & ಡಿಜಿಟಲ್ ಕೌಶಲ್ಯ ಕಲಿಕಾ ಮಾರ್ಗಗಳು",
+  skillsPortalSubtitle: "ತುಮಕೂರು, ಕೋಲಾರ, ಚಿಕ್ಕಬಳ್ಳಾಪುರ, ಚಿತ್ರದುರ್ಗ ಮತ್ತು ದಾವಣಗೆರೆ ಜಿಲ್ಲೆಗಳ ಪದವೀಧರರಿಗಾಗಿ ಮುಂಬರುವ ಪ್ರಾಯೋಗಿಕ ಕೌಶಲ್ಯ ತರಬೇತಿಗಳು.",
+  skillsDisclaimerTitle: "ಅಧಿಕೃತ ಸ್ಥಿತಿ: ಮುಂಬರುವ ತರಬೇತಿಗಳು (ಶೀಘ್ರದಲ್ಲೇ ಪ್ರಕಟಿಸಲಾಗುವುದು)",
+  skillsDisclaimerDesc: "ಈ ಕೌಶಲ್ಯ ತರಬೇತಿಗಳು ಮತ್ತು ಕಾರ್ಯಾಗಾರಗಳು ಪ್ರಸ್ತುತ ಯೋಜನಾ ಹಂತದಲ್ಲಿದ್ದು, ತರಬೇತಿ ವೇಳಾಪಟ್ಟಿ, ದಿನಾಂಕಗಳು ಮತ್ತು ಜಿಲ್ಲಾ ಕೇಂದ್ರಗಳನ್ನು ಶೀಘ್ರದಲ್ಲೇ ಅಧಿಕೃತವಾಗಿ ಪ್ರಕಟಿಸಲಾಗುವುದು. ದಿನಾಂಕ ಪ್ರಕಟವಾದ ತಕ್ಷಣ ಮುಂಚಿತ ಅಧಿಸೂಚನೆ ಪಡೆಯಲು ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ನೋಂದಾಯಿಸಿ.",
+  skillsFilterAll: "ಎಲ್ಲಾ ತರಬೇತಿಗಳು",
+  skillsCardBadgeAnnouncing: "ಶೀಘ್ರದಲ್ಲೇ ಪ್ರಕಟಿಸಲಾಗುವುದು",
+  skillsCardBtnRegisterInterest: "ಅಪ್‌ಡೇಟ್‌ಗಾಗಿ ನೋಂದಾಯಿಸಿ",
+  skillsRoadmapHeading: "ಮುಂಬರುವ ತರಬೇತಿ ಪ್ರಕ್ರಿಯೆ ಹೇಗೆ ನಡೆಯುತ್ತದೆ?",
+  skillsRoadmapSub: "ಪ್ರೊಫೈಲ್ ನೋಂದಣಿಯಿಂದ ಹಿಡಿದು ಜಿಲ್ಲಾ ಕಾರ್ಯಾಗಾರಗಳವರೆಗೆ 3 ಸರಳ ಹಂತಗಳು.",
+  skillsFaqHeading: "ಪದೇ ಪದೇ ಕೇಳಲಾಗುವ ಪ್ರಶ್ನೆಗಳು (FAQ)",
+  skillsBackToHome: "ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ",
+  skillsBreadcrumb: "ಎಐ & ಡಿಜಿಟಲ್ ಕೌಶಲ್ಯ",
+  skillsTargetAudience: "ಅರ್ಹತೆ / ಗುರಿ ಗುಂಪು",
+  skillsDistrictsCoverage: "ಕ್ಷೇತ್ರದ ಜಿಲ್ಲೆಗಳು",
+  skillsPlannedDuration: "ವೇಳಾಪಟ್ಟಿ ಸ್ಥಿತಿ",
+  skillsProgramFee: "ಶುಲ್ಕ ವಿವರ",
+  skillsCurriculumHighlights: "ಪಠ್ಯಕ್ರಮದ ಮುಖ್ಯಾಂಶಗಳು (ಯೋಜಿತ)",
+  skillsCtaBannerTitle: "ತರಬೇತಿ ಪ್ರಕಟವಾದ ತಕ್ಷಣ ಮೊದಲಿಗೆ ಮಾಹಿತಿ ಪಡೆಯಿರಿ",
+  skillsCtaBannerDesc: "ನಿಮ್ಮ ಪದವಿ ಮತ್ತು ಜಿಲ್ಲೆಯನ್ನು ನೋಂದಾಯಿಸಿ. ಪಠ್ಯಕ್ರಮ ಮತ್ತು ದಿನಾಂಕಗಳು ಅಂತಿಮಗೊಂಡ ತಕ್ಷಣ ನಿಮಗೆ ವಾಟ್ಸಾಪ್/ಎಸ್‌ಎಂಎಸ್ ಮೂಲಕ ಮಾಹಿತಿ ತಲುಪಲಿದೆ."
 };
+

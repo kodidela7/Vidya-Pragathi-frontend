@@ -164,22 +164,6 @@ export default function GraduateRegistrationPage({ onBackToHome, onOpenJobs }) {
   return (
     <div className={styles.pageWrapper}>
       <div className="site-container">
-        {/* Navigation Breadcrumb */}
-        <div className={styles.breadcrumbBar}>
-          <button
-            type="button"
-            className={styles.backHomeBtn}
-            onClick={onBackToHome}
-          >
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_back</span>
-            <span>{lang === 'kn' ? 'ಮುಖ್ಯ ಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ' : 'Back to Home'}</span>
-          </button>
-          <span className={styles.breadcrumbDivider}>/</span>
-          <span className={styles.breadcrumbCurrent}>
-            {lang === 'kn' ? 'ಪದವೀಧರ ನೋಂದಣಿ' : 'Graduate Career Desk Registration'}
-          </span>
-        </div>
-
         {!submittedToken ? (
           /* =========================================================
              1. CLEAN, MINIMAL REGISTRATION FORM CARD

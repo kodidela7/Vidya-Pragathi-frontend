@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import styles from './Footer.module.css';
 
-export default function Footer({ onOpenAdmin, onOpenJobs, onOpenRegister }) {
+export default function Footer({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenRegister }) {
   const { lang, t } = useLanguage();
 
   return (
@@ -47,7 +47,7 @@ export default function Footer({ onOpenAdmin, onOpenJobs, onOpenRegister }) {
             <ul className={styles.linksList}>
               <li><a href="#jobs" onClick={(e) => { if (onOpenJobs) { e.preventDefault(); onOpenJobs(); } }}>District Opportunity Pipelines</a></li>
               <li><a href="#register" onClick={(e) => { if (onOpenRegister) { e.preventDefault(); onOpenRegister(); } }}>Graduate Registration</a></li>
-              <li><a href="#matrix">KDEM & Emerging AI Skilling</a></li>
+              <li><a href="#skills" onClick={(e) => { if (onOpenSkills) { e.preventDefault(); onOpenSkills(); } }}>KDEM & Emerging AI Skilling</a></li>
               <li><a href="#matrix">Free Taluk KPSC Coaching</a></li>
               <li><a href="#events">Mega Campus Job Melas 2026</a></li>
               <li><a href="#helpdesk">Constituency Grievance Redressal</a></li>

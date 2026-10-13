@@ -3,47 +3,7 @@
 .pageWrapper {
   background-color: #f8fafc;
   min-height: calc(100vh - 120px);
-  padding: 1.5rem 0 3.5rem;
-}
-
-/* Breadcrumb Navigation */
-.breadcrumbBar {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.85rem;
-}
-
-.backHomeBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  padding: 0.4rem 0.75rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #334155;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.backHomeBtn:hover {
-  background: #f1f5f9;
-  color: #0f172a;
-  border-color: #cbd5e1;
-}
-
-.breadcrumbDivider {
-  color: #94a3b8;
-  font-size: 0.85rem;
-}
-
-.breadcrumbCurrent {
-  color: #64748b;
-  font-weight: 500;
+  padding: 2.5rem 0 3.5rem;
 }
 
 /* Registration Main Container */
