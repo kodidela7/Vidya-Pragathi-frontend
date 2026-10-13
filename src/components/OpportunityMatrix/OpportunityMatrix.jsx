@@ -3,7 +3,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { opportunitiesData } from '../../data/opportunitiesData';
 import styles from './OpportunityMatrix.module.css';
 
-export default function OpportunityMatrix({ activeDistrict = 'all', onOpenJobs, onOpenSkills }) {
+export default function OpportunityMatrix({ activeDistrict = 'all', onOpenJobs, onOpenSkills, onOpenLibrary }) {
   const { lang, t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
@@ -301,7 +301,13 @@ export default function OpportunityMatrix({ activeDistrict = 'all', onOpenJobs, 
                         <button
                           type="button"
                           className={styles.applyBtn}
-                          onClick={item.category === 'ai' && onOpenSkills ? onOpenSkills : onOpenJobs}
+                          onClick={
+                            item.category === 'ai' && onOpenSkills
+                              ? onOpenSkills
+                              : (item.category === 'exams' || item.category === 'kpsc') && onOpenLibrary
+                              ? onOpenLibrary
+                              : onOpenJobs
+                          }
                           aria-label={`View opportunities for ${title}`}
                         >
                           <span>{t('btnApply')}</span>
