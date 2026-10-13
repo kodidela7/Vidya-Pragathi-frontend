@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import styles from './Footer.module.css';
 
-export default function Footer({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenRegister }) {
+export default function Footer({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenLibrary, onOpenRegister }) {
   const { lang, t } = useLanguage();
 
   return (
@@ -48,7 +48,7 @@ export default function Footer({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenRe
               <li><a href="#jobs" onClick={(e) => { if (onOpenJobs) { e.preventDefault(); onOpenJobs(); } }}>District Opportunity Pipelines</a></li>
               <li><a href="#register" onClick={(e) => { if (onOpenRegister) { e.preventDefault(); onOpenRegister(); } }}>Graduate Registration</a></li>
               <li><a href="#skills" onClick={(e) => { if (onOpenSkills) { e.preventDefault(); onOpenSkills(); } }}>KDEM & Emerging AI Skilling</a></li>
-              <li><a href="#matrix">Free Taluk KPSC Coaching</a></li>
+              <li><a href="#library" onClick={(e) => { if (onOpenLibrary) { e.preventDefault(); onOpenLibrary(); } }}>{lang === 'kn' ? 'ಉಚಿತ ಕೆಪಿಎಸ್‌ಸಿ & ಇ-ಗ್ರಂಥಾಲಯ' : 'Free KPSC Hub & E-Library'}</a></li>
               <li><a href="#events">Mega Campus Job Melas 2026</a></li>
               <li><a href="#helpdesk">Constituency Grievance Redressal</a></li>
             </ul>

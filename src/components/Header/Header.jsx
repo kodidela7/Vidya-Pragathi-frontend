@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import styles from './Header.module.css';
 
-export default function Header({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenRegister, onBackToHome }) {
+export default function Header({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenLibrary, onOpenRegister, onBackToHome }) {
   const { lang, toggleLang, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -103,6 +103,16 @@ export default function Header({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenRe
               {t('navSkills')}
             </a>
             <a
+              href="#library"
+              className={styles.navLink}
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenLibrary) onOpenLibrary();
+              }}
+            >
+              {t('navLibrary')}
+            </a>
+            <a
               href="#events"
               className={styles.navLink}
               onClick={() => {
@@ -166,6 +176,17 @@ export default function Header({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenRe
               }}
             >
               <span>{t('navSkills')}</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
+            </a>
+            <a
+              href="#library"
+              className={styles.mobileNavLink}
+              onClick={() => {
+                closeMenu();
+                if (onOpenLibrary) onOpenLibrary();
+              }}
+            >
+              <span>{t('navLibrary')}</span>
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
             </a>
             <a

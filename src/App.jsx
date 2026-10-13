@@ -14,6 +14,7 @@ import AdminPortal from './components/Admin/AdminPortal';
 import JobsPortal from './components/JobsPortal/JobsPortal';
 import GraduateRegistrationPage from './components/GraduateRegistrationPage/GraduateRegistrationPage';
 import SkillsPortal from './components/SkillsPortal/SkillsPortal';
+import ELibraryPortal from './components/ELibraryPortal/ELibraryPortal';
 
 export default function App() {
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -49,6 +50,11 @@ export default function App() {
     return window.location.pathname.startsWith('/skills') || window.location.hash === '#skills';
   });
 
+  // Check if initial route is /library or #library
+  const [isLibraryView, setIsLibraryView] = useState(() => {
+    return window.location.pathname.startsWith('/library') || window.location.hash === '#library' || window.location.hash === '#elibrary';
+  });
+
   // Check if initial route is /register or #register
   const [isRegisterView, setIsRegisterView] = useState(() => {
     return window.location.pathname.startsWith('/register') || window.location.hash === '#register' || window.location.hash === '#registration';
@@ -62,10 +68,12 @@ export default function App() {
       const isNowAdmin = window.location.pathname.startsWith('/admin') || window.location.hash === '#admin';
       const isNowJobs = window.location.pathname.startsWith('/jobs') || window.location.hash === '#jobs';
       const isNowSkills = window.location.pathname.startsWith('/skills') || window.location.hash === '#skills';
+      const isNowLibrary = window.location.pathname.startsWith('/library') || window.location.hash === '#library' || window.location.hash === '#elibrary';
       const isNowRegister = window.location.pathname.startsWith('/register') || window.location.hash === '#register' || window.location.hash === '#registration';
       setIsAdminView(isNowAdmin);
       setIsJobsView(isNowJobs);
       setIsSkillsView(isNowSkills);
+      setIsLibraryView(isNowLibrary);
       setIsRegisterView(isNowRegister);
       window.scrollTo(0, 0);
       document.documentElement.scrollTop = 0;
@@ -124,6 +132,22 @@ export default function App() {
     document.body.scrollTop = 0;
   };
 
+  const openLibraryView = () => {
+    window.location.hash = 'library';
+    setIsLibraryView(true);
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
+  const closeLibraryView = () => {
+    window.location.hash = '';
+    setIsLibraryView(false);
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
   const openRegisterView = () => {
     window.location.hash = 'register';
     setIsRegisterView(true);
@@ -151,6 +175,7 @@ export default function App() {
           onOpenAdmin={openAdminView}
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
+          onOpenLibrary={openLibraryView}
           onOpenRegister={openRegisterView}
           onBackToHome={closeJobsView}
         />
@@ -171,6 +196,7 @@ export default function App() {
           onOpenAdmin={openAdminView}
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
+          onOpenLibrary={openLibraryView}
           onOpenRegister={openRegisterView}
           onBackToHome={closeSkillsView}
         />
@@ -185,6 +211,35 @@ export default function App() {
           onOpenAdmin={openAdminView}
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
+          onOpenLibrary={openLibraryView}
+          onOpenRegister={openRegisterView}
+        />
+      </div>
+    );
+  }
+
+  if (isLibraryView) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <Header
+          onOpenAdmin={openAdminView}
+          onOpenJobs={openJobsView}
+          onOpenSkills={openSkillsView}
+          onOpenLibrary={openLibraryView}
+          onOpenRegister={openRegisterView}
+          onBackToHome={closeLibraryView}
+        />
+        <main style={{ flex: 1 }}>
+          <ELibraryPortal
+            onOpenRegister={openRegisterView}
+            onOpenJobs={openJobsView}
+          />
+        </main>
+        <Footer
+          onOpenAdmin={openAdminView}
+          onOpenJobs={openJobsView}
+          onOpenSkills={openSkillsView}
+          onOpenLibrary={openLibraryView}
           onOpenRegister={openRegisterView}
         />
       </div>
@@ -198,6 +253,7 @@ export default function App() {
           onOpenAdmin={openAdminView}
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
+          onOpenLibrary={openLibraryView}
           onOpenRegister={openRegisterView}
           onBackToHome={closeRegisterView}
         />
@@ -211,6 +267,7 @@ export default function App() {
           onOpenAdmin={openAdminView}
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
+          onOpenLibrary={openLibraryView}
           onOpenRegister={openRegisterView}
         />
       </div>
@@ -224,6 +281,7 @@ export default function App() {
         onOpenAdmin={openAdminView}
         onOpenJobs={openJobsView}
         onOpenSkills={openSkillsView}
+        onOpenLibrary={openLibraryView}
         onOpenRegister={openRegisterView}
       />
 
@@ -241,6 +299,7 @@ export default function App() {
         <OpportunityMatrix
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
+          onOpenLibrary={openLibraryView}
         />
 
         {/* Candidate Profile, Educational Track Record & 4-Pillar Manifesto */}
@@ -266,6 +325,7 @@ export default function App() {
         onOpenAdmin={openAdminView}
         onOpenJobs={openJobsView}
         onOpenSkills={openSkillsView}
+        onOpenLibrary={openLibraryView}
         onOpenRegister={openRegisterView}
       />
 

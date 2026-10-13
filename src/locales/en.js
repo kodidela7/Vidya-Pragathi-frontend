@@ -9,6 +9,7 @@ export const en = {
   navJobs: "Search Jobs",
   navOpportunities: "Opportunities",
   navSkills: "Skills & AI",
+  navLibrary: "E-Library",
   navEvents: "Job Melas",
   navCandidate: "Candidate",
   navRegister: "Register",
@@ -191,6 +192,26 @@ export const en = {
   skillsProgramFee: "Fee Structure",
   skillsCurriculumHighlights: "Curriculum Highlights (Planned)",
   skillsCtaBannerTitle: "Be the First to Know When Batches Are Announced",
-  skillsCtaBannerDesc: "Register your graduation degree and district now. When the syllabus and schedule are published, you will receive direct WhatsApp/SMS updates."
+  skillsCtaBannerDesc: "Register your graduation degree and district now. When the syllabus and schedule are published, you will receive direct WhatsApp/SMS updates.",
+
+  // E-Library & Competitive Exam Centre (Padavi Path)
+  libraryPortalTag: "District Competitive Exam Study Hubs",
+  libraryPortalTitlePrefix: "Padavi Path:",
+  libraryPortalTitleHighlight: "Digital Library & Competitive Exam Centre",
+  libraryPortalSubtitle: "The foundation for a graduate's dream – A state-of-the-art E-Library and Competitive Exam Centre in every district. Our support for your step towards reading, achievement, and success.",
+  libraryObjectiveBadge: "Core Objective (ಉದ್ದೇಶ)",
+  libraryObjectiveTitle: "All Competitive Exam Resources Under One Roof",
+  libraryObjectiveDesc: "To provide state-of-the-art facilities for graduates in both rural and urban areas to prepare for competitive exams at free and affordable costs. Our goal is to make all professional resources required for UPSC, KPSC (KAS, FDA, SDA, PSI, PDO), Banking, Railways, and all other competitive exams available under one roof in every district.",
+  libraryExamsHeading: "Exams & Career Cadres Supported",
+  libraryFacilitiesHeading: "Key Facilities of the Library",
+  libraryFacilitiesSub: "Equipped with modern technology, reference literature, and veteran civil servants' mentorship.",
+  libraryAspirantWordTag: "A Word to Aspirants (ಆಕಾಂಕ್ಷಿಗಳಿಗೆ ಕಿವಿಮಾತು)",
+  libraryAspirantWordTitle: "Empowering Rural Talents in Their Own Districts",
+  libraryAspirantWordDesc: "\"Providing all necessary facilities right where they are for rural talents who cannot afford to move to big cities for coaching. 'Padavi Path' will always be with you to ensure your victory in the competitive world...\"",
+  libraryDistrictsHeading: "Constituency District Study Hubs",
+  libraryDistrictsSub: "Established across all five constituency headquarters with reading rooms and digital terminals.",
+  libraryFaqHeading: "Frequently Asked Questions",
+  libraryBtnRegisterInterest: "Register for Study Hub Access"
 };
+
 
