@@ -196,17 +196,17 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                 <input
                   type="text"
                   className={styles.mainSearchInput}
-                  placeholder="Search by job title, company name, required skills (e.g., Python, CAD, GET, Testing, KPSC)..."
+                  placeholder={lang === 'kn' ? 'ಹುದ್ದೆಯ ಹೆಸರು, ಕಂಪನಿ, ಕೌಶಲ್ಯಗಳಿಂದ ಹುಡುಕಿ (ಉದಾ: Python, CAD, GET, Testing, KPSC)...' : 'Search by job title, company name, required skills (e.g., Python, CAD, GET, Testing, KPSC)...'}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  aria-label="Search opportunities"
+                  aria-label={lang === 'kn' ? 'ಉದ್ಯೋಗಗಳನ್ನು ಹುಡುಕಿ' : 'Search opportunities'}
                 />
                 {searchTerm && (
                   <button
                     type="button"
                     className={styles.clearSearchBtn}
                     onClick={() => setSearchTerm('')}
-                    title="Clear search"
+                    title={lang === 'kn' ? 'ಹುಡುಕಾಟ ತೆರವುಗೊಳಿಸಿ' : 'Clear search'}
                   >
                     <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>close</span>
                   </button>
@@ -220,20 +220,20 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
               <div className={styles.filterGroup}>
                 <label className={styles.filterLabel}>
                   <span className="material-symbols-outlined" style={{ fontSize: '13px', color: '#ea580c' }}>location_on</span>
-                  Constituency District
+                  {lang === 'kn' ? 'ಕ್ಷೇತ್ರದ ಜಿಲ್ಲೆ' : 'Constituency District'}
                 </label>
                 <select
                   className={styles.filterSelect}
                   value={selectedDistrict}
                   onChange={(e) => setSelectedDistrict(e.target.value)}
                 >
-                  <option value="all">All 5 Districts & Statewide</option>
-                  <option value="Tumakuru">Tumakuru</option>
-                  <option value="Kolar">Kolar</option>
-                  <option value="Chikkaballapur">Chikkaballapur</option>
-                  <option value="Chitradurga">Chitradurga</option>
-                  <option value="Davanagere">Davanagere</option>
-                  <option value="All Districts / Karnataka-Wide">Karnataka-Wide</option>
+                  <option value="all">{lang === 'kn' ? 'ಎಲ್ಲಾ 5 ಜಿಲ್ಲೆಗಳು ಮತ್ತು ರಾಜ್ಯಾದ್ಯಂತ' : 'All 5 Districts & Statewide'}</option>
+                  <option value="Tumakuru">{lang === 'kn' ? 'ತುಮಕೂರು' : 'Tumakuru'}</option>
+                  <option value="Kolar">{lang === 'kn' ? 'ಕೋಲಾರ' : 'Kolar'}</option>
+                  <option value="Chikkaballapur">{lang === 'kn' ? 'ಚಿಕ್ಕಬಳ್ಳಾಪುರ' : 'Chikkaballapur'}</option>
+                  <option value="Chitradurga">{lang === 'kn' ? 'ಚಿತ್ರದುರ್ಗ' : 'Chitradurga'}</option>
+                  <option value="Davanagere">{lang === 'kn' ? 'ದಾವಣಗೆರೆ' : 'Davanagere'}</option>
+                  <option value="All Districts / Karnataka-Wide">{lang === 'kn' ? 'ರಾಜ್ಯಾದ್ಯಂತ' : 'Karnataka-Wide'}</option>
                 </select>
               </div>
 
@@ -241,20 +241,20 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
               <div className={styles.filterGroup}>
                 <label className={styles.filterLabel}>
                   <span className="material-symbols-outlined" style={{ fontSize: '13px', color: '#2563eb' }}>category</span>
-                  Domain & Sector
+                  {lang === 'kn' ? 'ಕ್ಷೇತ್ರ ಮತ್ತು ವಿಭಾಗ' : 'Domain & Sector'}
                 </label>
                 <select
                   className={styles.filterSelect}
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
                 >
-                  <option value="all">All Sectors & Domains</option>
-                  <option value="Engineering & Tech">Engineering & Tech</option>
-                  <option value="Commerce & Banking">Commerce & Banking</option>
-                  <option value="Government / KPSC Exams">Government / KPSC Exams</option>
-                  <option value="Emerging AI & Digital Skills">Emerging AI & Digital Skills</option>
-                  <option value="Healthcare & Allied">Healthcare & Allied</option>
-                  <option value="Apprenticeship">Skill Apprenticeship</option>
+                  <option value="all">{lang === 'kn' ? 'ಎಲ್ಲಾ ಕ್ಷೇತ್ರಗಳು' : 'All Sectors & Domains'}</option>
+                  <option value="Engineering & Tech">{lang === 'kn' ? 'ಇಂಜಿನಿಯರಿಂಗ್ & ತಂತ್ರಜ್ಞಾನ' : 'Engineering & Tech'}</option>
+                  <option value="Commerce & Banking">{lang === 'kn' ? 'ವಾಣಿಜ್ಯ & ಬ್ಯಾಂಕಿಂಗ್' : 'Commerce & Banking'}</option>
+                  <option value="Government / KPSC Exams">{lang === 'kn' ? 'ಸರ್ಕಾರಿ / ಕೆಪಿಎಸ್‌ಸಿ ಪರೀಕ್ಷೆಗಳು' : 'Government / KPSC Exams'}</option>
+                  <option value="Emerging AI & Digital Skills">{lang === 'kn' ? 'ಎಐ & ಡಿಜಿಟಲ್ ಕೌಶಲ್ಯಗಳು' : 'Emerging AI & Digital Skills'}</option>
+                  <option value="Healthcare & Allied">{lang === 'kn' ? 'ಆರೋಗ್ಯ & ಪೂರಕ ಸೇವೆಗಳು' : 'Healthcare & Allied'}</option>
+                  <option value="Apprenticeship">{lang === 'kn' ? 'ಅಪ್ರೆಂಟಿಸ್‌ಶಿಪ್ ತರಬೇತಿ' : 'Skill Apprenticeship'}</option>
                 </select>
               </div>
 
@@ -262,18 +262,18 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
               <div className={styles.filterGroup}>
                 <label className={styles.filterLabel}>
                   <span className="material-symbols-outlined" style={{ fontSize: '13px', color: '#16a34a' }}>work_outline</span>
-                  Employment Model
+                  {lang === 'kn' ? 'ಉದ್ಯೋಗ ಪ್ರಕಾರ' : 'Employment Model'}
                 </label>
                 <select
                   className={styles.filterSelect}
                   value={selectedJobType}
                   onChange={(e) => setSelectedJobType(e.target.value)}
                 >
-                  <option value="all">All Work Models</option>
-                  <option value="Full Time">Full Time</option>
-                  <option value="Internship / Apprenticeship">Internship / Apprenticeship</option>
-                  <option value="Contractual">Contractual</option>
-                  <option value="Government Notice">Government Notice</option>
+                  <option value="all">{lang === 'kn' ? 'ಎಲ್ಲಾ ಪ್ರಕಾರಗಳು' : 'All Work Models'}</option>
+                  <option value="Full Time">{lang === 'kn' ? 'ಪೂರ್ಣಾವಧಿ' : 'Full Time'}</option>
+                  <option value="Internship / Apprenticeship">{lang === 'kn' ? 'ಇಂಟರ್ನ್‌ಶಿಪ್ / ಅಪ್ರೆಂಟಿಸ್‌ಶಿಪ್' : 'Internship / Apprenticeship'}</option>
+                  <option value="Contractual">{lang === 'kn' ? 'ಗುತ್ತಿಗೆ ಆಧಾರಿತ' : 'Contractual'}</option>
+                  <option value="Government Notice">{lang === 'kn' ? 'ಸರ್ಕಾರಿ ಅಧಿಸೂಚನೆ' : 'Government Notice'}</option>
                 </select>
               </div>
 
@@ -281,18 +281,18 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
               <div className={styles.filterGroup}>
                 <label className={styles.filterLabel}>
                   <span className="material-symbols-outlined" style={{ fontSize: '13px', color: '#9333ea' }}>school</span>
-                  Experience Level
+                  {lang === 'kn' ? 'ಅನುಭವದ ಮಟ್ಟ' : 'Experience Level'}
                 </label>
                 <select
                   className={styles.filterSelect}
                   value={selectedExperience}
                   onChange={(e) => setSelectedExperience(e.target.value)}
                 >
-                  <option value="all">All Experience Levels</option>
-                  <option value="Freshers (0-1 yr)">Freshers (0-1 yr)</option>
-                  <option value="Freshers">Freshers</option>
-                  <option value="1-3 yrs">1-3 yrs</option>
-                  <option value="Experienced (3+ yrs)">Experienced (3+ yrs)</option>
+                  <option value="all">{lang === 'kn' ? 'ಎಲ್ಲಾ ಅನುಭವ ಮಟ್ಟ' : 'All Experience Levels'}</option>
+                  <option value="Freshers (0-1 yr)">{lang === 'kn' ? 'ಫ್ರೆಶರ್ಸ್ (0-1 ವರ್ಷ)' : 'Freshers (0-1 yr)'}</option>
+                  <option value="Freshers">{lang === 'kn' ? 'ಫ್ರೆಶರ್ಸ್' : 'Freshers'}</option>
+                  <option value="1-3 yrs">{lang === 'kn' ? '1-3 ವರ್ಷಗಳು' : '1-3 yrs'}</option>
+                  <option value="Experienced (3+ yrs)">{lang === 'kn' ? 'ಅನುಭವಿ (3+ ವರ್ಷ)' : 'Experienced (3+ yrs)'}</option>
                 </select>
               </div>
             </div>
@@ -300,48 +300,48 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
             {/* Quick Filter Tags / Pills Row */}
             <div className={styles.quickFiltersRow}>
               <div className={styles.quickPillsLeft}>
-                <span className={styles.quickPillLabel}>Quick Filters:</span>
+                <span className={styles.quickPillLabel}>{lang === 'kn' ? 'ತ್ವರಿತ ಫಿಲ್ಟರ್‌ಗಳು:' : 'Quick Filters:'}</span>
                 <button
                   type="button"
                   className={`${styles.quickPillBtn} ${selectedExperience === 'Freshers (0-1 yr)' ? styles.quickPillActive : ''}`}
                   onClick={() => setSelectedExperience(selectedExperience === 'Freshers (0-1 yr)' ? 'all' : 'Freshers (0-1 yr)')}
                 >
-                  Freshers (0-1 yr)
+                  {lang === 'kn' ? 'ಫ್ರೆಶರ್ಸ್ (0-1 ವರ್ಷ)' : 'Freshers (0-1 yr)'}
                 </button>
                 <button
                   type="button"
                   className={`${styles.quickPillBtn} ${selectedCategory === 'Engineering & Tech' ? styles.quickPillActive : ''}`}
                   onClick={() => setSelectedCategory(selectedCategory === 'Engineering & Tech' ? 'all' : 'Engineering & Tech')}
                 >
-                  Engineering & Tech
+                  {lang === 'kn' ? 'ಇಂಜಿನಿಯರಿಂಗ್ & ತಂತ್ರಜ್ಞಾನ' : 'Engineering & Tech'}
                 </button>
                 <button
                   type="button"
                   className={`${styles.quickPillBtn} ${selectedCategory === 'Government / KPSC Exams' ? styles.quickPillActive : ''}`}
                   onClick={() => setSelectedCategory(selectedCategory === 'Government / KPSC Exams' ? 'all' : 'Government / KPSC Exams')}
                 >
-                  KPSC & Govt
+                  {lang === 'kn' ? 'ಕೆಪಿಎಸ್‌ಸಿ & ಸರ್ಕಾರಿ' : 'KPSC & Govt'}
                 </button>
                 <button
                   type="button"
                   className={`${styles.quickPillBtn} ${selectedDistrict === 'Tumakuru' ? styles.quickPillActive : ''}`}
                   onClick={() => setSelectedDistrict(selectedDistrict === 'Tumakuru' ? 'all' : 'Tumakuru')}
                 >
-                  Tumakuru
+                  {lang === 'kn' ? 'ತುಮಕೂರು' : 'Tumakuru'}
                 </button>
                 <button
                   type="button"
                   className={`${styles.quickPillBtn} ${selectedDistrict === 'Kolar' ? styles.quickPillActive : ''}`}
                   onClick={() => setSelectedDistrict(selectedDistrict === 'Kolar' ? 'all' : 'Kolar')}
                 >
-                  Kolar
+                  {lang === 'kn' ? 'ಕೋಲಾರ' : 'Kolar'}
                 </button>
                 <button
                   type="button"
                   className={`${styles.quickPillBtn} ${selectedJobType === 'Internship / Apprenticeship' ? styles.quickPillActive : ''}`}
                   onClick={() => setSelectedJobType(selectedJobType === 'Internship / Apprenticeship' ? 'all' : 'Internship / Apprenticeship')}
                 >
-                  Internships
+                  {lang === 'kn' ? 'ಇಂಟರ್ನ್‌ಶಿಪ್‌ಗಳು' : 'Internships'}
                 </button>
               </div>
 
@@ -352,7 +352,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                   onClick={resetAllFilters}
                 >
                   <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>refresh</span>
-                  <span>Clear All Filters</span>
+                  <span>{lang === 'kn' ? 'ಫಿಲ್ಟರ್ ತೆರವುಗೊಳಿಸಿ' : 'Clear All Filters'}</span>
                 </button>
               )}
             </div>
@@ -364,22 +364,22 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
       <main className="site-container" style={{ flex: 1, paddingTop: '0.4rem' }}>
         <div className={styles.resultsMetaToolbar}>
           <div className={styles.resultsCountText}>
-            <span>Showing</span>
+            <span>{lang === 'kn' ? 'ತೋರಿಸಲಾಗುತ್ತಿದೆ' : 'Showing'}</span>
             <span className={styles.totalBadge}>
-              {jobs.length > 0 ? `${(currentPage - 1) * 10 + 1}–${Math.min(currentPage * 10, totalJobs)}` : 0} of {totalJobs}
+              {jobs.length > 0 ? `${(currentPage - 1) * 10 + 1}–${Math.min(currentPage * 10, totalJobs)}` : 0} {lang === 'kn' ? `(ಒಟ್ಟು ${totalJobs})` : `of ${totalJobs}`}
             </span>
-            <span>Opportunities across Karnataka</span>
+            <span>{lang === 'kn' ? 'ಉದ್ಯೋಗಾವಕಾಶಗಳು' : 'Opportunities across Karnataka'}</span>
           </div>
 
           <div className={styles.sortGroup}>
-            <span className={styles.sortLabel}>Sort By:</span>
+            <span className={styles.sortLabel}>{lang === 'kn' ? 'ವಿಂಗಡಿಸಿ:' : 'Sort By:'}</span>
             <select
               className={styles.sortSelect}
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
             >
-              <option value="newest">Newest First</option>
-              <option value="deadline">Application Deadline</option>
+              <option value="newest">{lang === 'kn' ? 'ಹೊಸದು ಮೊದಲು' : 'Newest First'}</option>
+              <option value="deadline">{lang === 'kn' ? 'ಅಂತಿಮ ದಿನಾಂಕ' : 'Application Deadline'}</option>
             </select>
           </div>
         </div>
@@ -387,21 +387,23 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
         {isLoading ? (
           <div className={styles.loadingContainer}>
             <span className="material-symbols-outlined" style={{ fontSize: '28px', animation: 'spin 1s linear infinite' }}>sync</span>
-            <p>Loading opportunities...</p>
+            <p>{lang === 'kn' ? 'ಉದ್ಯೋಗಾವಕಾಶಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...' : 'Loading opportunities...'}</p>
           </div>
         ) : jobs.length === 0 ? (
           <div className={styles.emptyStateCard}>
             <span className={`material-symbols-outlined ${styles.emptyIcon}`}>search_off</span>
-            <h3 className={styles.emptyTitle}>No matching opportunities found</h3>
+            <h3 className={styles.emptyTitle}>{lang === 'kn' ? 'ಯಾವುದೇ ಉದ್ಯೋಗಾವಕಾಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ' : 'No matching opportunities found'}</h3>
             <p className={styles.emptyText}>
-              We couldn't find any opportunities matching your combination of filters. Please try another keyword or district.
+              {lang === 'kn'
+                ? 'ನೀವು ಆಯ್ಕೆ ಮಾಡಿದ ಫಿಲ್ಟರ್‌ಗಳಿಗೆ ಹೊಂದಿಕೆಯಾಗುವ ಉದ್ಯೋಗಗಳು ಲಭ್ಯವಿಲ್ಲ. ದಯವಿಟ್ಟು ಬೇರೆ ಕೀವರ್ಡ್ ಅಥವಾ ಜಿಲ್ಲೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ.'
+                : "We couldn't find any opportunities matching your combination of filters. Please try another keyword or district."}
             </p>
             <button
               type="button"
               className={styles.resetAllBtn}
               onClick={resetAllFilters}
             >
-              Reset All Filters
+              {lang === 'kn' ? 'ಎಲ್ಲಾ ಫಿಲ್ಟರ್‌ಗಳನ್ನು ಮರುಹೊಂದಿಸಿ' : 'Reset All Filters'}
             </button>
           </div>
         ) : (
@@ -443,7 +445,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                             <span className={styles.companyName}>{company}</span>
                             <span className={styles.verifiedEmployerBadge}>
                               <span className="material-symbols-outlined" style={{ fontSize: '11px' }}>verified</span>
-                              Verified
+                              {lang === 'kn' ? 'ದೃಢೀಕೃತ' : 'Verified'}
                             </span>
                           </div>
                         </div>
@@ -464,17 +466,17 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                     <div className={styles.metricsRibbon}>
                       <div className={styles.metricItem}>
                         <span className={`material-symbols-outlined ${styles.metricIcon}`}>payments</span>
-                        <span>Pay: <strong className={styles.metricSalary}>{salary}</strong></span>
+                        <span>{lang === 'kn' ? 'ವೇತನ:' : 'Pay:'} <strong className={styles.metricSalary}>{salary}</strong></span>
                       </div>
 
                       <div className={styles.metricItem}>
                         <span className={`material-symbols-outlined ${styles.metricIcon}`}>school</span>
-                        <span>Eligibility: <strong>{qualification}</strong></span>
+                        <span>{lang === 'kn' ? 'ಅರ್ಹತೆ:' : 'Eligibility:'} <strong>{qualification}</strong></span>
                       </div>
 
                       <div className={styles.metricItem}>
                         <span className={`material-symbols-outlined ${styles.metricIcon}`}>calendar_month</span>
-                        <span>Deadline: <strong className={styles.metricDeadline}>{deadline}</strong></span>
+                        <span>{lang === 'kn' ? 'ಅಂತಿಮ ದಿನಾಂಕ:' : 'Deadline:'} <strong className={styles.metricDeadline}>{deadline}</strong></span>
                       </div>
                     </div>
 
@@ -482,7 +484,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                     <div className={styles.jobCardFooter}>
                       <div className={styles.sourceVerification}>
                         <span className={`material-symbols-outlined ${styles.sourceIcon}`}>verified_user</span>
-                        <span>{isLive && job.source_note ? job.source_note : 'Karnataka Career Desk Verified'}</span>
+                        <span>{isLive && job.source_note ? job.source_note : (lang === 'kn' ? 'ಕರ್ನಾಟಕ ಕರಿಯರ್ ಡೆಸ್ಕ್ ದೃಢೀಕೃತ' : 'Karnataka Career Desk Verified')}</span>
                       </div>
 
                       <div className={styles.actionButtonsGroup}>
@@ -495,7 +497,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                             setIsMobileDetailView(true);
                           }}
                         >
-                          <span>View Details</span>
+                          <span>{lang === 'kn' ? 'ವಿವರ ವೀಕ್ಷಿಸಿ' : 'View Details'}</span>
                           <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>chevron_right</span>
                         </button>
 
@@ -506,7 +508,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                           className={styles.applyJobBtn}
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <span>Apply Now</span>
+                          <span>{lang === 'kn' ? 'ಈಗಲೇ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ' : 'Apply Now'}</span>
                           <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>arrow_outward</span>
                         </a>
                       </div>
@@ -519,7 +521,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
               {totalPages > 1 && (
                 <div className={styles.leftPaginationSection}>
                   <div className={styles.leftPaginationSummary}>
-                    Page {currentPage} of {totalPages}
+                    {lang === 'kn' ? `ಪುಟ ${currentPage} / ${totalPages}` : `Page ${currentPage} of ${totalPages}`}
                   </div>
 
                   <div className={styles.paginationButtonsGroup}>
@@ -530,7 +532,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                       disabled={currentPage <= 1}
                     >
                       <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>arrow_back</span>
-                      <span>Prev</span>
+                      <span>{lang === 'kn' ? 'ಹಿಂದಿನದು' : 'Prev'}</span>
                     </button>
 
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
@@ -550,7 +552,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                       onClick={() => handlePageChange(currentPage + 1)}
                       disabled={currentPage >= totalPages}
                     >
-                      <span>Next</span>
+                      <span>{lang === 'kn' ? 'ಮುಂದಿನದು' : 'Next'}</span>
                       <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>arrow_forward</span>
                     </button>
                   </div>
@@ -572,7 +574,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                     }}
                   >
                     <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_back</span>
-                    <span>Back to All Job Listings</span>
+                    <span>{lang === 'kn' ? 'ಎಲ್ಲಾ ಉದ್ಯೋಗ ಪಟ್ಟಿಗಳಿಗೆ ಹಿಂತಿರುಗಿ' : 'Back to All Job Listings'}</span>
                   </button>
                 </div>
 
@@ -588,7 +590,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                       <span>{selectedJob.district || 'Karnataka'} {selectedJob.taluk ? `(${selectedJob.taluk})` : ''}</span>
                       <span className={styles.verifiedEmployerBadge}>
                         <span className="material-symbols-outlined" style={{ fontSize: '11px' }}>verified</span>
-                        Verified Employer
+                        {lang === 'kn' ? 'ದೃಢೀಕೃತ ಉದ್ಯೋಗದಾತ' : 'Verified Employer'}
                       </span>
                     </div>
                   </div>
@@ -600,7 +602,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                       rel="noopener noreferrer"
                       className={styles.detailsApplyBtn}
                     >
-                      <span>Apply Now</span>
+                      <span>{lang === 'kn' ? 'ಈಗಲೇ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ' : 'Apply Now'}</span>
                       <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>arrow_outward</span>
                     </a>
                   </div>
@@ -611,40 +613,40 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                   {/* Highlights Grid */}
                   <div className={styles.detailsHighlightsGrid}>
                     <div className={styles.highlightItem}>
-                      <span className={styles.highlightLabel}>Pay Scale / Stipend</span>
+                      <span className={styles.highlightLabel}>{lang === 'kn' ? 'ವೇತನ ಶ್ರೇಣಿ / ಸ್ಟೈಫಂಡ್' : 'Pay Scale / Stipend'}</span>
                       <span className={styles.highlightVal} style={{ color: '#15803d' }}>
-                        {selectedJob.salary || 'Govt / Norms'}
+                        {selectedJob.salary || (lang === 'kn' ? 'ಸರ್ಕಾರಿ / ನಿಯಮಾನುಸಾರ' : 'Govt / Norms')}
                       </span>
                     </div>
                     <div className={styles.highlightItem}>
-                      <span className={styles.highlightLabel}>Eligibility</span>
+                      <span className={styles.highlightLabel}>{lang === 'kn' ? 'ಅರ್ಹತೆ' : 'Eligibility'}</span>
                       <span className={styles.highlightVal}>
                         {selectedJob.qualification || (lang === 'kn' ? selectedJob.eligibilityKn : selectedJob.eligibilityEn)}
                       </span>
                     </div>
                     <div className={styles.highlightItem}>
-                      <span className={styles.highlightLabel}>Experience</span>
-                      <span className={styles.highlightVal}>{selectedJob.experience || 'Freshers / Any'}</span>
+                      <span className={styles.highlightLabel}>{lang === 'kn' ? 'ಅನುಭವ' : 'Experience'}</span>
+                      <span className={styles.highlightVal}>{selectedJob.experience || (lang === 'kn' ? 'ಫ್ರೆಶರ್ಸ್ / ಯಾವುದೇ' : 'Freshers / Any')}</span>
                     </div>
                     <div className={styles.highlightItem}>
-                      <span className={styles.highlightLabel}>Domain / Sector</span>
+                      <span className={styles.highlightLabel}>{lang === 'kn' ? 'ಕ್ಷೇತ್ರ / ವಿಭಾಗ' : 'Domain / Sector'}</span>
                       <span className={styles.highlightVal}>{selectedJob.category}</span>
                     </div>
                     <div className={styles.highlightItem}>
-                      <span className={styles.highlightLabel}>Employment Model</span>
-                      <span className={styles.highlightVal}>{selectedJob.job_type || 'Full Time'}</span>
+                      <span className={styles.highlightLabel}>{lang === 'kn' ? 'ಉದ್ಯೋಗ ಪ್ರಕಾರ' : 'Employment Model'}</span>
+                      <span className={styles.highlightVal}>{selectedJob.job_type || (lang === 'kn' ? 'ಪೂರ್ಣಾವಧಿ' : 'Full Time')}</span>
                     </div>
                     <div className={styles.highlightItem}>
-                      <span className={styles.highlightLabel}>Deadline</span>
+                      <span className={styles.highlightLabel}>{lang === 'kn' ? 'ಅಂತಿಮ ದಿನಾಂಕ' : 'Deadline'}</span>
                       <span className={styles.highlightVal} style={{ color: '#c2410c' }}>
-                        {selectedJob.deadline ? selectedJob.deadline.split('T')[0] : 'Open'}
+                        {selectedJob.deadline ? selectedJob.deadline.split('T')[0] : (lang === 'kn' ? 'ಮುಕ್ತವಾಗಿದೆ' : 'Open')}
                       </span>
                     </div>
                   </div>
 
                   {/* Role Overview */}
                   <div className={styles.detailsSection}>
-                    <h3 className={styles.detailsSectionTitle}>Role Overview & Responsibilities</h3>
+                    <h3 className={styles.detailsSectionTitle}>{lang === 'kn' ? 'ಹುದ್ದೆಯ ವಿವರ ಮತ್ತು ಜವಾಬ್ದಾರಿಗಳು' : 'Role Overview & Responsibilities'}</h3>
                     <p className={styles.detailsSectionContent}>
                       {selectedJob.description || (lang === 'kn' ? selectedJob.descriptionKn : selectedJob.descriptionEn)}
                     </p>
@@ -653,7 +655,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                   {/* Skills */}
                   {selectedJob.skills && (
                     <div className={styles.detailsSection}>
-                      <h3 className={styles.detailsSectionTitle}>Key Required Skills</h3>
+                      <h3 className={styles.detailsSectionTitle}>{lang === 'kn' ? 'ಅಗತ್ಯವಿರುವ ಪ್ರಮುಖ ಕೌಶಲ್ಯಗಳು' : 'Key Required Skills'}</h3>
                       <div className={styles.skillsChipsWrap}>
                         {selectedJob.skills.split(',').map((skill, idx) => (
                           <span key={idx} className={styles.detailSkillChip}>{skill.trim()}</span>
@@ -664,10 +666,10 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
 
                   {/* Location & Venue */}
                   <div className={styles.detailsSection}>
-                    <h3 className={styles.detailsSectionTitle}>Constituency District & Venue</h3>
+                    <h3 className={styles.detailsSectionTitle}>{lang === 'kn' ? 'ಕ್ಷೇತ್ರದ ಜಿಲ್ಲೆ ಮತ್ತು ಸ್ಥಳ' : 'Constituency District & Venue'}</h3>
                     <p className={styles.detailsSectionContent}>
-                      {selectedJob.district} {selectedJob.taluk ? `— Taluk / Venue: ${selectedJob.taluk}` : ''}.
-                      Verified directly by Karnataka Career Consultancy.
+                      {selectedJob.district} {selectedJob.taluk ? `— ${lang === 'kn' ? 'ತಾಲೂಕು / ಸ್ಥಳ:' : 'Taluk / Venue:'} ${selectedJob.taluk}` : ''}.{' '}
+                      {lang === 'kn' ? 'ಕರ್ನಾಟಕ ಕರಿಯರ್ ಕನ್ಸಲ್ಟನ್ಸಿ ನೇರ ಪರಿಶೀಲನೆಗೆ ಒಳಪಟ್ಟಿದೆ.' : 'Verified directly by Karnataka Career Consultancy.'}
                     </p>
                   </div>
                 </div>
@@ -676,7 +678,7 @@ export default function JobsPortal({ onBackToHome, onOpenAdmin }) {
                 <div className={styles.detailsFooter}>
                   <div className={styles.detailsVerifiedNote}>
                     <span className="material-symbols-outlined" style={{ fontSize: '15px', color: '#16a34a' }}>verified_user</span>
-                    <span>{selectedJob.source_note || 'Karnataka Career Consultancy Verified'}</span>
+                    <span>{selectedJob.source_note || (lang === 'kn' ? 'ಕರ್ನಾಟಕ ಕರಿಯರ್ ಕನ್ಸಲ್ಟನ್ಸಿ ದೃಢೀಕೃತ' : 'Karnataka Career Consultancy Verified')}</span>
                   </div>
                 </div>
               </aside>
