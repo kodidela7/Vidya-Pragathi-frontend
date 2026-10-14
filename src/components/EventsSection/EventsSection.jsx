@@ -17,8 +17,7 @@ export default function EventsSection({ onSelectEvent }) {
     'Tumakuru',
     'Chitradurga',
     'Davanagere',
-    'Chikkaballapur',
-    'Bengaluru Rural'
+    'Chikkaballapur'
   ];
 
   // Reset pagination to initial 3 whenever filter changes
@@ -108,7 +107,10 @@ export default function EventsSection({ onSelectEvent }) {
   };
 
   // Helper to calculate days remaining
-  const getDaysRemaining = (dateStr, fallbackEn, fallbackKn) => {
+  const getDaysRemaining = (dateStr, fallbackEn, fallbackKn, status) => {
+    if (status === 'Ongoing') {
+      return lang === 'kn' ? (fallbackKn || 'ಪ್ರಸ್ತುತ ಚಾಲ್ತಿಯಲ್ಲಿದೆ') : (fallbackEn || 'Active Drive');
+    }
     if (!dateStr) return lang === 'kn' ? (fallbackKn || 'ಶೀಘ್ರದಲ್ಲೇ') : (fallbackEn || 'Soon');
     try {
       const target = new Date(dateStr);
@@ -135,7 +137,7 @@ export default function EventsSection({ onSelectEvent }) {
           <div className={styles.headerText}>
             <div className={styles.tagsRow}>
               <span className={styles.eventsTag}>
-                {lang === 'kn' ? 'ನೇರ ಉದ್ಯೋಗ ಮೇಳಗಳು' : 'Direct Campus Drives'}
+                {lang === 'kn' ? 'ಸಾರ್ವಜನಿಕ ಉದ್ಯೋಗ ಮೇಳಗಳು' : 'Public Job Melas & Fairs'}
               </span>
               <span className={styles.eventsSubTag}>
                 {lang === 'kn' ? '100% ಉಚಿತ ಪ್ರವೇಶ ಪಾಸ್' : '100% Free Candidate Pass'}
@@ -236,10 +238,10 @@ export default function EventsSection({ onSelectEvent }) {
                   <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>work</span>
                   <span>{featuredEvent.vacancies_count || 1200}+ Openings</span>
                 </div>
-                <div className={styles.featuredMetaItem}>
+                {/* <div className={styles.featuredMetaItem}>
                   <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>groups</span>
                   <span>{featuredEvent.registrations_count || 320}+ Passes Issued</span>
-                </div>
+                </div> */}
               </div>
 
               <div className={styles.melaFooterRow}>
@@ -269,7 +271,7 @@ export default function EventsSection({ onSelectEvent }) {
             const evDesc = lang === 'kn' && ev.description_kn ? ev.description_kn : (ev.description || ev.descriptionEn);
             const evEligibility = lang === 'kn' && ev.eligibility_kn ? ev.eligibility_kn : (ev.eligibility || ev.eligibilityEn || 'All Degree Graduates');
             const dateDisplay = formatEventDate(ev.event_date || ev.dateEn);
-            const daysLeft = getDaysRemaining(ev.event_date, ev.daysLeftEn, ev.daysLeftKn);
+            const daysLeft = getDaysRemaining(ev.event_date, ev.daysLeftEn, ev.daysLeftKn, ev.status);
 
             return (
               <div key={ev.id} className={styles.eventCard}>

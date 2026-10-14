@@ -70,6 +70,33 @@ export default function Footer({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenLi
               </div>
               <p className={styles.contactText}>{t('footerHours')}</p>
             </div>
+
+            {/* Concept & Design Credit: Mandate Analytica */}
+            <div className={styles.colCreditWrap}>
+              <span className={styles.agencyCreditLabel}>
+                {lang === 'kn' ? 'ಪರಿಕಲ್ಪನೆ ಮತ್ತು ವಿನ್ಯಾಸ' : 'Concept & Design by'}
+              </span>
+              <a
+                href="https://mandateanalytica.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.mandateBadge}
+                title="Mandate Analytica - Electoral Intelligence. Decisive Advantage."
+              >
+                <img
+                  src="/images/mandate_analytica_logo_white.png"
+                  alt="Mandate Analytica"
+                  className={styles.mandateLogo}
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://mandateanalytica.com/logo_white.png';
+                  }}
+                />
+                <div className={styles.mandateTextWrap}>
+                  <span className={styles.mandateTitle}>MANDATE ANALYTICA</span>
+                  <span className={styles.mandateTagline}>Electoral Intelligence. Decisive Advantage.</span>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
 
