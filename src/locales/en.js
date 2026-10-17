@@ -10,11 +10,13 @@ export const en = {
   navOpportunities: "Opportunities",
   navSkills: "Skills & AI",
   navLibrary: "E-Library",
+  navSelfEmployment: "Self-Employment & Agri",
   navEvents: "Job Melas",
   navCandidate: "Candidate",
   navRegister: "Register",
   navGraduateRegister: "Graduate Register",
   navHelpdesk: "Helpdesk",
+  footerSelfEmployment: "Self-Employment, Startups & Agri-Business",
   ctaRegister: "Register",
   ctaPledge: "Pledge Vote",
 

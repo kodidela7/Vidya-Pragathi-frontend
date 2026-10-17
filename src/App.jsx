@@ -15,6 +15,7 @@ import JobsPortal from './components/JobsPortal/JobsPortal';
 import GraduateRegistrationPage from './components/GraduateRegistrationPage/GraduateRegistrationPage';
 import SkillsPortal from './components/SkillsPortal/SkillsPortal';
 import ELibraryPortal from './components/ELibraryPortal/ELibraryPortal';
+import SelfEmploymentPortal from './components/SelfEmploymentPortal/SelfEmploymentPortal';
 
 export default function App() {
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -60,6 +61,11 @@ export default function App() {
     return window.location.pathname.startsWith('/register') || window.location.hash === '#register' || window.location.hash === '#registration';
   });
 
+  // Check if initial route is /self-employment or #self-employment
+  const [isSelfEmploymentView, setIsSelfEmploymentView] = useState(() => {
+    return window.location.pathname.startsWith('/self-employment') || window.location.hash === '#self-employment' || window.location.hash === '#entrepreneurship' || window.location.hash === '#agriculture';
+  });
+
   useEffect(() => {
     if (!selectedEvent && typeof document !== 'undefined' && document.body) {
       document.body.style.overflow = '';
@@ -70,11 +76,13 @@ export default function App() {
       const isNowSkills = window.location.pathname.startsWith('/skills') || window.location.hash === '#skills';
       const isNowLibrary = window.location.pathname.startsWith('/library') || window.location.hash === '#library' || window.location.hash === '#elibrary';
       const isNowRegister = window.location.pathname.startsWith('/register') || window.location.hash === '#register' || window.location.hash === '#registration';
+      const isNowSelfEmployment = window.location.pathname.startsWith('/self-employment') || window.location.hash === '#self-employment' || window.location.hash === '#entrepreneurship' || window.location.hash === '#agriculture';
       setIsAdminView(isNowAdmin);
       setIsJobsView(isNowJobs);
       setIsSkillsView(isNowSkills);
       setIsLibraryView(isNowLibrary);
       setIsRegisterView(isNowRegister);
+      setIsSelfEmploymentView(isNowSelfEmployment);
       window.scrollTo(0, 0);
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
@@ -164,8 +172,54 @@ export default function App() {
     document.body.scrollTop = 0;
   };
 
+  const openSelfEmploymentView = () => {
+    window.location.hash = 'self-employment';
+    setIsSelfEmploymentView(true);
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
+  const closeSelfEmploymentView = () => {
+    window.location.hash = '';
+    setIsSelfEmploymentView(false);
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
   if (isAdminView) {
     return <AdminPortal onBackToPublic={closeAdminView} />;
+  }
+
+  if (isSelfEmploymentView) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <Header
+          onOpenAdmin={openAdminView}
+          onOpenJobs={openJobsView}
+          onOpenSkills={openSkillsView}
+          onOpenLibrary={openLibraryView}
+          onOpenSelfEmployment={openSelfEmploymentView}
+          onOpenRegister={openRegisterView}
+          onBackToHome={closeSelfEmploymentView}
+        />
+        <main style={{ flex: 1 }}>
+          <SelfEmploymentPortal
+            onBackToHome={closeSelfEmploymentView}
+            onOpenRegister={openRegisterView}
+          />
+        </main>
+        <Footer
+          onOpenAdmin={openAdminView}
+          onOpenJobs={openJobsView}
+          onOpenSkills={openSkillsView}
+          onOpenLibrary={openLibraryView}
+          onOpenSelfEmployment={openSelfEmploymentView}
+          onOpenRegister={openRegisterView}
+        />
+      </div>
+    );
   }
 
   if (isJobsView) {
@@ -176,6 +230,7 @@ export default function App() {
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
           onOpenLibrary={openLibraryView}
+          onOpenSelfEmployment={openSelfEmploymentView}
           onOpenRegister={openRegisterView}
           onBackToHome={closeJobsView}
         />
@@ -197,6 +252,7 @@ export default function App() {
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
           onOpenLibrary={openLibraryView}
+          onOpenSelfEmployment={openSelfEmploymentView}
           onOpenRegister={openRegisterView}
           onBackToHome={closeSkillsView}
         />
@@ -212,6 +268,7 @@ export default function App() {
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
           onOpenLibrary={openLibraryView}
+          onOpenSelfEmployment={openSelfEmploymentView}
           onOpenRegister={openRegisterView}
         />
       </div>
@@ -226,6 +283,7 @@ export default function App() {
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
           onOpenLibrary={openLibraryView}
+          onOpenSelfEmployment={openSelfEmploymentView}
           onOpenRegister={openRegisterView}
           onBackToHome={closeLibraryView}
         />
@@ -240,6 +298,7 @@ export default function App() {
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
           onOpenLibrary={openLibraryView}
+          onOpenSelfEmployment={openSelfEmploymentView}
           onOpenRegister={openRegisterView}
         />
       </div>
@@ -254,6 +313,7 @@ export default function App() {
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
           onOpenLibrary={openLibraryView}
+          onOpenSelfEmployment={openSelfEmploymentView}
           onOpenRegister={openRegisterView}
           onBackToHome={closeRegisterView}
         />
@@ -268,6 +328,7 @@ export default function App() {
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
           onOpenLibrary={openLibraryView}
+          onOpenSelfEmployment={openSelfEmploymentView}
           onOpenRegister={openRegisterView}
         />
       </div>
@@ -282,6 +343,7 @@ export default function App() {
         onOpenJobs={openJobsView}
         onOpenSkills={openSkillsView}
         onOpenLibrary={openLibraryView}
+        onOpenSelfEmployment={openSelfEmploymentView}
         onOpenRegister={openRegisterView}
       />
 
@@ -300,6 +362,7 @@ export default function App() {
           onOpenJobs={openJobsView}
           onOpenSkills={openSkillsView}
           onOpenLibrary={openLibraryView}
+          onOpenSelfEmployment={openSelfEmploymentView}
         />
 
         {/* Candidate Profile, Educational Track Record & 4-Pillar Manifesto */}
@@ -326,6 +389,7 @@ export default function App() {
         onOpenJobs={openJobsView}
         onOpenSkills={openSkillsView}
         onOpenLibrary={openLibraryView}
+        onOpenSelfEmployment={openSelfEmploymentView}
         onOpenRegister={openRegisterView}
       />
 

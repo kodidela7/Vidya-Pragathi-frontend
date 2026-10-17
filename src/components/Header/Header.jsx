@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import styles from './Header.module.css';
 
-export default function Header({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenLibrary, onOpenRegister, onBackToHome }) {
+export default function Header({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenLibrary, onOpenSelfEmployment, onOpenRegister, onBackToHome }) {
   const { lang, toggleLang, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -113,6 +113,16 @@ export default function Header({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenLi
               {t('navLibrary')}
             </a>
             <a
+              href="#self-employment"
+              className={styles.navLink}
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenSelfEmployment) onOpenSelfEmployment();
+              }}
+            >
+              {t('navSelfEmployment')}
+            </a>
+            <a
               href="#events"
               className={styles.navLink}
               onClick={() => {
@@ -187,6 +197,17 @@ export default function Header({ onOpenAdmin, onOpenJobs, onOpenSkills, onOpenLi
               }}
             >
               <span>{t('navLibrary')}</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
+            </a>
+            <a
+              href="#self-employment"
+              className={styles.mobileNavLink}
+              onClick={() => {
+                closeMenu();
+                if (onOpenSelfEmployment) onOpenSelfEmployment();
+              }}
+            >
+              <span>{t('navSelfEmployment')}</span>
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
             </a>
             <a

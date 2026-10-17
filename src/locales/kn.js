@@ -10,11 +10,13 @@ export const kn = {
   navOpportunities: "ಉದ್ಯೋಗಗಳು",
   navSkills: "ಕೌಶಲ್ಯ & ಎಐ",
   navLibrary: "ಇ-ಗ್ರಂಥಾಲಯ",
+  navSelfEmployment: "ಸ್ವಯಂ ಉದ್ಯೋಗ & ಕೃಷಿ",
   navEvents: "ಉದ್ಯೋಗ ಮೇಳ",
   navCandidate: "ಅಭ್ಯರ್ಥಿ",
   navRegister: "ನೋಂದಣಿ",
   navGraduateRegister: "ಪದವೀಧರರ ನೋಂದಣಿ",
   navHelpdesk: "ಸಹಾಯವಾಣಿ",
+  footerSelfEmployment: "ಸ್ವಯಂ ಉದ್ಯೋಗ, ಸ್ಟಾರ್ಟಪ್ & ಕೃಷಿ ಉದ್ಯಮ",
   ctaRegister: "ಪದವೀಧರ ನೋಂದಣಿ",
   ctaPledge: "ಮತ ಬೆಂಬಲ ನೀಡಿ",
 
